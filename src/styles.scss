@@ -1,0 +1,48 @@
+
+// Шрифты
+@mixin caveat {
+    font-family: "Caveat", sans-serif;
+}
+@mixin golos {
+    font-family: "Golos", sans-serif;
+}
+@mixin golos-extra-bold {
+    font-family: "Golos-Extra-Bold", sans-serif;
+}
+
+// Цвета
+$black: #000;
+$white: #fff;
+$yellow: #FBFF91;
+$red: #C05555;
+
+
+
+@mixin box {
+    width:70px;
+    height:70px;
+}
+
+.green {
+    background-color: chartreuse;
+    @include box();
+}
+
+.red {
+    background-color: $red;
+    @include box();
+}
+
+
+#top-menu {
+    background:$black;
+    color:$white;
+    @include caveat();
+    font-size: 45px;
+}
+
+p {
+   @include golos();
+}
+
+

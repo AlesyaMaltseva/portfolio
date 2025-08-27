@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "Caveat";
+  src: url("assets/fonts/Caveat/Caveat-VariableFont_wght.ttf") format("ttf"); }
+@font-face {
+  font-family: "Golos";
+  src: url("assets/fonts/Golos-Text/GolosText-VariableFont_wght.ttf") format("ttf"); }
+@font-face {
+  font-family: "Golos-Extra-Bold";
+  src: url("assets/fonts/Golos-Text/GolosText-ExtraBold.ttf") format("ttf"); }
+.green {
+  background-color: chartreuse;
+  width: 70px;
+  height: 70px; }
+
+.red {
+  background-color: #C05555;
+  width: 70px;
+  height: 70px; }
+
+#top-menu {
+  background-image: url(assets/img/beach.jpg);
+  color: #fff;
+  font-family: "Caveat", sans-serif;
+  font-size: 45px; }
+
+p {
+  font-family: "Golos-Extra-Bold"; }
+
+/*# sourceMappingURL=styles.css.map */

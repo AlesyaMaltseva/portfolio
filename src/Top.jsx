@@ -1,4 +1,7 @@
 import { useState } from 'react'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+//import './App.css'
 import { useRef } from 'react'
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -33,24 +36,13 @@ import { TextPlugin } from "gsap/TextPlugin";
 gsap.registerPlugin(useGSAP,Draggable,DrawSVGPlugin,EaselPlugin,Flip,GSDevTools,InertiaPlugin,MotionPathHelper,MotionPathPlugin,MorphSVGPlugin,Observer,Physics2DPlugin,PhysicsPropsPlugin,PixiPlugin,ScrambleTextPlugin,ScrollTrigger,ScrollSmoother,ScrollToPlugin,SplitText,TextPlugin,RoughEase,ExpoScaleEase,SlowMo,CustomEase,CustomBounce,CustomWiggle);
 
 
-function App() {
-useGSAP(() => {  
-gsap.to('.box div', {
-	x: 200,
-	stagger: 0.3 // 0.1 seconds between when each ".box" element starts animating
-});
-})
+function Top() {
 
 
-  return  <>
-      <p>Каждый шрифт лежит в собственной папке в fonts и имеет несколько форматов (otf, ttf, eot, svg, woff).</p>
-      <div>Всем понятно, чтобы хорошо заработать на верстке, необходимо уметь верстать сайты быстро. Но не всем очевидно, каким способом это достигается.</div>
-      <div>Переходите по ссылке прямо сейчас и посмотрите мой видеокурс, где вы научитесь профессиональной верстке сайтов.</div>
-       <div class="box">
-         <div class="green"></div> 
-         <div class="red"></div>
-       </div>
-    </>  
+    return <>
+    <div id="top-menu">Верхний блок</div>
+    
+    </>
 }
 
-export default App
+export default Top
