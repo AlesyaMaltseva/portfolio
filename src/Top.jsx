@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import $ from 'jquery';
+import uuid from 'react-uuid';
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 //import './App.css'
@@ -38,10 +40,15 @@ gsap.registerPlugin(useGSAP,Draggable,DrawSVGPlugin,EaselPlugin,Flip,GSDevTools,
 
 function Top() {
 
+const items = [{name:'Информация', url:'mail.ru'},
+            {name:'Проекты', url:'https://yandex.ru'},
+            {name:'Контакты', url:'kp.ru'}];
+const listItems = items.map(item => <a key={uuid()} href={item.url}>{item.name}</a>);    
 
     return <>
-    <div id="top-menu">Верхний блок</div>
-    
+    <div id="top-menu">
+        {listItems}    
+    </div>
     </>
 }
 

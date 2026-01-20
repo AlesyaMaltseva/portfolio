@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: "Golos";
-    src: local("Golos"),url("assets/fonts/Golos-Text/GolosText-Regular.ttf") format("truetype");
+    src: local("Golos"),url("assets/fonts/Golos-Text/GolosText-VariableFont_wght.ttf") format("truetype");
 }
 
 @font-face {
@@ -17,6 +17,9 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  display:block;
+  margin:0;
+  width:100%;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -39,11 +42,12 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
+  display: block;
   /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
-  width:100%;
+  overflow-x: hidden;
+  font-family: "Golos", sans-serif;
 }
 
 h1 {

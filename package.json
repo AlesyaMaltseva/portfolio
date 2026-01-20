@@ -14,11 +14,16 @@
     "@gsap/react": "^2.1.2",
     "gh-pages": "^6.3.0",
     "gsap": "^3.13.0",
+    "jquery": "^3.7.1",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-uuid": "^2.0.0",
+    "uuid": "^11.1.0",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
+    "@types/jquery": "^3.5.33",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react": "^5.0.0",
