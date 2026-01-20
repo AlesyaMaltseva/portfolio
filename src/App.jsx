@@ -31,7 +31,10 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { SplitText } from "gsap/SplitText";
 import { TextPlugin } from "gsap/TextPlugin";
 gsap.registerPlugin(useGSAP,Draggable,DrawSVGPlugin,EaselPlugin,Flip,GSDevTools,InertiaPlugin,MotionPathHelper,MotionPathPlugin,MorphSVGPlugin,Observer,Physics2DPlugin,PhysicsPropsPlugin,PixiPlugin,ScrambleTextPlugin,ScrollTrigger,ScrollSmoother,ScrollToPlugin,SplitText,TextPlugin,RoughEase,ExpoScaleEase,SlowMo,CustomEase,CustomBounce,CustomWiggle);
-//grapheme
+
+import avatar from '/src/assets/img/beach.jpg'; // Импортируем изображение
+
+
 
 function App() {
 useGSAP(() => { 
@@ -143,7 +146,7 @@ gsap.to('.box1', {
             <div className="hi button">Привет!</div>
             <div className="nameis" title="Знаю, что со строчной неправильно, но мне так нравится.">меня зовут</div>
             <div className="name">
-              <div className="first">Алеся <img src="src/assets/img/beach.jpg" /></div>
+              <div className="first">Алеся <img src={avatar} /></div>
               <div className="surname">Мальцева</div>
             </div>
           <div className="text">Этот инструмент помогает легко<br />и быстро создать различные текстовые<br />документы и многое другое.</div>
