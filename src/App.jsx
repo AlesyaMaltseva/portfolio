@@ -143,7 +143,7 @@ gsap.to('.box1', {
             <div className="hi button">Привет!</div>
             <div className="nameis" title="Знаю, что со строчной неправильно, но мне так нравится.">меня зовут</div>
             <div className="name">
-              <div className="first">Алеся <img src="portfolio/src/assets/img/beach.jpg" /></div>
+              <div className="first">Алеся <img src="src/assets/img/beach.jpg" /></div>
               <div className="surname">Мальцева</div>
             </div>
           <div className="text">Этот инструмент помогает легко<br />и быстро создать различные текстовые<br />документы и многое другое.</div>
