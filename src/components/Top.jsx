@@ -40,14 +40,14 @@ import uuid from 'react-uuid';
 
 function Top() {
 
-const items = [{name:'Наверх', url:'/'},
+const items = [{name:'Наверх', url:'/portfolio/'},
             {name:'Опыт работы', url:'#experience'},
             {name:'Проекты', url:'#projects'},
             {name:'Контакты', url:'#contacts'}];
 const listItems = items.map(item => <a key={uuid()} href={item.url}>{item.name}</a>);    
 
     return <>
-    <a name="/"></a>
+    <a name="/portfolio/"></a>
     <div id="top-menu">
         {listItems}    
     </div>
