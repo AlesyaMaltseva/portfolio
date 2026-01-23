@@ -53,9 +53,14 @@ $text:1.7em;
 }
 
 // Структура
+
+h1 {
+    font-size: 2.35em;
+}
+
 #top-menu {
     @include golos();
-    background:$black;    
+     @include dark-block();   
     font-size: 1.2em;
     display: flex; 
     justify-content: flex-end;
@@ -63,7 +68,8 @@ $text:1.7em;
     position: fixed;
     width:100%;
     height: $hight-top;
-       
+    z-index:999;
+           
     a {
         letter-spacing: .04em;
         font-weight: 300;
@@ -87,6 +93,12 @@ $text:1.7em;
     height: 100vh;
     padding:$hight-top*3 $borders 0;
     @include flex-column();
+    position: relative; 
+               
+   }
+
+.block:not(.block.block1) {
+    padding-top:100px;
 }
 
 .block1 {
@@ -134,9 +146,12 @@ $text:1.7em;
 }
 
 .block3 {
-    @include red-block();   
+    @include red-block();
 }
 
+.block4 {
+    @include dark-block();   
+}
 
 
 

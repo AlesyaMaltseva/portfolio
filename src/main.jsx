@@ -3,12 +3,12 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import './styles.scss'
 import App from './App.jsx'
-import Top from './Top.jsx'
+
+// import 'bootstrap/dist/css/bootstrap.css'
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Top />
+  <StrictMode>    
     <App />
   </StrictMode>,
 )
