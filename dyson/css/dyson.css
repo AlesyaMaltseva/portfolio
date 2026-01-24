@@ -364,18 +364,6 @@ sup {
 	padding:20px 5px 0 10px;	
 }
 
-
-/*.videos #video1:before, .videos #video2:before, .videos #video3:before  {
-	content: '';
-    background-image: url('../pics/video.png');
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background-repeat: no-repeat;
-    top: 25%;
-    left: 43%;*/
-}*/
-
 .videos > div  div {
 	font-size:13px;
 	color:#000;
