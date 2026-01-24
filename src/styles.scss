@@ -69,6 +69,7 @@ h1 {
     width:100%;
     height: $hight-top;
     z-index:999;
+    opacity: .6;
            
     a {
         letter-spacing: .04em;
@@ -86,6 +87,9 @@ h1 {
             color:$yellow;
             transform: scale(1.2);
         }
+    }
+    :nth-child(2) {
+        display: none;
     }  
 }
 
@@ -93,13 +97,12 @@ h1 {
     height: 100vh;
     padding:$hight-top*3 $borders 0;
     @include flex-column();
-    position: relative; 
-               
+    position: relative;                
    }
 
-.block:not(.block.block1) {
-    padding-top:100px;
-}
+// .block:not(.block.block1) {
+//     padding-top:100px;
+// }
 
 .block1 {
     @include dark-block();
@@ -139,6 +142,9 @@ h1 {
             margin-top:-100px;
             line-height: 1.2;      
         }
+        h1:first-child {
+            display:none;
+        }
 }            
 
 .block2 {
@@ -153,8 +159,14 @@ h1 {
     @include dark-block();   
 }
 
-
-
+#projects {
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    grid-gap: 4%;
+    img {
+        width:100%;
+    }
+}
 
 
 

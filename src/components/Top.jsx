@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import $ from 'jquery';
 import uuid from 'react-uuid';
+import headers from '../parts/headers.jsx';
+import arrow from '/src/assets/img/arrow.svg';
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 //import './App.css'
@@ -40,16 +42,11 @@ import uuid from 'react-uuid';
 
 function Top() {
 
-const items = [{name:'Наверх', url:'/portfolio/'},
-            {name:'Опыт работы', url:'#experience'},
-            {name:'Проекты', url:'#projects'},
-            {name:'Контакты', url:'#contacts'}];
-const listItems = items.map(item => <a key={uuid()} href={item.url}>{item.name}</a>);    
+const listItems = headers.map(item => <a key={uuid()} href={item.url}>{item.name}</a>);    
 
     return <>
-    <a name="/portfolio/"></a>
-    <div id="top-menu">
-        {listItems}    
+      <div id="top-menu">
+        <a href={headers[0].url}><img src={arrow} /></a>{listItems}    
     </div>
     </>
 }

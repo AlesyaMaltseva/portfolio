@@ -6,8 +6,7 @@ function Experience() {
 
 const items1 = ['Это первый пункт списка', 'Второй пункт', 'Третий пункт', 'Пункт четвертый', 'Пятый пункт списка'];   
 
-  return  <>              
-     <h1>Опыт работы</h1>             
+  return  <>    
     <ul className="list-group">
         {items1.map((item) => (
             <li key={item} className="list-group-item" onClick={() => console.log(item)}>{item}</li>
