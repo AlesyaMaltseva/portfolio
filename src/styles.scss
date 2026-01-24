@@ -87,10 +87,33 @@ h1 {
             color:$yellow;
             transform: scale(1.2);
         }
-    }
-    :nth-child(2) {
+        &:nth-child(2) {
         display: none;
-    }  
+        }       
+    } 
+}
+
+.tooltip {
+  position: relative;
+  text-decoration: none; /* Убираем стандартное подчёркивание */
+        &::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        top: -1px; /* Можно подстроить это значение под себя */
+        left: -90px;
+        z-index: 100; /* Подсказка будет отображаться поверх других элементов */
+        color: $white;
+        // padding: 5px 10px;
+        border-radius: 3px;
+        // display: none; /* По умолчанию скрыта */
+        opacity: 0;
+        white-space: nowrap; /* Гарантирует, что текст не будет переноситься на следующую строку  */
+        transition: 0.5s;
+        }
+        &:hover::after {
+        display: block; /* При наведении показываем подсказку */
+        opacity: 1;
+        }
 }
 
 .block{

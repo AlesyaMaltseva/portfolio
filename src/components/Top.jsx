@@ -46,7 +46,8 @@ const listItems = headers.map(item => <a key={uuid()} href={item.url}>{item.name
 
     return <>
       <div id="top-menu">
-        <a href={headers[0].url} title={headers[0].name}><img src={arrow} /></a>{listItems}    
+        <a href={headers[0].url} data-tooltip={headers[0].name} className="tooltip"><img src={arrow} /></a>
+        {listItems}    
     </div>
     </>
 }

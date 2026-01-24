@@ -12,10 +12,10 @@ function func() {
 
 let block = 'block block';
 
-const headers = [{name:'Наверх', url:'#', block:<About />, nameLink:'top', className:block+func()},
+const headers = [{name:'Наверх', url:'/', block:<About />, nameLink:'top', className:block+func()},
             {name:'Опыт работы', url:'#experience', block:<Experience />,  nameLink:'experience', className:block+func()},
             {name:'Проекты', url:'#projects', block:<Projects />,  nameLink:'projects', className:block+func()},
-            {name:'Контакты', url:'#contacts', block:<Contacts />,  nameLink:'contacts', className:block+func()}            
+            {name:'Контакты', url:'#contacts', block:<Contacts />,  nameLink:'contacts', className:block+func()}          
             ]
 
 
