@@ -7,8 +7,8 @@ import arrow from '/src/assets/img/arrow.svg';
 // import viteLogo from '/vite.svg'
 //import './App.css'
 // import { useRef } from 'react'
-// import { gsap } from "gsap";
-// import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
 // import { CustomEase } from "gsap/CustomEase";
 // // CustomBounce requires CustomEase
@@ -39,6 +39,35 @@ import arrow from '/src/assets/img/arrow.svg';
 // import { TextPlugin } from "gsap/TextPlugin";
 // gsap.registerPlugin(useGSAP,Draggable,DrawSVGPlugin,EaselPlugin,Flip,GSDevTools,InertiaPlugin,MotionPathHelper,MotionPathPlugin,MorphSVGPlugin,Observer,Physics2DPlugin,PhysicsPropsPlugin,PixiPlugin,ScrambleTextPlugin,ScrollTrigger,ScrollSmoother,ScrollToPlugin,SplitText,TextPlugin,RoughEase,ExpoScaleEase,SlowMo,CustomEase,CustomBounce,CustomWiggle);
 
+// gsap.to(".mybox", {
+// y: 100,
+// duration:.5, 
+// delay:0.3, 
+// opacity:1,
+// ease: "power1.inOut",
+//   stagger: {
+//     grid: [7,15],
+//     from: "left",
+//     amount: 1.5
+//   }
+// });
+// useGSAP(() => {   
+// gsap.from("#top-menu a", {
+// duration:2, 
+// delay:0.3, 
+// stagger: 0.1,
+// ease: CustomBounce.create("myBounce", {
+// strength:0.7,
+// endAtStart:false,
+// squash:1,
+// squashID: "myBounce-squash"}),
+// y: -100
+// });
+
+// gsap.to("#top-menu a", 
+//   {opacity:1, duration:2}  
+// );
+// });
 
 function Top() {
 
