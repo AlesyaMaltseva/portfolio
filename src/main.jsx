@@ -13,11 +13,11 @@ const router = createBrowserRouter([
 		element: <App />,
 	},
   {
-		path: '/portfolio/dyson/',
+		path: '/portfolio/:dyson/',
 		element: <Projects />,
 	},
     {
-		path: '/portfolio/iq-million/',
+		path: '/portfolio/:iq-million/',
 		element: <IqMillion />,
 	},
 ]);

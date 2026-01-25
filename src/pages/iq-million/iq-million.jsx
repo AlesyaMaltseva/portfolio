@@ -249,10 +249,10 @@ function IqMillion() {
 	
 	
 
-
+{/*
 	<script src="js/jquery-3.7.1.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
-	{/* <script>
+	 <script>
  $(document).ready(function(){
  
 	$(".owl-carousel").owlCarousel({
