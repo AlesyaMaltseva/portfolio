@@ -19,7 +19,8 @@ const router = createBrowserRouter([
 	},
     {
 		path: '/portfolio/iq-million/',
-		element: <IqMillion />,
+    element: <div>Страница</div>,
+		// element: <IqMillion />,
 	},
 ]);
 
