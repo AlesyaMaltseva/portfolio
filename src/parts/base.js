@@ -7,8 +7,8 @@ import summer from '/src/assets/img/iq-summer.jpg';
 
 
 const projects = [
-                [dyson,  './pages/dyson/', 'Рекламный сайт новинок Dyson Airblades. Вёрстка с использованием HTML, CSS.'],   
-                [million,  '1 ', 'Лендинг акции от производителя IQ. Вёрстка с использованием HTML, CSS, JavaScript.'],
+                [dyson,  '/portfolio/dyson/', 'Рекламный сайт новинок Dyson Airblades. Вёрстка с использованием HTML, CSS.'],   
+                [million,  '/portfolio/iq-million/ ', 'Лендинг акции от производителя IQ. Вёрстка с использованием HTML, CSS, JavaScript.'],
                 [tork, '2 ', 'Лендинг производителя бумажной продукции Tork. Вёрстка с использованием HTML, CSS, JavaScript.'],
                 [dezobrabotka, ' ', 'Лендинг услуг дезобработки. Вёрстка с использованием HTML, CSS, JavaScript.'],
                 [folders, ' ', 'Лендинг по подбору офисной продукции. Вёрстка с использованием HTML, CSS.'],
