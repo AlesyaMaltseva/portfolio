@@ -8,7 +8,7 @@ import App from './App.jsx'
 import Projects from './components/Projects.jsx'
 import IqMillion from './pages/iq-million/iq-million.jsx'
 
-const router = createHashRouter([
+const router = createBrowserRouter([
 	{
 		path: '/portfolio/',
 		element: <App />,
