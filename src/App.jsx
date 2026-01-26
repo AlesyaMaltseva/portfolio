@@ -5,6 +5,8 @@ import headers from './parts/headers.jsx';
 import './styles.scss';
 // import 'bootstrap/dist/css/bootstrap.css'
 
+
+
 function App() {
 
 const importAll = (r) => {
