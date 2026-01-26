@@ -23,7 +23,7 @@ import IqMillion from './pages/iq-million/iq-million.jsx';
   
 // </HashRouter>
 
-const router = createHashRouter([
+const router = createBrowserRouter([
 	{
 		path: '/portfolio/',
 		element: <App />,
