@@ -3,6 +3,7 @@ import './css/iq.css';
 import './css/owl.carousel.min.css';
 import './css/owl.theme.default.min.css';
 import './css/animate.css';
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 // import './img/images.js';
 import logo from "./img/iq-logo.png";
 import one from "./img/one.png";
@@ -28,13 +29,13 @@ function IqMillion() {
 
     return <>   
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"></link>
-	<a href='../' id="home"></a>	
+	<AnchorLink href='#home' id="home"></AnchorLink>	
 		<div className="header-menu">	
 		<div className="h-m">			
-				<a href="#"><img src={logo} /></a>
+				<AnchorLink href="#home"><img src={logo} /></AnchorLink>
 				<div className="desk">
-					<a href="#rules">Правила</a>
-					<a href="#gifts">Розыгрыши&nbsp;призов</a>
+					<AnchorLink href="#rules">Правила</AnchorLink>
+					<AnchorLink href="#gifts">Розыгрыши&nbsp;призов</AnchorLink>
 				</div>
 				
 
@@ -49,10 +50,10 @@ function IqMillion() {
 						<nav className="nav" id="nav">
 							<ul>
 							  <li onclick="menuOnClick()">
-								<a id="a1" href="#rules">Правила</a>
+								<AnchorLink id="a1" href="#rules">Правила</AnchorLink>
 							 </li>
 							  <li onclick="menuOnClick()">
-								<a id="a2" href="#gifts">Розыгрыши призов</a>
+								<AnchorLink id="a2" href="#gifts">Розыгрыши призов</AnchorLink>
 							 </li>        
 							</ul>
 						</nav> 
@@ -94,7 +95,7 @@ function IqMillion() {
 					</div>
 				</div>			
 						
-				<div className="blockSecond">
+				<div  className="blockSecond">
 					<h2 className="rules-h" >ПРАВИЛА АКЦИИ</h2>
 					<div className="rules">
 						<img src={one} />
@@ -171,8 +172,8 @@ function IqMillion() {
 					</div>
 				</div>		
 			
-						<a name="gifts"></a>
-				<div className="blockThird">
+						
+				<div id="gifts" className="blockThird">
 					<h2>РОЗЫГРЫШИ ПРИЗОВ</h2>
 					<img className="faces-2 desk" src={faces2} />
 					
