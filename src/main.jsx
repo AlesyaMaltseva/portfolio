@@ -3,52 +3,52 @@ import { createRoot } from 'react-dom/client'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {createBrowserRouter,  createHashRouter, RouterProvider, } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
-import {
-  createContext,
-  RouterContextProvider,
-} from "react-router";
 
 import './index.css';
 import App from './App.jsx';
+import ErrorPage404 from './error-page-404.jsx';
 import Projects from './components/Projects.jsx';
+
+import Dyson from './pages/dyson/dyson.jsx';
 import IqMillion from './pages/iq-million/iq-million.jsx';
+import Tork from './pages/tork/tork.jsx';
 
 
-// import { HashRouter, Route } from 'react-router-dom';
 
-// <HashRouter>
-//   {<Route path='/portfolio/' component={ App } exact />}
-//   {/* {<Route path='/portfolio/dyson' component={ Projects } exact /> */} 
-  
-// </HashRouter>
-
-const router = createBrowserRouter([
+const router = createHashRouter([
+	
 	{
-		path: '/portfolio/',
+		path: "/",
 		element: <App />,
-	},
-//   {
-// 		path: '/portfolio/dyson/',
-// 		element: <Projects />,
-// 	},
-//     {
-// 		path: '/portfolio/iq-million/',
-//     element: <IqMillion />,
-// 	},
+		errorElement: <ErrorPage404 />,
+		},
+		{
+		path: "dyson/",
+		element: <Dyson />,
+		},
+		{
+		path: "iq-million/",
+		element: <IqMillion />,
+		},
+		{
+		path: "tork/",
+		element: <Tork />,
+		},
+	
 ]);
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>    
-     <RouterProvider router={router} />
-  </React.StrictMode>
+	<React.StrictMode>
+		<RouterProvider router={router} />
+	</React.StrictMode>
 );
+
 
 // const router = createBrowserRouter([
 // 	{
 // 		path: '/portfolio/',
 // 		element: <App />,
+//		errorElement: <ErrorPage404 />,
 // 	},
 //   {
 // 		path: '/portfolio/dyson/',

@@ -2,10 +2,8 @@ import { useState, useRef } from 'react';
 import uuid from 'react-uuid';
 import Top from './components/Top.jsx';
 import headers from './parts/headers.jsx';
-import './styles.scss';
+import './styles.scss'
 // import 'bootstrap/dist/css/bootstrap.css'
-
-
 
 function App() {
 
@@ -18,7 +16,7 @@ const importAll = (r) => {
 const structure = headers.map(item => 
 <div key={uuid()}>
   <a name={item.nameLink}></a>
-    <div  key={uuid()}className={item.className}>
+    <div  key={uuid()} className={item.className}>
       <h1>{item.name}</h1>
       <div>{item.block}</div>
       </div>    
