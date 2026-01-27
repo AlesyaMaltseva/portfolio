@@ -3,6 +3,7 @@ import $ from 'jquery';
 import uuid from 'react-uuid';
 import headers from '../parts/headers.jsx';
 import arrow from '/src/assets/img/arrow.svg';
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 //import './App.css'
@@ -71,11 +72,11 @@ import { useGSAP } from "@gsap/react";
 
 function Top() {
 
-const listItems = headers.map(item => <a key={uuid()} href={item.url}>{item.name}</a>);    
+const listItems = headers.map(item => <AnchorLink key={uuid()} href={item.url}>{item.name}</AnchorLink>);    
 
     return <>
       <div id="top-menu">
-        <a href={headers[0].url} data-tooltip={headers[0].name} className="tooltip"><img src={arrow} /></a>
+        <AnchorLink href={headers[0].url} data-tooltip={headers[0].name} className="tooltip"><img src={arrow} /></AnchorLink>
         {listItems}    
     </div>
     </>

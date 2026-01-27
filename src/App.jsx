@@ -14,13 +14,11 @@ const importAll = (r) => {
 }
 
 const structure = headers.map(item => 
-<div key={uuid()}>
-  <a name={item.nameLink}></a>
-    <div  key={uuid()} className={item.className}>
+    <div key={uuid()} id={item.id} className={item.className} >
       <h1>{item.name}</h1>
       <div>{item.block}</div>
       </div>    
-</div>);
+);
 
   return  <>
       <Top /> 
