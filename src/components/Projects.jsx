@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom'
 
 function Projects() {
 
-const projectLinks = projects.map(item=><div key={uuid()}><NavLink to={item[1]}><img src={item[0]} /><div>{item[2]}</div></NavLink></div>);
+const projectLinks = projects.map(item=><div key={uuid()}><a href={item[1]}><img src={item[0]} /><div>{item[2]}</div></a></div>);
 
   return  <>  
     

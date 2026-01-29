@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 function DysonTop() {
 
 return <>
-<div class="dysonTopMenu" id="top">
-	<div class="f-w-1025">
+<div className="dysonTopMenu" id="top">
+	<div className="f-w-1025">
 		<Link to="/dyson"><img src={logo} /></Link>
 		<Link to="/dyson/wash-and-dry/"><span>Dyson Airblade Wash+Dry</span></Link>
 		<Link to="/dyson/9kJ/"><span>Dyson Airblade 9kJ</span></Link>
