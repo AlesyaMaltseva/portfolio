@@ -2,13 +2,14 @@ import React from 'react';
 import { useState, useRef } from 'react';
 import uuid from 'react-uuid';
 import projects from '../parts/base.js';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 
 
 
 function Projects() {
 
-const projectLinks = projects.map(item=><div key={uuid()}><Link to={item[1]}><img src={item[0]}  /><div>{item[2]}</div></Link></div>);
+const projectLinks = projects.map(item=><div key={uuid()}><NavLink to={item[1]}><img src={item[0]} /><div>{item[2]}</div></NavLink></div>);
 
   return  <>  
     
