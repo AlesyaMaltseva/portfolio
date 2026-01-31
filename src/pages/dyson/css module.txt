@@ -1,0 +1,11 @@
+{[dyson.]+' '+[dyson.]}
+"middle-w f-w-1025"
+
+{dyson.pictP}
+{[dyson.mmiddleW]+' '+[dyson.fw1025]}
+{[dyson.pictureR]+' '+[dyson.fw1025]+' '+[dyson.v02]}
+{[dyson.pictureL]+' '+[dyson.fw1025]+' '+[dyson.maskLeft]+' '+[dyson.wd04]}
+
+
+
+.d-b-h    .dBH

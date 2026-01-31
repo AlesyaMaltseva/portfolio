@@ -21,6 +21,7 @@
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.13.0",
+    "react-scripts": "^5.0.1",
     "react-uuid": "^2.0.0",
     "uuid": "^11.1.0",
     "uuidv4": "^6.2.13"
