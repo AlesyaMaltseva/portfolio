@@ -1,11 +1,10 @@
 {[dyson.]+' '+[dyson.]}
-"middle-w f-w-1025"
+"lists three video w985"
 
-{dyson.pictP}
-{[dyson.mmiddleW]+' '+[dyson.fw1025]}
-{[dyson.pictureR]+' '+[dyson.fw1025]+' '+[dyson.v02]}
-{[dyson.pictureL]+' '+[dyson.fw1025]+' '+[dyson.maskLeft]+' '+[dyson.wd04]}
+{tork.mainGift}
+{[tork.w985]+' '+[tork.white]}
+{[tork.lists]+' '+[tork.two]+' '+[tork.w985]}
+{[tork.lists]+' '+[tork.three]+' '+[tork.prod]+' '+[tork.w985]}
 
 
 
-.d-b-h    .dBH

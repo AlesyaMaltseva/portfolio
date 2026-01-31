@@ -1,4 +1,8 @@
-import './css/tork.css';
+import tork from './css/tork.module.css';
+import { useEffect } from 'react';
+//import './css/tork.css';
+import $ from 'jquery';
+window.jquery = window.$ = $;
 import tLogo from "./img/tork-logo.png";
 import banner1 from "./img/banner1.jpg";
 import TorkIcons101 from "./img/Tork-icons1-01.png";
@@ -23,39 +27,49 @@ import torkPrintProdimages from "./img/TorkPRINT-prodimages.jpg";
 
 function Tork() {
 
-
-    return <>
-    <div className="tork-land">
-
-<div className="tork-banner anim w985">
-		<img className="t-logo" src={tLogo} />
-       <img className="t-banner" src={banner1} />
-</div>
-
-<div className="tabs">   
- {/* <input id="tab1" type="radio" name="tabs" checked>
- <label for="tab1" className="tab1">Почему Tork?</label>
- <input id="tab2" type="radio" name="tabs">
- <label for="tab2" className="tab2">Решение Tork</label>
- <input id="tab3"  type="radio" name="tabs">
- <label for="tab3" className="tab3">Сделайте безопасный выбор</label> */}
+// useEffect(() => {
+//  if($){
+//     $('.lists.three.how > div').mouseover(function() {
+//     $(this).css({zIndex: 2});    
+// }
+// )
+//   }
+// },[$])
 
 
-<section id="content-tab1">
+return <>
+    <div className={tork.torkLand}>
 
-	<div className="texts lf w985">
+	<div className={[tork.torkBanner]+' '+[tork.anim]+' '+[tork.w985]}>
+		<img className={tork.tLogo} src={tLogo} />
+       <img className={tork.tBanner} src={banner1} />
+	</div>
+
+<div className={tork.tabs}>   
+ <input id={tork.tab1} type="radio" name="tabs" checked />
+ <label for={tork.tab1} className="tab1">Почему Tork?</label>
+ <input id={tork.tab2} type="radio" name="tabs" />
+ <label for={tork.tab2} className="tab2">Решение Tork</label>
+ <input id={tork.tab3}  type="radio" name="tabs" />
+ <label for={tork.tab3} className="tab3">Сделайте безопасный выбор</label> 
+ 
+
+
+<section id={tork.contentTab1}>
+
+	<div className={[tork.texts]+' '+[tork.lf]+' '+[tork.w985]}>
 		<p>Торговая марка Tork предлагает полный ассортимент гигиенической продукции для общественных туалетных комнат, промышленных предприятий, медицинских учреждений и предприятий общественного питания.</p> 
 		<p>Глубоко понимая потребности наших клиентов и имея богатый опыт в области вопросов гигиены и защиты окружающей среды, мы являемся лидерами во многих сегментах рынка и надежными бизнес-партнерами более чем в 80 странах мира.</p>
 		<p>Tork имеет давние партнерские отношения с крупными компаниями, и вместе мы обслуживаем малый, средний и крупный бизнес.</p>
 		<p>Поскольку мы входим в новую реальность, где гигиене уделяется всё больше внимания, Tork готов поддержать вас в обеспечении нового стандарта гигиены для вашего бизнеса. Поэтому, когда вам нужно сушить, чистить или полировать, мы всегда готовы помочь. Ассортимент диспенсеров и расходных материалов ТМ  Tork, таких как бумажные полотенца для рук, нетканый и бумажный протирочный материал или мыло, разработан для удовлетворения особых потребностей в оформлении туалетных комнат, промышленных помещений, офисов, кухонь и столовых. Таким образом, вы сможете уделить больше внимания тому, что действительно важно для вашего бизнеса.</p>
   	</div>
 	
-	<div className="blue">
+	<div className={tork.blue}>
 		<div>
-		 <div className="w985">
+		 <div className={tork.w985}>
 			<h2>Понимание потребностей вашего бизнеса</h2>
 			<p>Благодаря сегментированному подходу мы понимаем, как удовлетворить потребности вашего бизнеса, ежедневно улучшая его работу.</p>
-			<div className="lists four">
+			<div className={[tork.lists]+' '+[tork.four]}>
 				<div>
 					<img src={TorkIcons101} />
 					<h3>Общественные учреждения</h3><p>Поддержание гигиены на рабочих местах отражает заботу о подчиненных. Кроме того, это помогает уменьшить количество больничных.</p>
@@ -75,26 +89,25 @@ function Tork() {
 			</div>
 		</div>
 		
-		<div 
-        // style="background-image:url('img/background.jpg'); 	background-size:cover;"
-        >
-			<div className="w985 white">
+		<div className={tork.white}>
+          
+			<div className={tork.w985}>
 				<h2>Устойчивое развитие с Tork</h2>
 				<p>Делать то, что правильно для планеты и нашего общества</p>
-				<div className="lists three color">
+				<div className={[tork.lists]+' '+[tork.three]+' '+[tork.color]}>
 					<div>
 						<p>Сегодня</p>
-						<p className="big">90%</p>
+						<p className={tork.big}>90%</p>
 						<p>упаковки изготовлены из возобновляемых ресурсов</p>
 					</div>
 					<div>
 						<p>К 2025 году пластиковая упаковка будет на</p>
-						<p className="big">100%</p>
+						<p className={tork.big}>100%</p>
 						<p>перерабатываемой</p>
 					</div>
 					<div>
 						<p>К 2025 году наша пластиковая упаковка на</p>
-						<p className="big">30%</p>
+						<p className={tork.big}>30%</p>
 						<p>будет состоять из переработанных материалов</p>
 					</div>
 				</div>
@@ -103,10 +116,10 @@ function Tork() {
 		</div>	
 	</div>
 	
-	<div className="w985">
+	<div className={tork.w985}>
 		<h2>Почему Торк?</h2>
-		<p className="lf">Tork &ndash; ведущий мировой бренд в сфере профессиональной гигиены.  Товары и услуги Tork — это невероятный комфорт для пользователей и максимальное удобство для покупателей. Tork  всегда стремится лучше понимать потребности своих клиентов, освобождая наших клиентов от поиска эффективных решений. Они могут сфокусироваться на самом важном &ndash; своем собственном бизнесе.</p>
-		<div className="lists three logos">
+		<p className={tork.lf}>Tork &ndash; ведущий мировой бренд в сфере профессиональной гигиены.  Товары и услуги Tork — это невероятный комфорт для пользователей и максимальное удобство для покупателей. Tork  всегда стремится лучше понимать потребности своих клиентов, освобождая наших клиентов от поиска эффективных решений. Они могут сфокусироваться на самом важном &ndash; своем собственном бизнесе.</p>
+		<div className={[tork.lists]+' '+[tork.three]+' '+[tork.logos]}>
 			<div>
 				<img src={whyTork01} />
 				<h3>Награжденный дизайн</h3>
@@ -127,11 +140,11 @@ function Tork() {
 </section>
 
 
-<section id="content-tab2" className="w985">
+<section id={tork.contentTab2} className={tork.w985}>
 	
 	<h2>Наши продукты</h2>
 			
-	<div className="lists three prod w985">
+	<div className={[tork.lists]+' '+[tork.three]+' '+[tork.prod]+' '+[tork.w985]}>
 		<div>
 			<img src={category3} />
 			<h3>Бумажные полотенца и диспенсеры</h3>
@@ -166,43 +179,43 @@ function Tork() {
 	
 	<h2>Новинки Tork для дома и бизнеса </h2>
 
-	<div className="lists three video w985">
+	<div className={[tork.lists]+' '+[tork.three]+' '+[tork.video]+' '+[tork.w985]}>
 		<div>
 			<video poster="" preload="metadata" controls="controls">
-                {/* <source src="video/SmartOne.mp4"> */}
+                <source src="./video/SmartOne.mp4" /> 
                 </video>
 			<p>Tork EasyCube®<br />Превосходите ожидания благодаря интеллектуальному подключению</p>
 		</div>
 		<div>
 			<video poster="" preload="metadata" controls="controls">
-                {/* <source src="video/X-fit.mp4"> */}
+                <source src="./video/X-fit.mp4" /> 
                 </video>
 			<p>Tork PeakServe®<br />Сделайте более безопасный выбор с полотенцем для рук Tork PeakServe® Continuous®</p>
 		</div>
 		<div>
 			<video poster="" preload="metadata" controls="controls">
-                {/* <source src="video/Xpressnap.mp4"> */}
+                <source src="./video/Xpressnap.mp4" /> 
                 </video>
 			<p>Tork SmartOne®<br />Экономичный и гигиеничный диспенсер для рулонов туалетной бумаги</p>			
 		</div>
 	</div>	
 </section>
 
-<section id="content-tab3" className="w985">
+<section id={tork.contentTab3} className={tork.w985}>
 	<h2>Добро пожаловать в новую реальность</h2>
-	<div className="lists two w985">
+	<div className={[tork.lists]+' '+[tork.two]+' '+[tork.w985]}>
 		<div><img src={image44} /></div>
-		<div className="lf">
+		<div className={tork.lf}>
 			<p>Требования по соблюдению гигиены в общественных местах перешли на более высокий уровень, чем когда-либо прежде.</p>
 			<p>Посетители чувствуют себя небезопасно, когда посещают туалетные комнаты, которые не соответствуют стандартам гигиены.</p>  
 			<p>Компании, которые не будут соблюдать нормы  стандарты гигиены, будут нести ответственность.</p>
-			<a className="downl" href="pdf/Tork-JAD-Broch.pdf" target="_blank">Скачать</a>			
+			<a className={tork.downl} href="pdf/Tork-JAD-Broch.pdf" target="_blank">Скачать</a>			
 		</div>
 	</div>
 	
-	<p className="texts lf art w985">Соблюдение гигиены рук – лучший способ предотвратить распространение инфекции, и сушка рук &ndash; это большая часть этого.</p>
+	<p className={[tork.texts]+' '+[tork.lf]+' '+[tork.art]+' '+[tork.w985]}>Соблюдение гигиены рук – лучший способ предотвратить распространение инфекции, и сушка рук &ndash; это большая часть этого.</p>
 	
-	<div className="lists three how w985">
+	<div className={[tork.lists]+' '+[tork.three]+' '+[tork.how]+' '+[tork.w985]}>
 		<div>
 			<img src={torkSafer1} />
 		</div>
@@ -216,9 +229,9 @@ function Tork() {
 	
 	<h2>Переход на бумажные полотенца никогда не был настолько прост</h2>
 	
-	<div className="lists two w985">
+	<div className={[tork.lists]+' '+[tork.two]+' '+[tork.w985]}>
 		<div><img src={torkPrintProdimages} /></div>
-		<div className="lf">
+		<div className={tork.lf}>
 			<p><span><b>Tork PeakServe®</b></span></p>
 <span>Диспенсер с самой высокой емкостью на рынке.</span>
 <span>2100 полотенец.</span>
@@ -240,8 +253,8 @@ function Tork() {
 
 </div>
 </div>
-{/* <script src="js/jquery-3.7.1.min.js"></script>
-<script src="js/tork.js"></script> */}
+{/* <script src="./js/jquery-3.7.1.min.js"></script>
+<script src="./js/tork.js"></script>  */}
 
     </>
 }

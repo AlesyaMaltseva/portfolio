@@ -1,24 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Onest:wght@100..900&display=swap');
 
-html,body
-{
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    /* overflow-x: hidden; */
-}
-
-* {	
-	box-sizing: border-box;
-	-webkit-tap-highlight-color: transparent;	
-}
 
 
-img {
-    object-fit: contain;
-  width: 100%;
-}
 
 .summer {
    font-family: 'IBM Plex Sans', sans-serif; 
@@ -27,6 +10,11 @@ img {
    width: 985px;
     margin: 0 auto;
     padding-bottom:50px;
+}
+
+.summer img {
+    object-fit: contain;
+  width: 100%;
 }
 
 @media screen and (max-width:1000px) {
@@ -61,7 +49,7 @@ line-height: 31px;
 }
 
 
-.gray {
+.summer .gray {
     background:#F5F5F5;
     height: 15em;
     width: 60%;
@@ -69,7 +57,7 @@ line-height: 31px;
     display:none;
 }
 
-.header {
+.summer .header {
     display: flex;
     justify-content: space-between;
     padding-top:60px;
@@ -93,25 +81,25 @@ line-height: 31px;
     margin-top: -150px; */
 }
 
-.header img.woman1 {
+.summer .header img.woman1 {
     display:none;
 }
 
-.header .lad {
+.summer .header .lad {
     width:50%;
     
 }
 
 
 
-.header ul li {
+.summer .header ul li {
     font-size: 18px;
     line-height: 28px;
     color:#EC6607;
     list-style-type: disc;
 }
 
-.header ul li span {
+.summer .header ul li span {
     color:#333333;
     margin-left: -5px;
 }
@@ -121,15 +109,11 @@ line-height: 31px;
     font-weight: 500;
 }
 
-.brands {
+.summer .brands {
     margin-top: 40px;
     display: flex;
     width: 75%;
     justify-content: space-between;
-}
-
-.brands img {
-    
 }
 
 .action-date {
@@ -193,7 +177,7 @@ line-height: 31px;
     padding: 40px 10px 0 100px;
 }
 
- .notes {
+ .summer .notes {
     margin-top:30px;
     margin-bottom:0;
     font-weight: normal;
@@ -225,19 +209,19 @@ width:600px;
     
 }
 
-.list {
+.summer .list {
     background: #F4F4F4;
     padding: 70px;
 }
 
-.list ol {
+.summer .list ol {
 	list-style-type: none; 
 	counter-reset: num;
 	padding: 15px 0 5px 0;
     margin-bottom: 10px;
     margin-top: 15px;
 }
-.list ol li {
+.summer .list ol li {
 	position: relative;	
 	margin: 0 0 0 0;
 	padding: 0 0 28px 0;
@@ -247,7 +231,7 @@ width:600px;
     font-size: 18px;
     line-height: 28px;
 }
-.list ol li:before {
+.summer .list ol li:before {
 	content: counter(num); 
 	counter-increment: num;
 	/*display: inline-block;
@@ -265,11 +249,11 @@ width:600px;
 	flex: 0 0 60px;
 }
 
-.list ol li span {
+.summer .list ol li span {
     padding-left:20px;
 }
 
-.border {
+.summer .border {
     font-weight: 500;
 font-size: 24px;
 line-height: 31px;

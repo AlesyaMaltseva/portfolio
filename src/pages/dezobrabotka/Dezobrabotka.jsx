@@ -1,5 +1,6 @@
 import "./css/dezobrabotka.css";
-
+import dez from "./css/dezobrabotka.module.css";
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 import pict1 from "./img/pict1.png";
 import pict2 from "./img/pict2.png";
 import shtraf1 from "./img/shtraf1.png";
@@ -11,19 +12,29 @@ import pict7 from "./img/pict7.png";
 
 function Dezobrabotka() {
 
+  const links = [{header:'Дезинсекция', link:'#d-i'},
+                {header:'Обработка от клещей', link:'#d-k'},
+                {header:'Дератизация', link:'#d-r'},
+                {header:'Обработка от плесени и грибка', link:'#d-a'},
+                {header:'Комплексное предложение', link:'#complex'},
+                {header:'F.A.Q', link:'#faq'}] 
+
+  const anchorLinks = links.map(item => <AnchorLink href={item.link} offset='80'>{item.header}</AnchorLink>)
+
     return <>
-    <div className="slider">
-  <div className="blocks top-line">
-    <a href="#d-i">Дезинсекция</a>
-    <a href="#d-k">Обработка от клещей</a>
-    <a href="#d-r">Дератизация</a>
-    <a href="#d-a">Обработка от плесени и грибка</a>
-    <a href="#complex">Комплексное предложение</a>
-    <a href="#faq">F.A.Q</a>    
+<div className="slider" id="up">
+  <div className="blocks top-line">    
+    {anchorLinks}
+    {/* <AnchorLink href="#d-i" offset='100'>Дезинсекция</AnchorLink>
+    <AnchorLink href="#d-k" offset='100'>Обработка от клещей</AnchorLink>
+    <AnchorLink href="#d-r" offset='100'>Дератизация</AnchorLink>
+    <AnchorLink href="#d-a" offset='100'>Обработка от плесени и грибка</AnchorLink>
+    <AnchorLink href="#complex" offset='100'>Комплексное предложение</AnchorLink>
+    <AnchorLink href="#faq" offset='100'>F.A.Q</AnchorLink>     */}
   </div>
 </div>
 
-<div className="dezobrabotka">
+<div className={dez.dezobrabotka}>
   <div className="blocks main-block">
     <div className="left">
       <h1>Уничтожение насекомых, <span> грызунов, обработка</span> от плесени и грибка</h1>
@@ -61,7 +72,7 @@ function Dezobrabotka() {
     <div className="right"><img src={pict2} /></div>
   </div>
 
-  <a name="d-k"></a>
+
   <h3>Штраф</h3>
   <div className="blocks d-i">
     <div className="left">
@@ -72,8 +83,7 @@ function Dezobrabotka() {
     </div>
   </div>
 
-  <a name="d-i"></a>
-  <h3>Дезинсекция</h3>
+  <h3 id="d-i">Дезинсекция</h3>
   <div className="blocks d-i">
     <div className="left">
       <p>Процедура уничтожения насекомых <b>(тараканов, клопов, клещей и т.д.)</b>.
@@ -250,8 +260,7 @@ function Dezobrabotka() {
       </div>
   </div>
 
-  <a name="d-r"></a>
-  <h3>Дератизация</h3>
+  <h3 id="d-r">Дератизация</h3>
   <div className="blocks d-r">
     <div className="left">
       <img src={pict4} />
@@ -319,8 +328,7 @@ function Dezobrabotka() {
   </div>
   <p className="skidki">*Скидки до 50% при долгосрочных контрактах.</p>
 
-  <a name="d-a"></a>
-  <h3>Обработка от плесени и грибка</h3>
+  <h3  id="d-a">Обработка от плесени и грибка</h3>
   <div className="blocks d-a">
     <div className="left">
       <p>Плесень и грибок способны вызывать различные заболевания: дыхательных путей, аллергические реакции кожи, головные боли и много другое. Для предотвращения развития и уничтожения плесени мы проводим дезинфекцию помещения с использованием сертифицированной профессиональной продукции.</p>
@@ -387,8 +395,7 @@ function Dezobrabotka() {
   </div>
   <p className="skidki">*Скидки до 50% при долгосрочных контрактах.</p>
 
-  <a name="complex"></a>
-  <h3 className="compl">Комплексное решение </h3>
+  <h3 className="compl" id="complex">Комплексное решение </h3>
   <div className="blocks complex">
     <div>
       <p>Выгодное решение – комплекс!</p>
@@ -459,8 +466,8 @@ function Dezobrabotka() {
 
   <p className="attention">Обращаем внимание, что приём заявок осуществляется в рабочие дни.</p>
 
-  <a name="faq"></a>
-  <div className="faq">
+ 
+  <div className="faq" id="faq">
   <h2>F.A.Q.*</h2> 
   <div className="b-rollUp"><div className="b-rollUp__Li js-b-rollUp__Li">
       <div className="rollUp__mark b-rollUp__LiVisible"><span className="b-rollUp__LiMore js-b-rollUp__LiMore p-like rollUp__mark--plus">Как проходит процесс дератизации или дезинсекции помещений? </span></div>

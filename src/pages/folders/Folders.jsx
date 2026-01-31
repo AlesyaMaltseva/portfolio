@@ -1,4 +1,5 @@
-import "./css/folders.css"
+// import "./css/folders.css";
+import fold from "./css/folders.module.css"
 import box390Buge from "./img/box390-beuge.png";
 import papka11 from "./img/11-papka.png";
 import papka13 from "./img/13-papka.png";
@@ -28,66 +29,62 @@ import box480 from "./img/box480.png";
 function Folders() {
 
 return <>
-<div className="papki">
-<div className="headbox">
-<div className="what">
+<div className={fold.bG}>
+<div className={fold.papki}>
+<div className={fold.headbox}>
+<div className={fold.what}>
    <p>Что храним?</p> 
-   <div><a href="" className="current">Папки-регистраторы</a>
+   <div><a href="" className={fold.current}>Папки-регистраторы</a>
    <a href="folders-arh.html">Папки архивные и скоросшиватели</a></div>
 </div>
 
-<div className="what">
+<div className={fold.what}>
    <p>Размер коробки</p> 
-</div>
 </div>   
   
-<div className="tabs">   
-
-   
-    {/* <input id="tab1" type="radio" name="tabs" checked>
+<div className={fold.tabs}>      
+    <input id={fold.tab1} type="radio" name="tabs" checked />
     <label for="tab1">390</label>
     
-     <input id="tab2" type="radio" name="tabs">
+     <input id={fold.tab2} type="radio" name="tabs" />
     <label for="tab2">480</label>
     
-     <input id="tab3" type="radio" name="tabs">
+     <input id={fold.tab3} type="radio" name="tabs" />
     <label for="tab3">506</label>
     
-     <input id="tab4" type="radio" name="tabs">
-    <label for="tab4">520</label> */}
+     <input id={fold.tab4} type="radio" name="tabs" />
+    <label for="tab4">520</label>
 
-
-
-<section id="content-tab1">
-<div className="boxgoods b3902">
+<section id={fold.contentTab1}>
+<div className={[fold.boxgoods]+' '+[fold.b3902]}>
  
-  <a href="" className="mainlinkb"> <div className="mainpict"><img src={box390Buge} /></div>
-   	<div className="mainwords">
+  <a href="" className={fold.mainlinkb}> <div className={fold.mmainpict}><img src={box390Buge} /></div>
+   	<div className={fold.mainwords}>
     	<p>Коробка 390 мм</p>
         <p>для хранения папок архивных и скоросшивателей вмещает:</p>
     </div>
     </a>
     
-  <div className="goods"> 
-   <a href=""> <div className="goodscell">
+  <div className={fold.goods}> 
+   <a href=""> <div className={fold.goodscell}>
     	<p>x3</p>
         <p>папки 125мм</p>
         <div><img src={papka11} /></div>
     </div></a>
     
-  <a href="">  <div className="goodscell">
+  <a href="">  <div className={fold.goodscell}>
     	<p>x4</p>
         <p>папки 90мм</p>
         <div><img src={papka13} /></div>
     </div></a>
     
-   <a href=""> <div className="goodscell">
+   <a href=""> <div className={fold.goodscell}>
     	<p>x5</p>
         <p>папки 75мм</p>
         <div><img src={papka18} /></div>
     </div></a>
     
-   <a href=""> <div className="goodscell">
+   <a href=""> <div className={fold.goodscell}>
     	<p>x7</p>
         <p>папки 50мм</p>
         <div><img src={papka15}  /></div>
@@ -97,37 +94,37 @@ return <>
 </section>
 
 
-<section id="content-tab2">
-<div className="boxgoods b4802">
+<section id={fold.contentTab2}>
+<div className={[fold.boxgoods]+' '+[fold.b4802]}>
  
-  <a href="" className="mainlinkb"> <div className="mainpict">
+  <a href="" className={fold.mainlinkb}> <div className={fold.mainpict}>
     <img src={box480Open} /></div>
-   	<div className="mainwords">
+   	<div className={fold.mainwords}>
     	<p>Коробка 480 мм</p>
         <p>для хранения папок архивных и скоросшивателей вмещает:</p>
     </div>
     </a>
     
-  <div className="goods"> 
-   <a href=""> <div className="goodscell">
+  <div className={fold.goods}> 
+   <a href=""> <div className={fold.goodscell}>
     	<p>x5</p>
         <p>папки 90мм</p>
         <div><img src={papka08} /></div>
     </div></a>
     
-  <a href="">  <div className="goodscell">
+  <a href="">  <div className={fold.goodscell}>
     	<p>x6</p>
         <p>папки 80мм</p>
         <div><img src={papka09} /></div>
     </div></a>
     
-   <a href=""> <div className="goodscell">
+   <a href=""> <div className={fold.goodscell}>
     	<p>x6</p>
         <p>папки 75мм</p>
         <div><img src={papka10} /></div>
     </div></a>
     
-       <a href=""> <div className="goodscell">
+       <a href=""> <div className={fold.goodscell}>
     	<p>x9</p>
         <p>папки 50мм</p>
         <div><img src={papka13} /></div>
@@ -138,36 +135,36 @@ return <>
 </section>
 
 
-<section id="content-tab3">
-<div className="boxgoods b506">
+<section id={fold.contentTab3}>
+<div className={[fold.boxgoods]+' '+[fold.b506]}>
  
-  <a href="" className="mainlinkb"> <div className="mainpict"><img src={box520} /></div>
-   	<div className="mainwords">
+  <a href="" className={fold.mainlinkb}> <div className={fold.mainpict}><img src={box520} /></div>
+   	<div className={fold.mainwords}>
     	<p>Коробка 506 мм</p>
         <p>для хранения папок архивных и скоросшивателей вмещает:</p>
     </div>
     </a>
     
-  <div className="goods"> 
-   <a href=""> <div className="goodscell">
+  <div className={fold.goods}> 
+   <a href=""> <div className={fold.goodscell}>
     	<p>x4</p>
         <p>папки 125мм</p>
         <div><img src={papka11} /></div>
     </div></a>
     
-  <a href="">  <div className="goodscell">
+  <a href="">  <div className={fold.goodscell}>
     	<p>x6</p>
         <p>папки 80мм</p>
         <div><img src={papka09} /></div>
     </div></a>
     
-   <a href=""> <div className="goodscell">
+   <a href=""> <div className={fold.goodscell}>
     	<p>x7</p>
         <p>папки 70мм</p>
         <div><img src={papka07} /></div>
     </div></a>
     
-    <a href=""> <div className="goodscell">
+    <a href=""> <div className={fold.goodscell}>
     	<p>x10</p>
         <p>папки 50мм</p>
         <div><img src={papka13} /></div>
@@ -177,38 +174,36 @@ return <>
 </div>
 </section>
 
-
-
-<section id="content-tab4">
-<div className="boxgoods b520">
+<section id={fold.contentTab4}>
+<div className={[fold.boxgoods]+' '+[fold.b520]}>
  
-  <a href="" className="mainlinkb"> <div className="mainpict"><img src={box506} /></div>
-   	<div className="mainwords">
+  <a href="" className={fold.mainlinkb}> <div className={fold.mainpict}><img src={box506} /></div>
+   	<div className={fold.mainwords}>
     	<p>Коробка 520 мм</p>
         <p>для хранения папок архивных и скоросшивателей вмещает:</p>
     </div>
     </a>
     
-  <div className="goods"> 
-   <a href=""> <div className="goodscell">
+  <div className={fold.goods}> 
+   <a href=""> <div className={fold.goodscell}>
     	<p>x4</p>
         <p>папки 125мм</p>
         <div><img src={papka11} /></div>
     </div></a>
     
-  <a href="">  <div className="goodscell">
+  <a href="">  <div className={fold.goodscell}>
     	<p>x7</p>
         <p>папки 70мм</p>
         <div><img src={papka12} /></div>
     </div></a>
     
-   <a href=""> <div className="goodscell">
+   <a href=""> <div className={fold.goodscell}>
     	<p>x10</p>
         <p>папки 50мм</p>
         <div><img src={papka13} /></div>
     </div></a>
     
-    <a href=""> <div className="goodscell">
+    <a href=""> <div className={fold.goodscell}>
     	<p>x6</p>
         <p>папки 80мм</p>
         <div><img src={papka09} /></div>
@@ -219,169 +214,167 @@ return <>
 </section>
 
 </div>
-</div>
 
-<div className="what">
+<div className={fold.what}>
    <p>Размер коробки</p> 
 </div>
   
   
-<div className="tabs">   
+<div className={fold.tabs}>   
 
- {/* <input id="tab1" type="radio" name="tabs" checked>
+ <input id={fold.tab1} type="radio" name="tabs" checked />
     <label for="tab1">390</label>
     
- <input id="tab2" type="radio" name="tabs">
+ <input id={fold.tab2} type="radio" name="tabs" />
     <label for="tab2">400</label>
  
-    <input id="tab3" type="radio" name="tabs">
-    <label for="tab3">480</label> */}
+    <input id={fold.tab3} type="radio" name="tabs" />
+    <label for="tab3">480</label>
     
  
-<section id="content-tab1">
-<div className="boxgoods b390">
+<section id={fold.contentTab1}>
+    <div className={[fold.boxgoods]+' '+[fold.b390]}>
  
-  <a href="" className="mainlinkb"> <div className="mainpict"><img src={box390} /></div>
-   	<div className="mainwords">
-    	<p>Коробка 390 мм</p>
-        <p>для хранения папок архивных и скоросшивателей вмещает:</p>
-    </div>
-    </a>
+        <a href="" className={fold.mainlinkb}> <div className={fold.mainpict}><img src={box390} /></div>
+            <div className={fold.mainwords}>
+            <p>Коробка 390 мм</p>
+            <p>для хранения папок архивных и скоросшивателей вмещает:</p>
+            </div>
+        </a>
     
-  <div className="goods"> 
-  <a href=""> <div className="goodscell">
+  <div className={fold.goods}> 
+     <a href=""> <div className={fold.goodscell}>
     	<p>x3</p>
         <p>папки 120мм</p>
         <div><img src={papka06} /></div> 
    </div></a>
     
-  <a href=""> <div className="goodscell">
+  <a href=""> <div className={fold.goodscell}>
     	<p>x5</p>
         <p>папки 75мм</p>
         <div><img src={papka17} /></div>
     </div></a>
     
-  <a href=""> <div className="goodscell">
+  <a href=""> <div className={fold.goodscell}>
     	<p>x5</p>
         <p>папки 70мм</p>
         <div><img src={papka16} /></div>
    </div></a>
     
-   <a href=""> <div className="goodscell">
+   <a href=""> <div className={fold.goodscell}>
     	<p>x7</p>
         <p>папки 50мм</p>
         <div><img src={papka05}  /></div>
     </div></a>
     
-  <a href=""> <div className="goodscell">
+  <a href=""> <div className={fold.goodscell}>
     	<p>x11</p>
         <p>папки 35мм</p>
-        <div><img  className="p07" src={papka07} /></div>
+        <div><img  className={fold.p07} src={papka07} /></div>
     </div></a>
    
     
 	</div>
-  </div>
-</section>
+        </div>
+    </section>
 
 
-<section id="content-tab2">
-<div className="boxgoods b400">
+    <section id={fold.contentTab2}>
+    <div className={[fold.boxgoods]+' '+[fold.b400]}>
  
-  <a href="" className="mainlinkb"> <div className="mainpict">
+  <a href="" className={fold.mainlinkb}> <div className={fold.mainpict}>
     <img src={box400} /></div>
-   	<div className="mainwords">
+   	<div className={fold.mainwords}>
     	<p>Коробка 400 мм</p>
         <p>для хранения папок архивных и скоросшивателей вмещает:</p>
     </div>
     </a>
     
-  <div className="goods"> 
-   <a href=""> <div className="goodscell">
+  <div className={fold.goods}> 
+   <a href=""> <div className={fold.goodscell}>
     	<p>x3</p>
         <p>папки 120мм</p>
         <div><img src={papka01} /></div>
     </div></a>
     
-  <a href="">  <div className="goodscell">
+  <a href="">  <div className={fold.goodscell}>
     	<p>x4</p>
         <p>папки 100мм</p>
         <div><img src={papka02} /></div>
     </div></a>
     
-   <a href=""> <div className="goodscell">
+   <a href=""> <div className={fold.goodscell}>
     	<p>x5</p>
         <p>папки 80мм</p>
         <div><img src={papka03} /></div>
     </div></a>
     
-   <a href=""> <div className="goodscell">
+   <a href=""> <div className={fold.goodscell}>
     	<p>x8</p>
         <p>папки 50мм</p>
         <div><img src={papka05}  /></div>
     </div></a>
     
-   <a href=""> <div className="goodscell">
+   <a href=""> <div className={fold.goodscell}>
     	<p>x13</p>
         <p>папки 30мм</p>
-        <div><img  className="p04"  src={papka04} /></div>
+        <div><img  className={fold.p04}  src={papka04} /></div>
     </div></a>
   </div>
  </div>
-</section>
+    </section>
 
 
-<section id="content-tab3">
-<div className="boxgoods b480">
+    <section id={fold.contentTab3}>
+    <div className={[fold.boxgoods]+' '+[fold.b480]}>
  
-  <a href="" className="mainlinkb"> <div className="mainpict">
+  <a href="" className={fold.mainlinkb}> <div className={fold.mainpict}>
     <img src={box480} /></div>
-   	<div className="mainwords">
+   	<div className={fold.mainwords}>
     	<p>Коробка 480 мм</p>
         <p>для хранения папок архивных и скоросшивателей вмещает:</p>
     </div>
     </a>
     
-  <div className="goods"> 
-   <a href=""> <div className="goodscell">
+  <div className={fold.goods}> 
+   <a href=""> <div className={fold.goodscell}>
     	<p>x4</p>
         <p>папки 120мм</p>
         <div><img src={papka06} /></div>
     </div></a>
     
-  <a href="">  <div className="goodscell">
+  <a href="">  <div className={fold.goodscell}>
     	<p>x6</p>
         <p>папки 80мм</p>
         <div><img src={papka03} /></div>
     </div></a>
     
-   <a href=""> <div className="goodscell">
+   <a href=""> <div className={fold.goodscell}>
     	<p>x8</p>
         <p>папки 50мм</p>
         <div><img src={papka05} /></div>
     </div></a>
     
-   <a href=""> <div className="goodscell">
+   <a href=""> <div className={fold.goodscell}>
     	<p>x13</p>
         <p>папки 35мм</p>
-        <div><img  className="p07" src={papka07}  /></div>
+        <div><img  className={fold.p07} src={papka07}  /></div>
     </div></a>
     
-   <a href=""> <div className="goodscell">
+   <a href=""> <div className={fold.goodscell}>
     	<p>x16</p>
         <p>папки 30мм</p>
-        <div><img  className="p04" src={papka04} /></div>
+        <div><img  className={fold.p04} src={papka04} /></div>
     </div></a>
   </div>
- </div>
- </section> 
+    </div>
+    </section> 
 
 </div>
 
-
-
-<script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
-<script src="js/folders.js"></script>
+</div>
+</div>
+</div>
 </>
 }
 

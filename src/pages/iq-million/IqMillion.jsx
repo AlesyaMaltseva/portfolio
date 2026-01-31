@@ -1,9 +1,10 @@
 import $ from 'jquery';
-import './css/iq.css';
-import './css/owl.carousel.min.css';
-import './css/owl.theme.default.min.css';
-import './css/animate.css';
-import AnchorLink from 'react-anchor-link-smooth-scroll'
+//import './css/iq.css';
+import iq from './css/iq.module.css';
+import iqAnimate from './css/animate.module.css';
+import iqCarousel from './css/owl.carousel.min.module.css';
+import iqTheme from './css/owl.theme.default.min.module.css';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 // import './img/images.js';
 import logo from "./img/iq-logo.png";
 import one from "./img/one.png";
@@ -25,52 +26,50 @@ import faces2 from "./img/faces-2.png";
 import millionWwithoutCircle from "./img/million-without-circle.png";
 import logoCircle from "./img/logo-circle.png";
 
+
 function IqMillion() {
 
     return <>   
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"></link>
-	<AnchorLink href='#home' id="home"></AnchorLink>	
-		<div className="header-menu">	
-		<div className="h-m">			
+<div className={iq.iqContent}><AnchorLink href='#home' id="home"></AnchorLink>	
+		<div className={iq.headerMenu}>	
+		<div className={iq.hM}>			
 				<AnchorLink href="#home"><img src={logo} /></AnchorLink>
-				<div className="desk">
+				<div className={iq.desk}>
 					<AnchorLink href="#rules">Правила</AnchorLink>
 					<AnchorLink href="#gifts">Розыгрыши&nbsp;призов</AnchorLink>
 				</div>
-				
-
 										
-				<div id="menu">
-					<div className="menu-top">
-						<div id="menu-bar" onclick="menuOnClick()">
-							<div id="bar1" className="bar"></div>
-							<div id="bar2" className="bar"></div>
-							<div id="bar3" className="bar"></div>
+				<div id={iq.menu}>
+					<div className={iq.menuTop}>
+						<div id={iq.menuBar} onclick="menuOnClick()">
+							<div id={iq.bar1} className={iq.bar}></div>
+							<div id={iq.bar2} className={iq.bar}></div>
+							<div id={iq.bar3} className={iq.bar}></div>
 						</div>
-						<nav className="nav" id="nav">
+						<nav className={iq.nav} id={iq.nav}>
 							<ul>
 							  <li onclick="menuOnClick()">
-								<AnchorLink id="a1" href="#rules">Правила</AnchorLink>
+								<AnchorLink id={iq.a1} href="#rules">Правила</AnchorLink>
 							 </li>
 							  <li onclick="menuOnClick()">
-								<AnchorLink id="a2" href="#gifts">Розыгрыши призов</AnchorLink>
+								<AnchorLink id={iq.a2} href="#gifts">Розыгрыши призов</AnchorLink>
 							 </li>        
 							</ul>
 						</nav> 
 					</div>
 				</div>
 					  
-				<div className="menu-bg" id="menu-bg"></div>
-				<div onclick="menuOnClick()" className="menu-full-bg" id="menu-full-bg"></div> 			
+				<div className={iq.menuBg} id={iq.menuBg}></div>
+				<div onclick="menuOnClick()" className={iq.menuFullBg} id={iq.menuFullBg}></div> 			
 
 		</div>	
 				
 		</div>
 			
-		<div className="iq-top">
-			<div className="iq-t-content">		
-				<div className="blockFirst">
-					<div id="slider" className="slider desk">
+		<div className={iq.iqTop}>
+			<div className={iq.iqTcontent}>		
+				<div className={iq.blockFirst}>
+					<div id={iq.slider} className={[iq.slider]+' '+[iq.desk]}>
 						<div className="owl-carousel owl-theme">
 							<div><img src={IqPremiumStanding} /></div>
 							<div><img src={IqUltraStanding} /></div>
@@ -80,28 +79,28 @@ function IqMillion() {
 						</div>
 					</div>
 					
-					<div className="mobFaces"><img src={faces3} /></div>
+					<div className={iq.mobFaces}><img src={faces3} /></div>
 						
-					<div className="list">
+					<div className={iq.list}>
 						<p><span>IQ</span> НА МИЛЛИОН</p>
 						<div>	
 							<p>Акция проходит с 01.02.2024 по 30.04.2024</p>
-								<div className="desk">
+								<div className={iq.desk}>
 									<p><img src={one} /><span><b>Покупайте</b> офисную бумагу IQ в любом магазине вашего города</span></p>
 									<p><img src={two} /><span><b>Зарегистрируйте</b> офисную бумагу IQ в любом магазине вашего города</span></p>
-									<p id="rules"><img src={three} /><span><b>Выигрывайте</b> ежемесячно 250&nbsp;000&nbsp;₽ или главный приз 1&nbsp;000&nbsp;000&nbsp;₽</span></p>
+									<p><img src={three} /><span><b>Выигрывайте</b> ежемесячно 250&nbsp;000&nbsp;₽ или главный приз 1&nbsp;000&nbsp;000&nbsp;₽</span></p>
 								</div>
 						</div>
 					</div>
 				</div>			
 						
-				<div  className="blockSecond">
-					<h2 className="rules-h" >ПРАВИЛА АКЦИИ</h2>
-					<div className="rules">
+				<div  className={iq.blockSecond} id="rules">
+					<h2 className={iq.rulesH} >ПРАВИЛА АКЦИИ</h2>
+					<div className={iq.rules}>
 						<img src={one} />
 						<h3><span>ПОКУПАЙТЕ</span> бумагу IQ со стикером*</h3>						
-						<div className="scroll">
-							<div className="paper" id="moscow">
+						<div className={iq.scroll}>
+							<div className={iq.paper} id="moscow">
 							<a href="#"><img src={IqPremiumStanding} /></a>
 							<a href="#"><img src={IqUltraStanding} /></a>
 							<a href="#"><img className="c-paper" src={IqSmoothStanding} /></a>
@@ -110,53 +109,52 @@ function IqMillion() {
 							</div>
 						</div>										
 						
-						<p className="pad">*В любом магазине вашего города и в online магазинах.<br />
+						<p className={iq.pad}>*В любом магазине вашего города и в online магазинах.<br />
 							В акции участвуют бренды IQ ULTRA, IQ PREMIUM, IQ SMOOTH, IQ ALLROUND, IQ ECONOMY – только формата А4, 80г</p>
 					</div>
 					
-					<div className="rules">
+					<div className={iq.rules} id="rules">
 						<img src={two} />
 					<h3><span>НАКОПИТЕ</span> как можно больше слов <span>«МИЛЛИОН»</span></h3>
-						<p className="pad">Найдите коды под стикерами со словами «МИЛЛИОН» или «ВОПРОС» и зарегистрируйте их на сайте</p>
+						<p className={iq.pad}>Найдите коды под стикерами со словами «МИЛЛИОН» или «ВОПРОС» и зарегистрируйте их на сайте</p>
 						
-						<div className="scheme">
-							
-							<img className="mob" src={labelM} />
-							<img className="mob" src={arround} />
-							<div className="question">
-								<div className="q-h"><h4>ВОПРОС</h4></div>
-								<div className="q-t"><p>Найдите слово «ВОПРОС», зарегистрируйте код в&nbsp;Личном кабинете, ответьте правильно на интеллектуальный вопрос и получите слово «МИЛЛИОН»</p></div>
+						<div className={iq.scheme}>							
+							<img className={iq.mob} src={labelM} />
+							<img className={iq.mob} src={arround} />
+							<div className={iq.question}>
+								<div className={iq.qH}><h4>ВОПРОС</h4></div>
+								<div className={iq.qT}><p>Найдите слово «ВОПРОС», зарегистрируйте код в&nbsp;Личном кабинете, ответьте правильно на интеллектуальный вопрос и получите слово «МИЛЛИОН»</p></div>
 							</div>
 							
-							<div className="mob or">или</div>
+							<div className={[iq.mob]+' '+[iq.or]}>или</div>
 							
-							<div className="question">
-								<div className="q-h"><h4>МИЛЛИОН</h4></div>
-								<div className="q-t"><p>Найдите слово «МИЛЛИОН» и&nbsp;зарегистрируйте код в&nbsp;Личном кабинете</p></div>
+							<div className={iq.question}>
+								<div className={iq.qH}><h4>МИЛЛИОН</h4></div>
+								<div className={iq.qT}><p>Найдите слово «МИЛЛИОН» и&nbsp;зарегистрируйте код в&nbsp;Личном кабинете</p></div>
 							</div>
 							
-							<img  className="mob arrow"  src={arrowBottom} />
+							<img  className={[iq.mob]+' '+[iq.arrow]}  src={arrowBottom} />
 							
-							<div className="question">
-								<div className="q-l"><p>Получите слово <span>«МИЛЛИОН»</span> в Личный кабинет</p>	</div>
+							<div className={iq.question}>
+								<div className={iq.qL}><p>Получите слово <span>«МИЛЛИОН»</span> в Личный кабинет</p></div>
 							</div>	
 										
 						</div>
 					</div>
 				
-					<div className="rules">
+					<div className={iq.rules}>
 						<img src={three} />
 						<h3><span>ПОЛУЧИТЕ</span> возможность выиграть <span>МИЛЛИОН</span> рублей</h3>
 					</div>
 
-					<div className="gifts">
+					<div className={iq.gifts}>
 						<div>
 							<img src={i250000} />
 							<h4>Ежемесячный розыгрыш</h4>
 							<p>В розыгрыше участвуют все полученные слова «МИЛЛИОН» за месяц</p>
 						</div>
 							
-						<div className="central">
+						<div className={iq.central}>
 							<img src={million} />
 							<h4>Главный приз</h4>
 							<p>Главный приз может выиграть только тот, кто участвовал во всех трех розыгрышах</p>
@@ -173,28 +171,28 @@ function IqMillion() {
 				</div>		
 			
 						
-				<div id="gifts" className="blockThird">
+				<div id="gifts" className={iq.blockThird}>
 					<h2>РОЗЫГРЫШИ ПРИЗОВ</h2>
-					<img className="faces-2 desk" src={faces2} />
+					<img className={[iq.faces2]+' '+[iq.desk]} src={faces2} />
 					
-					<div className="main-gift">
+					<div className={iq.mainGift}>
 						<div>	
 							<img src={millionWwithoutCircle} />
 							<div>
-								<p className="desk">Розыгрыш главного приза <span>1&nbsp;000&nbsp;000&nbsp;руб.*</span> – 30.04.2024</p>
-								<p className="mob gift1">Розыгрыш главного&nbsp;приза <span>1&nbsp;000&nbsp;000&nbsp;руб.*</span></p>
-								<p className="mob gift2">30.04.2024</p>
-								<p className="desk">* Главный приз может выиграть только тот, кто участвовал во всех трех розыгрышах</p>
+								<p className={iq.desk}>Розыгрыш главного приза <span>1&nbsp;000&nbsp;000&nbsp;руб.*</span> – 30.04.2024</p>
+								<p className={[iq.mob]+' '+[iq.gift1]}>Розыгрыш главного&nbsp;приза <span>1&nbsp;000&nbsp;000&nbsp;руб.*</span></p>
+								<p className={[iq.mob]+' '+[iq.gift2]}>30.04.2024</p>
+								<p className={iq.desk}>* Главный приз может выиграть только тот, кто участвовал во всех трех розыгрышах</p>
 							</div>
 						</div>	
 					</div>
 					
-					<p className="mob gift3">* Главный приз может выиграть только тот, кто&nbsp;участвовал во всех трех розыгрышах</p>
+					<p className={[iq.mob]+' '+[iq.gift3]}>* Главный приз может выиграть только тот, кто&nbsp;участвовал во всех трех розыгрышах</p>
 					
-					<p className="dates">Даты ближайших розыгрышей денежных призов</p>
+					<p className={iq.dates}>Даты ближайших розыгрышей денежных призов</p>
 					
-					<div className="gift250">
-						<div className="desk">
+					<div className={iq.gift250}>
+						<div className={iq.desk}>
 							<div>
 								<p>26.02.2024</p>
 							</div>
@@ -207,7 +205,7 @@ function IqMillion() {
 							</div>
 						</div>	
 					
-						<div className="mob">
+						<div className={iq.mob}>
 							<img src={i250000} />
 							<div>
 								<p>26.02.2024</p>
@@ -217,7 +215,7 @@ function IqMillion() {
 						</div>
 				</div>
 				
-					<div className="iq-button">
+					<div className={iq.iqButton}>
 						<p>Регистрируйте коды со стикеров на&nbsp;сайте</p>
 						<a href="#">www.iq-million.ru</a>
 						<p>и выигрывайте денежные призы!</p>
@@ -228,8 +226,8 @@ function IqMillion() {
 			</div>
 		</div>		
 
-		<div className="iq-bottom">
-			<div className="iq-b-content">
+		<div className={iq.iqBottom}>
+			<div className={iq.iqBcontent}>
 				<div>
 					<h3>O Mondi</h3>
 					<p>Mondi – один из глобальных лидеров по производству упаковочных материалов и бумаги. Устойчивое развитие лежит в основе всего, что мы делаем.</p>
@@ -314,7 +312,8 @@ fMenu();
 
 
     
-    </>
+   </div>
+</>
 }
 
 export default IqMillion
