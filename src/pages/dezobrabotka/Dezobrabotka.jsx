@@ -16,7 +16,7 @@ function Dezobrabotka() {
                 {header:'Обработка от клещей', link:'#d-k'},
                 {header:'Дератизация', link:'#d-r'},
                 {header:'Обработка от плесени и грибка', link:'#d-a'},
-                {header:'Комплексное предложение', link:'#complex'},
+                {header:'Комплексное решение', link:'#complex'},
                 {header:'F.A.Q', link:'#faq'}] 
 
   const anchorLinks = links.map(item => <AnchorLink href={item.link} offset='80'>{item.header}</AnchorLink>)

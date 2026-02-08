@@ -1,10 +1,10 @@
 {[dyson.]+' '+[dyson.]}
-"lists three video w985"
+"boxgoods b390"
 
-{tork.mainGift}
-{[tork.w985]+' '+[tork.white]}
-{[tork.lists]+' '+[tork.two]+' '+[tork.w985]}
-{[tork.lists]+' '+[tork.three]+' '+[tork.prod]+' '+[tork.w985]}
+{fold.mainwords}
+{[fold.boxgoods]+' '+[fold.b390]}
+{[fold.lists]+' '+[fold.two]+' '+[fold.w985]}
+{[fold.lists]+' '+[fold.three]+' '+[fold.prod]+' '+[fold.w985]}
 
 
 

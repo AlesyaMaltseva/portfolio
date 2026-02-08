@@ -5,6 +5,71 @@
 	font-family:"Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+/*---- Начало Top -----*/
+
+#topBlock {
+  width:100%;
+  height: 5000px;
+  margin:0;
+  padding:0;
+  overflow-x: hidden;
+  position:relative;
+  display:flex;
+  flex-direction: column;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+#menu {
+  cursor: pointer;
+  position: fixed;
+ align-self: flex-end; 
+ background-color: #a80e8f;
+ 
+ color:#f5ff30;
+   padding:15px 30px;
+ text-align: center;
+}    
+
+#menuItems {
+  position:fixed;
+  z-index: 200;
+  top:50px;
+  right:50px;
+  color:#fff;
+}
+
+#menuItems div {
+ opacity: 0;
+ cursor:pointer;
+ margin-bottom: 20px;
+}
+
+#menuItems div:hover {
+  text-decoration: underline;
+}
+
+#red {
+  position:fixed;
+  top:0;
+  right:0;
+  background-color: red;
+  z-index: 100;
+  overflow: hidden;
+}
+
+#gray {
+  background-color: black;
+  opacity: 0;
+  width:100%;
+  height: 100vh;
+  position: fixed;  
+}
+
+/*---- Конец Top -----*/
+
 /*---- Слайдер -----*/
 
 .owl-carousel{
