@@ -1,74 +1,72 @@
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import {React} from 'react';
-import {useState,useEffect} from 'react';
-import iq from '../css/iq.module.css';
-
+import { useRef } from 'react';
+import '../css/iqTop.css';
 gsap.registerPlugin(useGSAP);
+
 
 function IqTop() {
 
-useGSAP(() => {  
+const topBlockIqTop = useRef();
 
-gsap.set('#'+iq.red, {width:30, height:30, borderRadius:50, opacity:0});
-gsap.set('#'+iq.menuItems, {display:'none'});
-gsap.set('#'+iq.gray, {display:'none'});
+const { contextSafe } = useGSAP({scope: topBlockIqTop});  
 
-
-let timeL = gsap.timeline();
-timeL.to('#'+iq.red, {
-  duration: 0.2, 
+const onClickShowMenu = contextSafe(() => {
+	gsap.to('.grayIqTop', {
+  opacity:0.2,
+  duration: 0.5,
+  ease: 'power2.out'
+  })
+  gsap.to('.redIqTop', {
+  duration: 0.3, 
   scale:18,  
   opacity:1,
-  ease: 'power2.out',
-  overflow:'hidden'
-})
-.to('#'+iq.menuItems, {
-  display:"block",
-  duration: 0,  
-})
-.to('#'+iq.menuItems > 'div', {
-  opacity:1,
-  x:-70,
-  duration: 0.15,
-  stagger: 0.1,  
   ease: 'power2.out'
-});
-
-let gray  = gsap.timeline();
-gray.to('#'+iq.gray, {
-  display:"block",
-  opacity:0.3,
-  ease: 'power2.out',
-  duration: 0.5 
-});
-
-timeL.pause();
-gray.pause();
-
-//  let menuItems = document.querySelector("#menuItems");
-//  let red = document.querySelector("#red");
-//  let grayB = document.querySelector("#gray");
-
-//  function hide(a, b) {
-//     a.reverse(); b.reverse()
-//  }
-
-// document.querySelector("#menu").addEventListener("onClick", () => {timeL.play(); gray.play()});
-// red.addEventListener("click", () => hide(timeL,gray));
-// menuItems.addEventListener("click", () => hide(timeL,gray));
-// grayB.addEventListener("click", () => hide(timeL,gray));
 })
+  gsap.to('.menuItemsIqTop div', {
+  opacity:1,
+  x:-120,
+  duration: 0.2,
+  stagger: 0.2, 
+  delay:0.25, 
+  ease: 'power2.out'
+  })  
+});
+
+const onClickHideMenu = contextSafe(() => {  
+  gsap.to('.menuItemsIqTop div', { 
+   opacity:0,
+  x:70,
+  duration: 0.3,
+  stagger: -0.1,  
+  delay:0.1,
+  ease: 'power2.out'
+})   
+  gsap.to('.redIqTop', {
+  duration: 0.3, 
+  scale:0,  
+  opacity:0,
+  delay:0.4,
+  ease: 'power2.out'
+})
+  gsap.to('.grayIqTop', {
+  opacity:0,
+  duration: 0.5,
+  ease: 'power2.out'
+  })
+});
 
 return <>
-<div id={iq.topBlock}>
-    <div id={iq.menuItems} onClick={() => {timeL.resume(); gray.resume()}}>
-        <div>Правила</div>
-        <div>Розыгрыши призов</div>        
+<div className='topBlockIqTop' ref={topBlockIqTop}>
+    <div onClick={onClickHideMenu}>
+      <div className='menuItemsIqTop'>
+          <div>Правила</div>
+          <div>Розыгрыши призов</div>        
+      </div>
+      <div className='redIqTop'></div>
+      <div className='grayIqTop'></div>
     </div>
-    <div id={iq.red} onClick={() => {timeL.resume(); gray.resume()}}></div>
-    <div id={iq.gray} onClick={() => {timeL.resume(); gray.resume()}}></div>
-    <div id={iq.menu} onClick={() => {timeL.play(); gray.play()}}>MENU</div> 
+    <div className='menuIqTop'  onClick={onClickShowMenu}>MENU</div>    
 </div>
 </>
 
