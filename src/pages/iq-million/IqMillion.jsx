@@ -4,7 +4,7 @@ import iqAnimate from './css/animate.module.css';
 import iqCarousel from './css/owl.carousel.min.module.css';
 import iqTheme from './css/owl.theme.default.min.module.css';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import IqTop from './parts/IqTop.jsx'
+import IqMenu from './parts/IqMenu.jsx'
 // Images
 import logo from "./img/iq-logo.png"; import one from "./img/one.png"; import two from "./img/two.png"; import three from "./img/three.png"; import IqPremiumStanding from "./img/IQ-Premium-standing-A4-1.png"; import IqUltraStanding from "./img/IQ-Ultra-standing-A4-1.png"; import IqSmoothStanding from "./img/IQ-Smooth-standing-A4-1.png"; import IqAllroundStanding from "./img/IQ-Allround-standing-A4-1.png"; import IqEconomyStanding from "./img/IQ-Economy-standing-A4-1.png"; import faces3 from "./img/faces3.png"; import labelM from "./img/label-m.png"; import arround from "./img/arround.svg"; import arrowBottom from "./img/arrow-bottom.svg"; import i250000 from "./img/250000.png"; import million from "./img/million.png"; import shirts from "./img/shirts.png"; import faces2 from "./img/faces-2.png"; import millionWwithoutCircle from "./img/million-without-circle.png"; import logoCircle from "./img/logo-circle.png";
 // End Images
@@ -14,55 +14,19 @@ import logo from "./img/iq-logo.png"; import one from "./img/one.png"; import tw
 function IqMillion() {
 
     return <> 
-<IqTop />
-<div className={iq.iqContent}><AnchorLink href='#home' id="home"></AnchorLink>	
-		<div className={iq.headerMenu}>	
-		<div className={iq.hM}>			
-				<AnchorLink href="#home"><img src={logo} /></AnchorLink>
-				<div className={iq.desk}>
-					<AnchorLink href="#rules">Правила</AnchorLink>
-					<AnchorLink href="#gifts">Розыгрыши&nbsp;призов</AnchorLink>
-				</div>
-										
-				<div id={iq.menu}>
-					<div className={iq.menuTop}>
-						<div id={iq.menuBar}> 
-							{/* onclick="menuOnClick()"> */}
-							<div id={iq.bar1} className={iq.bar}></div>
-							<div id={iq.bar2} className={iq.bar}></div>
-							<div id={iq.bar3} className={iq.bar}></div>
-						</div>
-						<nav className={iq.nav} id={iq.nav}>
-							<ul>
-							  <li>
-								<AnchorLink id={iq.a1} href="#rules">Правила</AnchorLink>
-							 </li>
-							  <li>
-								<AnchorLink id={iq.a2} href="#gifts">Розыгрыши призов</AnchorLink>
-							 </li>        
-							</ul>
-						</nav> 
-					</div>
-				</div>
-					  
-				<div className={iq.menuBg} id={iq.menuBg}></div>
-				<div className={iq.menuFullBg} id={iq.menuFullBg}></div> 			
-
-		</div>	
-				
-		</div>
-			
+<IqMenu />
+<div className={iq.iqContent}>		
 		<div className={iq.iqTop}>
 			<div className={iq.iqTcontent}>		
 				<div className={iq.blockFirst}>
 					<div id={iq.slider} className={[iq.slider]+' '+[iq.desk]}>
-						<div className="owl-carousel owl-theme">
+						{/* <div className="owl-carousel owl-theme">
 							<div><img src={IqPremiumStanding} /></div>
 							<div><img src={IqUltraStanding} /></div>
 							<div><img src={IqSmoothStanding} /></div>
 							<div><img src={IqAllroundStanding} /></div>
 							<div><img src={IqEconomyStanding} /></div>
-						</div>
+						</div> */}
 					</div>
 					
 					<div className={iq.mobFaces}><img src={faces3} /></div>

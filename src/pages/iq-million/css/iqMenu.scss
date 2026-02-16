@@ -1,0 +1,100 @@
+
+$violet: #a80e8f;
+$blue: #e8eff4;
+
+$media: screen;
+$feature: max-width;
+$valueL: 1024px;
+$valueM: 800px;
+$valueS: 500px;
+
+.topBlockIqMenu {
+  width:100%;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction: column;
+  position: fixed;
+  top:0;
+  overflow: hidden;
+}
+
+.iQheaderMenu {
+	display: inline-flex;
+	justify-content: space-between;
+	width:985px;
+	margin: 0 auto;
+  padding:8px 0 3px;
+	top: 0;
+	z-index: 10000;
+	background-color: $blue;
+  .logoIq {
+    width:250px;
+    @media #{$media} and ($feature:$valueM)  {
+      width:200px;}
+    @media #{$media} and ($feature:$valueS)  {
+      width:150px;
+    }
+    img {
+      width:100%;
+    }
+  .deskMenuIqItems {
+    display: inline-flex;
+    
+  }
+    
+  
+  }
+
+
+	
+}
+
+.burgerIq {
+  display:none;
+}
+
+.menuIqMenu {
+  cursor: pointer;
+  top:80px;
+  align-self: flex-end; 
+ 	background-color: $violet;
+  color:#f5ff30;
+}    
+
+.menuItemsIqMenu {
+  z-index: 200;
+  div {
+    cursor:pointer;
+    opacity:0;
+    margin-bottom: 20px; 
+  }
+  a {
+  color:#fff;
+    :hover {
+      text-decoration: underline;
+    }
+  }  
+}
+
+.redIqMenu {
+  background-color: $violet;
+  width:30px;
+  height:30px;
+  border-radius: 50%;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.grayIqMenu {
+  background-color: black;
+  opacity: 0;
+  width:100%;
+  height: 100vh;
+  position: fixed;  
+}
+
+/* Мобильное меню кнопка */
+
+
+

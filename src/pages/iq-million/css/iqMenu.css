@@ -1,0 +1,352 @@
+@charset "UTF-8";
+.topBlockIqMenu {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0; }
+
+.menuIqMenu {
+  cursor: pointer;
+  top: 80px;
+  align-self: flex-end;
+  background-color: #a80e8f;
+  color: #f5ff30; }
+
+.menuItemsIqMenu {
+  z-index: 200; }
+  .menuItemsIqMenu div {
+    cursor: pointer;
+    opacity: 0;
+    margin-bottom: 20px; }
+  .menuItemsIqMenu a {
+    color: #fff; }
+    .menuItemsIqMenu a :hover {
+      text-decoration: underline; }
+
+.redIqMenu {
+  background-color: #a80e8f;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  z-index: 100;
+  overflow: hidden; }
+
+.grayIqMenu {
+  background-color: black;
+  opacity: 0;
+  width: 100%;
+  height: 100vh;
+  position: fixed; }
+
+/* Мобильное меню кнопка */
+.iQheaderMenu {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  margin: 0 auto;
+  top: 0;
+  z-index: 10000;
+  background-color: #e8eff4;
+  height: 50px; }
+
+.iQheaderMenu .desk a {
+  display: inline-block;
+  transition: 0.5s;
+  padding-top: 30px; }
+
+.iQheaderMenu .desk a:last-child {
+  padding-left: 30px; }
+
+.iQheaderMenu .desk {
+  display: inline-flex;
+  justify-content: flex-end;
+  width: 60%;
+  text-align: right; }
+
+.iQheaderMenu .desk a:hover {
+  text-decoration: none;
+  transform: rotate(10deg) scale(1.2);
+  color: #cf008f; }
+
+.iQheaderMenu.f-menu .desk {
+  transform: translateY(-120px) !important;
+  transition: 0.3s; }
+
+.iQheaderMenu.f-menu {
+  box-shadow: 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em rgba(85, 85, 85, 0.3);
+  padding-top: 5px;
+  padding-bottom: 2px;
+  transition: 0.1s;
+  height: 42px; }
+
+.iQheaderMenu.f-menu img {
+  transform: scale(0.5);
+  transition: 0.1s;
+  margin-left: -55px;
+  margin-top: -15px; }
+
+.iQheaderMenu #menu {
+  top: 90px;
+  transition: 0.0s;
+  opacity: 0;
+  width: 100%; }
+
+.iQheaderMenu.f-menu #menu {
+  /* transform: translateY(-22px); */
+  /* transition: 0.3s; */
+  /* visibility: visible; */
+  opacity: 1;
+  display: block; }
+
+.iQheaderMenu img {
+  width: 230px;
+  transition: 0.1s;
+  margin-top: 15px; }
+
+.iQheaderMenu a {
+  font-size: 22px;
+  color: #000;
+  width: 40%; }
+
+#menu {
+  top: 30px;
+  right: 0;
+  position: relative;
+  z-index: 2;
+  /* display:none; */ }
+
+.menuBg {
+  top: 30px;
+  right: 14%;
+  position: absolute; }
+
+/* .menuBg, #menu {
+  top: 30px;
+  right: 14%;
+  position: absolute;
+}*/
+.menuTop {
+  display: flex;
+  flex-flow: column;
+  margin-top: -112px;
+  visibility: hidden;
+  width: 20%;
+  margin-left: auto;
+  margin-right: 0; }
+
+.f-menu .menuTop {
+  visibility: visible;
+  transform: translateY(-31px);
+  transition: 0.2s; }
+
+#menuBar {
+  width: 40px;
+  height: 40px;
+  margin: 0px 0 20px 20px;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-top: 5px;
+  transform: scale(0.8); }
+
+.bar {
+  height: 5px;
+  width: 100%;
+  background-color: #000000;
+  display: block;
+  border-radius: 5px;
+  transition: 0.3s ease; }
+
+#bar1 {
+  transform: translateY(-4px); }
+
+#bar3 {
+  transform: translateY(4px); }
+
+.nav {
+  /* transition: 0.8s ease; */
+  display: flex;
+  justify-content: flex-end;
+  visibility: hidden;
+  width: 20%;
+  margin-left: auto;
+  margin-right: 0; }
+
+.nav ul {
+  text-align: left;
+  /* align-self: flex-end; */
+  text-wrap-mode: nowrap; }
+
+.nav li {
+  list-style: none;
+  padding: 12px 0; }
+
+.nav li a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  /* display: block; */
+  transform: rotate(20deg);
+  opacity: 0; }
+
+.a-rotate {
+  opacity: 1 !important;
+  visibility: visible !important;
+  text-decoration: underline;
+  transform: rotate(0deg) !important;
+  transition-duration: 0.4s !important;
+  transition-delay: 0.1s !important;
+  transition-timing-function: ease; }
+
+.nav li a:hover {
+  text-decoration: underline;
+  transform: rotate(-10deg);
+  transition: .6s; }
+
+.menuBg {
+  z-index: 1;
+  width: 0;
+  height: 0;
+  /* margin: 30px 0 20px 20px; */
+  background: radial-gradient(circle, #cf008f, #cf008f);
+  border-radius: 50%;
+  transition: 0.3s ease; }
+
+#menuFullBg {
+  position: fixed;
+  background-color: #000000;
+  z-index: 0;
+  width: 0;
+  height: 0;
+  top: 0;
+  right: 0%;
+  transition: 2s;
+  display: none;
+  opacity: 1; }
+
+.menu-full-change {
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0.3 !important;
+  transition: 2s;
+  display: block !important; }
+
+.change {
+  visibility: visible !important; }
+
+.change .bar {
+  background-color: white; }
+
+.change #bar1 {
+  transform: translateY(4px) rotateZ(-45deg); }
+
+.change #bar2 {
+  opacity: 0; }
+
+.change #bar3 {
+  transform: translateY(-6px) rotateZ(45deg); }
+
+.change-bg {
+  width: 520px;
+  height: 460px;
+  transform: translate(60%, -25%); }
+
+@media screen and (max-width: 1024px) {
+  #slider {
+    display: none; }
+
+  .iQheaderMenu .desk, .iQheaderMenu .mob {
+    padding-right: 20px; }
+
+  .iQheaderMenu.f-menu img {
+    margin-top: -11px; }
+
+  .iQheaderMenu.f-menu {
+    padding-top: 0; }
+
+  .menuBg {
+    right: 5%; }
+
+  .iQhM {
+    margin: 0 auto;
+    height: 42px;
+    width: 100%;
+    padding: 0 30px; } }
+@media screen and (max-width: 770px) {
+  .iQheaderMenu .desk {
+    display: none; }
+
+  .iQheaderMenu {
+    transition: none;
+    height: 60px; }
+
+  .iQheaderMenu.f-menu {
+    box-shadow: 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em rgba(85, 85, 85, 0.3);
+    padding-top: 5px;
+    padding-bottom: 2px;
+    transition: none;
+    height: auto;
+    height: 55px; }
+
+  .iQheaderMenu img {
+    width: 180px;
+    margin-top: 3px; }
+
+  .iQheaderMenu.f-menu img {
+    transform: none;
+    margin: 4px 0 0 0;
+    width: 160px;
+    transition: 0.1s; }
+
+  .iQhM {
+    margin: 0 auto;
+    height: 55px; }
+
+  #menuBar {
+    transform: none;
+    margin-top: 0; }
+
+  .menuTop {
+    margin-top: 0;
+    visibility: visible; }
+
+  .f-menu .menuTop {
+    transform: none;
+    transition: none;
+    visibility: visible;
+    margin-top: 0; }
+
+  .iQheaderMenu #menu {
+    top: 21px;
+    opacity: 1;
+    width: 70%;
+    position: absolute;
+    right: 30px; }
+
+  .iQheaderMenu .wh-menu:after {
+    font-size: 23px;
+    line-height: 0; } }
+@media screen and (max-width: 500px) {
+  .iQheaderMenu #menu {
+    top: 20px;
+    right: 20px; }
+
+  #menuBar {
+    transform: scale(0.8); }
+
+  .iQheaderMenu.f-menu img {
+    width: 140px; }
+
+  .iQhM {
+    height: 50px; }
+
+  .nav li a {
+    font-size: 18px; } }
+/* End Мобильное меню кнопка */
+/*---- Конец Top -----*/
+
+/*# sourceMappingURL=iqMenu.css.map */
