@@ -14,47 +14,98 @@ function IqMenu() {
 
 // Скролл 
 
-useGSAP(() => {
+const topBlockIqMenu = useRef();
+const logoIq = useRef();
+const { contextSafe } = useGSAP({scope: topBlockIqMenu}); 
 
-gsap.to(".logoIq", {
-  width:140,
+
+const getLogoWidth = () => {
+  let width; 
+  if (window.innerWidth > 800) {
+    width = 250;
+  } else  {
+    width = 170;
+  }
+  return width;
+}
+
+useEffect(() => {
+  
+  gsap.to(".logoIq", {
+  width:getLogoWidth()*0.56,
   duration: 1,
   ease: "elastic",
   scrollTrigger: {
     trigger: ".logoIq",
-    start: 50,    
+    start: 0, 
     isTouch: 2,
-    toggleActions: "play none none reset",  //"play none reverse"
-    onEnterBack: () => {
+    //markers: true,
+    toggleActions: "play none none reset", 
+        
+    onEnterBack: () => {      
       gsap.to(".logoIq", {
-      width: 250,     
-      duration: 0.3,
-      ease: "power1.out",
+      width: getLogoWidth(),     
+      ease: "expo.out",
       scrollTrigger: {
         trigger: ".logoIq",
+        isTouch: 2,
+        toggleActions: "play none none reset", 
+        //markers: true,
+        
+      }})} 
+
+    }}) 
+  
+  gsap.to(".topBlockIqMenu", {
+  boxShadow: '0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em rgba(85, 85, 85, 0.3',
+  ease: "expo.out",
+   scrollTrigger: {    
+    trigger: ".topBlockIqMenu",
+    start: 0,
+    toggleActions: "play none none reset",
+    onEnterBack: () => {
+      gsap.to(".topBlockIqMenu", {          
+      ease: "expo.out",
+      boxShadow: '0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em rgba(85, 85, 85, 0',
+      scrollTrigger: {
+        trigger: ".topBlockIqMenu",
         isTouch: 2,
         toggleActions: "play none none reset"
       }
     })  
-  }}
-});
+  }
+    }}) 
 
-gsap.to(".topBlockIqMenu", {
-  duration: 0.4,
-  boxShadow: '0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em rgba(85, 85, 85, 0.3',
-  ease: "power1.out",
-  scrollTrigger: {
-    trigger: ".topBlockIqMenu",
-    start: "50px",
-    toggleActions: "play none none reset",
- }
-});
-});
+gsap.fromTo('.deskMenuIqItems div', 
+  {y:-150, rotate:66,color:'#a80e8f'}, 
+  {y:0, delay:0.7, duration:0.8,stagger:0.1, ease:'bounce', rotate:5,color:'#fb13ff'}
+)
+
+
+})
+
+
+
+const [logoWidth, setlogoWidth] = useState();
+useLayoutEffect(() => {    
+  if (logoIq.current) {
+     setlogoWidth(logoIq.current.getBoundingClientRect().width);
+  }  
+     
+  const handleResize = () => {            
+                setlogoWidth(logoIq.current.getBoundingClientRect().width);
+                //window.location.reload()                                                                   
+          };
+          window.addEventListener("resize", handleResize); 
+          window.addEventListener("resize", getLogoWidth);          
+          return () => {
+          window.removeEventListener("resize", handleResize); 
+          window.removeEventListener("resize", getLogoWidth);                             
+        }
+      })
 
 // Кнопки меню Показать/Скрыть
-const topBlockIqMenu = useRef();
-
-const { contextSafe } = useGSAP({scope: topBlockIqMenu});  
+ 
 
 const onClickShowMenu = contextSafe(() => {
 	gsap.to('.grayIqMenu', {
@@ -102,22 +153,35 @@ const onClickHideMenu = contextSafe(() => {
   })
 });
 
-const logoIq = useRef(null);
+ 
+//  const logoIq = useRef(null);
+
+//   const [logoWidth, setlogoWidth] = useState();
   
- const [width, setWidth] = useState(0);
+//   useLayoutEffect(() => {
+//     if (logoIq.current) {
+//             setlogoWidth(logoIq.current.getBoundingClientRect().width);
+//         }         
+//         const handleResize = () => {            
+//                 setlogoWidth(logoIq.current.getBoundingClientRect().width);                
+//           };
+//           window.addEventListener("resize", handleResize);
+//           return () => {
+//           window.removeEventListener("resize", handleResize);                     
+//         }
+//   });
+            
 
- useEffect(() => {
-    setWidth(logoIq.current.offsetWidth);
-    }, []);
 
-  const [logoWidth, setLogoWidth] = useState(250);
 
 return <>
 <label id="homeIq"></label>
 <div className='topBlockIqMenu' ref={topBlockIqMenu}>
-  <div className='iQheaderMenu'>      			
-      <div className="logoIq" ref={logoIq}>{width}
-      <AnchorLink href="#homeIq"><img src={logo} /></AnchorLink></div>
+  <div className='iQheaderMenu'>     			
+        <div className="logoIq"  ref={logoIq}>
+             {/* {logoWidth}   */}
+              <AnchorLink href="#homeIq"><img src={logo} /></AnchorLink>
+        </div>     
       <div className="deskMenuIqItems">
           <div><AnchorLink href="#rules" offset='120'>Правила акции</AnchorLink></div>
           <div><AnchorLink href="#gifts" offset='-20'>Розыгрыши призов</AnchorLink></div>
@@ -132,9 +196,11 @@ return <>
             <div className='grayIqMenu'></div>
           </div>
         <div className='menuIqMenu'  onClick={onClickShowMenu}>MENU</div>
-      </div>    
-  </div>
-</div>	
+      </div> 
+  </div>   
+</div>
+	
+
 </>
 
 };

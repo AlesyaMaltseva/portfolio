@@ -22,79 +22,103 @@ $valueS: 500px;
 .iQheaderMenu {
 	display: inline-flex;
 	justify-content: space-between;
+  align-items: center;
 	width:985px;
+  
 	margin: 0 auto;
   padding:8px 0 3px;
 	top: 0;
-	z-index: 10000;
+  position:relative;
+	z-index: 100;
 	background-color: $blue;
   .logoIq {
     width:250px;
     @media #{$media} and ($feature:$valueM)  {
-      width:200px;}
+      width:220px;}
     @media #{$media} and ($feature:$valueS)  {
-      width:150px;
+      width:170px;
     }
-    img {
-      width:100%;
+    img {width:100%;} 
     }
+
   .deskMenuIqItems {
-    display: inline-flex;
+    display: inline-flex;  
     
-  }
-    
+    div {
+      margin-left:50px;
+      margin-bottom:9px;
+      font-family: 'Fira Sans', sans-serif;     
+      font-size: 1.2em;
+      :hover {          
+            transform: rotate(-5deg);
+            scale: 1.1;
+            font-size:1.3em;
+            transition: .3s;
+            color: $violet;
+          }
+      a {
+        display:block;
+        color:inherit;
+        text-decoration: none;
+        font-size:1.1em;
+        transition: .3s;
+       
+      }      
+    }
+  }   
+  .burgerIq {
+      display:none;
+     position:fixed;
+    top:0;
+      right:0;
   
-  }
-
-
-	
-}
-
-.burgerIq {
-  display:none;
-}
-
-.menuIqMenu {
+  .menuIqMenu {
   cursor: pointer;
   top:80px;
   align-self: flex-end; 
  	background-color: $violet;
   color:#f5ff30;
-}    
-
-.menuItemsIqMenu {
+  }   
+  .menuItemsIqMenu {
   z-index: 200;
-  div {
-    cursor:pointer;
-    opacity:0;
-    margin-bottom: 20px; 
-  }
-  a {
-  color:#fff;
-    :hover {
-      text-decoration: underline;
+    div {
+      cursor:pointer;
+      opacity:0;
+      margin-bottom: 20px; 
+      a {
+      color:#fff;
+      :hover {
+        text-decoration: underline;
+       }
+      } 
     }
-  }  
-}
-
-.redIqMenu {
+  }   
+  .redIqMenu {
   background-color: $violet;
   width:30px;
   height:30px;
   border-radius: 50%;
   z-index: 100;
   overflow: hidden;
-}
+  }
 
-.grayIqMenu {
+  .grayIqMenu {
   background-color: black;
   opacity: 0;
   width:100%;
   height: 100vh;
   position: fixed;  
+  }
+  } 
 }
 
-/* Мобильное меню кнопка */
+
+
+
+
+
+
+
 
 
 

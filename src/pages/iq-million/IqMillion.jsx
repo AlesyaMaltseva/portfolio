@@ -1,7 +1,8 @@
 import $ from 'jquery';
 import iq from './css/iq.module.css';
 import iqAnimate from './css/animate.module.css';
-import iqCarousel from './css/owl.carousel.min.module.css';
+//import iqCarousel from './css/owl.carousel.min.module.css';
+import Slider from './parts/Slider.jsx';
 import iqTheme from './css/owl.theme.default.min.module.css';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import IqMenu from './parts/IqMenu.jsx'
@@ -19,16 +20,12 @@ function IqMillion() {
 		<div className={iq.iqTop}>
 			<div className={iq.iqTcontent}>		
 				<div className={iq.blockFirst}>
-					<div id={iq.slider} className={[iq.slider]+' '+[iq.desk]}>
-						{/* <div className="owl-carousel owl-theme">
-							<div><img src={IqPremiumStanding} /></div>
-							<div><img src={IqUltraStanding} /></div>
-							<div><img src={IqSmoothStanding} /></div>
-							<div><img src={IqAllroundStanding} /></div>
-							<div><img src={IqEconomyStanding} /></div>
-						</div> */}
+					<div id={iq.slider} className={[iq.slider]+' '+[iq.desk]}>					
+						<Slider />						
 					</div>
-					
+					<div className={iq.faces}>
+						<img src={faces3} />
+					</div>
 					<div className={iq.mobFaces}><img src={faces3} /></div>
 						
 					<div className={iq.list}>
