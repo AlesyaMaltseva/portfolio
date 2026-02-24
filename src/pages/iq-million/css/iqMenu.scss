@@ -77,7 +77,8 @@ $valueS: 500px;
 #burgerMenu {
   position: fixed;
   display:none;
-  top:0;
+  opacity: 0;
+  top:70px;
   z-index: 300; 
 }
 

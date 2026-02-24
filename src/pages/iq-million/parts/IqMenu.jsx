@@ -28,7 +28,7 @@ const getLogoWidth = () => {
   return width;
 }
 
-useEffect(() => {
+useGSAP(() => {
   
   gsap.to(".logoIq", {
   width:getLogoWidth()*0.56,
@@ -71,11 +71,52 @@ useEffect(() => {
   }
     }}) 
 
-gsap.fromTo('.deskMenuIqItems div', 
-  {y:-150, rotate:66,color:'#a80e8f'}, 
-  {y:0, delay:0.5, duration:0.7,stagger:0.12, ease:'back', rotate:0, color:'#000'}
-)
-}, [])
+  gsap.to('.deskMenuIqItems', {
+    y:-100,
+    duration:1,  
+    scrollTrigger: {
+      trigger: ".topBlockIqMenu",
+      start: 0,
+      toggleActions: "play none none reset",
+      onEnterBack: () => {
+        gsap.to(".deskMenuIqItems", {
+           y:0,
+           scrollTrigger: {
+          trigger: ".topBlockIqMenu",
+          toggleActions: "play none none reset",
+      }})
+  }}})
+
+  gsap.fromTo('.deskMenuIqItems div', 
+    {y:-200, rotate:66,color:'#a80e8f'}, 
+    {y:0, delay:0.3, duration:0.7,stagger:0.12, ease:'back', rotate:0, color:'#000'}
+    )
+
+  gsap.to('#burgerMenu', {
+    display:'block',
+    opacity:1,
+    y:-70,
+    duration:0.2,  
+    scrollTrigger: {
+      trigger: ".topBlockIqMenu",
+      start: 0,
+      toggleActions: "play none none reset",
+      onEnterBack: () => {
+        gsap.to("#burgerMenu", {
+           display:'none',
+           opacity:0,
+           y:0,
+          duration:0.2,
+           scrollTrigger: {
+          trigger: ".topBlockIqMenu",
+          toggleActions: "play none none reset",
+      }})
+  }}})
+
+
+
+
+})
 
 const [logoWidth, setlogoWidth] = useState();
 
@@ -101,10 +142,8 @@ getmenuPos();
         }
 }, [])
 
-// Кнопки меню Показать/Скрыть 
 
 return <>
-
 
 <label id="homeIq"></label>
 <div id='burgerMenu' ref={burgerMenu}><BurgerIq /></div>
