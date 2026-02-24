@@ -1,3 +1,6 @@
+//import uuid from 'react-uuid';
+import $ from 'jquery' //importing jquery
+window.jquery = window.$ = $ //loader js
 import {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import { gsap } from "gsap/dist/gsap";
 import { useGSAP } from "@gsap/react/dist";    
@@ -5,212 +8,163 @@ import { Draggable } from "gsap/dist/Draggable";
 import { InertiaPlugin } from "gsap/dist/InertiaPlugin";
 import { GSDevTools } from "gsap/dist/GSDevTools";
 import { SplitText } from "gsap/dist/SplitText";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(useGSAP,Draggable,ScrollTrigger,GSDevTools,InertiaPlugin,SplitText);
-import Allround from "../img/Allround.png";
-import Premium from "../img/Premium.png";
-import Economy from "../img/Economy.png";
-import Smooth from "../img/Smooth.png";
-import Ultra from "../img/Ultra.png";
-import './gsapcarousel.css'
+gsap.registerPlugin(useGSAP,Draggable,GSDevTools,InertiaPlugin,SplitText);
+import '../css/slider.scss';
+import Allround from '../img/Allround.png';
+import Economy from '../img/Economy.png';
+import Premium from '../img/Premium.png';
+import Smooth from '../img/Smooth.png';
+import Ultra from '../img/Ultra.png';
+
 
 function Slider() {
 
-const gallery = useRef();
-const cards = useRef();
-const actions = useRef();
-const dragProxy = useRef();
-
-const { contextSafe } = useGSAP({scope: gallery}); 
-
+const slidesCarousel = useRef();
+const {contextSafe} = useGSAP({scope:slidesCarousel})
 
 const carousel = contextSafe(() => {
-let iteration = 1; // gets iterated when we scroll all the way to the end or start and wraps around - allows us to smoothly continue the playhead scrubbing in the correct direction.
-//повторяется, когда мы прокручиваем до конца или до начала и оборачиваем - позволяет нам плавно продолжить очистку головки воспроизведения в правильном направлении.
 
-// set initial state of items
-// установите начальное состояние элементов
-gsap.set('.cards div', {yPercent: 150, opacity: 0, scale: 0});
+let slideDelay = 1.5;
+let slideDuration = 0.5;
+let snapY;
 
-const spacing = 0.13, // spacing of the cards (stagger) // расстояние между картами (в шахматном порядке)
-  snapTime = gsap.utils.snap(spacing), // we'll use this to snapTime the playhead on the seamlessLoop // мы будем использовать это, чтобы привязать время воспроизведения к бесшовной петле
-  cards = gsap.utils.toArray('.cards div'),
-  // this function will get called for each element in the buildSeamlessLoop() function, and we just need to return an animation that'll get inserted into a master timeline, spaced
-  // эта функция будет вызываться для каждого элемента в функции buildSeamlessLoop(), и нам просто нужно вернуть анимацию, которая будет вставлена в основную временную шкалу с интервалом
-  animateFunc = element => {
-    const tl = gsap.timeline();
-    tl.fromTo(element, {scale: 0, opacity: 0}, {scale: 1, opacity: 1, zIndex: 100, duration: 0.5, yoyo: true, repeat: -1, ease: "power1.in", immediateRender: false})
-      .fromTo(element, {yPercent: 150}, {yPercent: -150, duration: 1, ease: "none", repeat: -1, immediateRender: false}, 0);
-    return tl;
-  },
-  seamlessLoop = buildSeamlessLoop(cards, spacing, animateFunc),
-  playhead = {offset: 0}, // a proxy object we use to simulate the playhead position, but it can go infinitely in either direction and we'll just use an onUpdate to convert it to the corresponding time on the seamlessLoop timeline.
-  // прокси-объект, который мы используем для имитации положения точки воспроизведения, но оно может изменяться бесконечно в любом направлении, и мы просто используем onUpdate, чтобы преобразовать его в соответствующее время на временной шкале seamlessLoop.
+let slides = document.querySelectorAll(".slide");
+let autoPlayLimit = slides.length * 100;
+let autoPlayCount = 1;
+let prevButton = document.querySelector("#prevButton");
+let nextButton = document.querySelector("#nextButton");
+let progressWrap = gsap.utils.wrap(0,1);
 
-  wrapTime = gsap.utils.wrap(0, seamlessLoop.duration()), // feed in any offset (time) and it'll return the corresponding wrapped time (a safe value between 0 and the seamlessLoop's duration) // введите любое смещение (время), и оно вернет соответствующее время обертывания (безопасное значение между 0 и продолжительностью бесшовной петли).
+let numSlides = slides.length;
 
-  scrub = gsap.to(playhead, { // we reuse this tween to smoothly scrub the playhead on the seamlessLoop // мы используем это средство повторно, чтобы плавно отшлифовать направляющую на бесшовной петле
-    offset: 0,
-    onUpdate() {
-      seamlessLoop.time(wrapTime(playhead.offset)); // convert the offset to a "safe" corresponding time on the seamlessLoop timeline
-    },
-    duration: 0.5,
-    ease: "power3",
-    paused: true
-  }),
-  // trigger = ScrollTrigger.create({
-  //   start: 0,
-  //   onUpdate(self) {
-  //     let scroll = self.scroll();
-  //     if (scroll > self.end - 1) {
-  //       wrap(1, 2);
-  //     } else if (scroll < 1 && self.direction < 0) {
-  //       wrap(-1, self.end - 2);
-  //     } else {
-  //       scrub.vars.offset = (iteration + self.progress) * seamlessLoop.duration();
-  //       scrub.invalidate().restart(); // to improve performance, we just invalidate and restart the same tween. No need for overwrites or creating a new tween on each update. //чтобы повысить производительность, мы просто отключаем и перезапускаем ту же анимацию. Нет необходимости перезаписывать или создавать новую анимацию при каждом обновлении.
-  //     }
-  //   },
-  //   end: "+=3000",
-  //   pin: ".gallery"
-  // }),
-  // converts a progress value (0-1, but could go outside those bounds when wrapping) into a "safe" scroll value that's at least 1 away from the start or end because we reserve those for sensing when the user scrolls ALL the way up or down, to wrap.
-  // преобразует значение хода выполнения (0-1, но при переносе может выйти за эти границы) в "безопасное" значение прокрутки, которое находится на расстоянии не менее 1 от начала или конца, потому что мы сохраняем их для определения того, когда пользователь прокручивает до конца вверх или вниз для переноса.
-  progressToScroll = progress => gsap.utils.clamp(1, trigger.end - 1, gsap.utils.wrap(0, 1, progress) * trigger.end),
-  wrap = (iterationDelta, scrollTo) => {
-    iteration += iterationDelta;
-    trigger.scroll(scrollTo);
-    trigger.update(); // by default, when we trigger.scroll(), it waits 1 tick to update(). // по умолчанию, когда мы запускаем.scroll(), он ожидает 1 тик для обновления().
-  };
-
-// when the user stops scrolling, snap to the closest item. // когда пользователь перестанет прокручивать, перейдите к ближайшему элементу.
-//ScrollTrigger.addEventListener("scrollEnd", () => scrollToOffset(scrub.vars.offset));
-
-// feed in an offset (like a time on the seamlessLoop timeline, but it can exceed 0 and duration() in either direction; it'll wrap) and it'll set the scroll position accordingly. That'll call the onUpdate() on the trigger if there's a change.
-// введите смещение (например, время на временной шкале seamlessLoop, но оно может превышать 0 и duration() в любом направлении; это приведет к перетеканию) и соответствующим образом задаст положение прокрутки. Это вызовет onUpdate() в триггере, если произойдут изменения.
-function scrollToOffset(offset) { // moves the scroll playhead to the place that corresponds to the totalTime value of the seamlessLoop, and wraps if necessary. // перемещает элемент прокрутки в положение, соответствующее значению totalTime для бесшовной петли, и при необходимости перемещает его.
-  let snappedTime = snapTime(offset),
-    progress = (snappedTime - seamlessLoop.duration() * iteration) / seamlessLoop.duration(),
-    scroll = progressToScroll(progress);
-  if (progress >= 1 || progress < 0) {
-    return wrap(Math.floor(progress), scroll);
-  }
-  trigger.scroll(scroll);
-}
-
-document.querySelector(".next").addEventListener("click", () => scrollToOffset(scrub.vars.offset + spacing));
-document.querySelector(".prev").addEventListener("click", () => scrollToOffset(scrub.vars.offset - spacing));
-
-
-// below is the dragging functionality (mobile-friendly too)... // ниже приведена функциональность перетаскивания (также удобная для мобильных устройств).
-Draggable.create(".drag-proxy", {
-  type: "y",
-  trigger: ".cards",
-  onPress() {
-    this.startOffset = scrub.vars.offset;
-  },
-  onDrag() {
-    scrub.vars.offset = this.startOffset + (this.startY - this.y) * 0.001;
-    scrub.invalidate().restart(); // same thing as we do in the ScrollTrigger's onUpdate // то же самое, что мы делаем при обновлении ScrollTrigger
-  },
-  onDragEnd() {
-    //scrollToOffset(scrub.vars.offset);
-  }
+gsap.set(slides, {
+  yPercent: i => i * 100
 });
 
 
-function buildSeamlessLoop(items, spacing, animateFunc) {
-  let overlap = Math.ceil(1 / spacing), // number of EXTRA animations on either side of the start/end to accommodate the seamless looping // количество ДОПОЛНИТЕЛЬНЫХ анимаций по обе стороны от начала / конца для обеспечения плавного зацикливания
-    startTime = items.length * spacing + 0.5, // the time on the rawSequence at which we'll start the seamless loop // время в исходной последовательности, с которого мы начнем непрерывный цикл
-    loopTime = (items.length + overlap) * spacing + 1, // the spot at the end where we loop back to the startTime // точка в конце, где мы возвращаемся к началу цикла
-    rawSequence = gsap.timeline({paused: true}), // this is where all the "real" animations live // именно здесь живут все "настоящие" анимации
-    seamlessLoop = gsap.timeline({ // this merely scrubs the playhead of the rawSequence so that it appears to seamlessly loop // это просто стирает начальную часть rawSequence, так что кажется, что она плавно зацикливается
-      paused: true,
-      repeat: -1, // to accommodate infinite scrolling/looping // для обеспечения бесконечной прокрутки/зацикливания
-      onRepeat() { // works around a super rare edge case bug that's fixed GSAP 3.6.1 // работает над устранением очень редкой ошибки edge case, исправленной в GSAP 3.6.1
-        this._time === this._dur && (this._tTime += this._dur - 0.01);
-      }
-    }),
-    l = items.length + overlap * 2,
-    time, i, index;
+let wrap = gsap.utils.wrap(-100, (numSlides - 1) * 100);
 
-  // now loop through and create all the animations in a staggered fashion. Remember, we must create EXTRA animations at the end to accommodate the seamless looping. //теперь выполните цикл и создайте все анимации в шахматном порядке. Помните, что мы должны создать дополнительные анимации в конце, чтобы обеспечить плавное зацикливание.
-  for (i = 0; i < l; i++) {
-    index = i % items.length;
-    time = i * spacing;
-    rawSequence.add(animateFunc(items[index]), time);
-    i <= items.length && seamlessLoop.add("label" + i, time); // we don't really need these, but if you wanted to jump to key spots using labels, here ya go. // на самом деле нам это не нужно, но если вы хотите перейти к ключевым моментам, используя ярлыки, то вот, пожалуйста.
+let timer = gsap.delayedCall(slideDelay, autoPlay);
+
+let animation = gsap.to(slides, {
+  yPercent: "+=" + (numSlides * 100),
+  duration: 1,
+  ease: "none",
+  paused: true,
+  repeat: -1,
+  modifiers: {
+    yPercent: wrap
   }
+});
 
-  // here's where we set up the scrubbing of the playhead to make it appear seamless. // здесь мы настраиваем очистку головки воспроизведения, чтобы она выглядела бесшовной.
-  rawSequence.time(startTime);
-  seamlessLoop.to(rawSequence, {
-    time: loopTime,
-    duration: loopTime - startTime,
-    ease: "none"
-  }).fromTo(rawSequence, {time: overlap * spacing + 1}, {
-    time: startTime,
-    duration: startTime - (overlap * spacing + 1),
-    immediateRender: false,
-    ease: "none"
-  });
-  return seamlessLoop;
+let proxy = document.createElement("div");
+let slideAnimation = gsap.to({}, {});
+let slideWidth = 0;
+let wrapWidth = 0;
+resize();
+
+let draggable = new Draggable(proxy, {
+  trigger: ".slides-container",
+  inertia: true,
+  onPress: updateDraggable,
+  onDrag: updateProgress,
+  onThrowUpdate: updateProgress,
+  snap: {     
+    y: snapY
+  }
+});
+
+window.addEventListener("resize", resize);
+
+prevButton.addEventListener("click", function() {
+  animateSlides(1);
+});
+
+nextButton.addEventListener("click", function() {
+  animateSlides(-1);
+});
+
+function updateDraggable() {
+  timer.restart(true);
+  slideAnimation.kill();
+  this.update();
 }
-})
 
+function animateSlides(direction) {
+    
+  timer.restart(true);
+  slideAnimation.kill();
+  
+  let y = snapY(gsap.getProperty(proxy, "y") + direction * slideWidth);
+  
+  slideAnimation = gsap.to(proxy, {
+    y: y,
+    duration: slideDuration,
+    onUpdate: updateProgress
+  });  
+}
 
-useLayoutEffect(() => {   
-// const loadingScreen = document.querySelector(".cards div");
-//       // Также работает с querySelectorAll
-//       // const loadingScreens = document.querySelectorAll(".loading-screen");
-// if(loadingScreen) {
-//  gsap.to(loadingScreen, {
-//  delay: 2.8,
-//  top: "-100%",
-//  ease: "expo.inOut"
-//   });
-//   console.log('документ есть')
-// } else {
-//   console.log('документа нет')}
- 
-const loadingGallery = document.querySelector(".cards div");
-if(loadingGallery) {
-  carousel();
+function autoPlay() {  
+  if (draggable.isPressed || draggable.isDragging || draggable.isThrowing) {
+    timer.restart(true);
   } else {
+    autoPlayCount++;
+    if (autoPlayCount < autoPlayLimit) {
+      animateSlides(-1);
+    }
+  }
+}
+
+function updateProgress() { 
+  animation.progress(progressWrap(gsap.getProperty(proxy, "y") / wrapWidth));
+}
+
+function resize() {  
+  let norm = (gsap.getProperty(proxy, "y") / wrapWidth) || 0;
+  
+  slideWidth = slides[0].offsetWidth;
+  wrapWidth = slideWidth * (numSlides/1);
+  snapY = gsap.utils.snap(slideWidth);
+  
+  gsap.set(proxy, {
+    y: norm * wrapWidth
+  });
+  
+  animateSlides(0);
+  slideAnimation.progress(1);
 }
 
 });
+// Конец слайдера
+
+
+// Карусель
+useLayoutEffect(() => {
+  carousel(); 
+}, [])
 
 return <>
-<div className="gallery" ref={gallery} scope={gallery}>
-    
-    <ul className="cards"  ref={cards}>
-    
-        <div><img src={Allround} /></div> 
-        <div><img src={Premium} /></div>
-        <div><img src={Economy} /></div>
-        <div><img src={Smooth} /></div>
-        <div><img src={Ultra} /></div>
-        <div><img src={Premium} /></div>
-        <div><img src={Economy} /></div>
-        <div><img src={Smooth} /></div>
-        {/* <li style={{backgroundImage:"url('../../img/Premium.png')"}}></li>
-        <li style={{backgroundImage:"url('../../img/Economy.png')"}}></li>
-        <li style={{backgroundImage:"url('../../img/Smooth.png')"}}></li>
-        <li style={{backgroundImage:"url('../../img/Ultra.png')"}}></li>
-        <li style={{backgroundImage:"url('../../img/Allround.png')"}}></li>
-        <li style={{backgroundImage:"url('../../img/Economy.png')"}}></li>
-        <li style={{backgroundImage:"url('../../img/Smooth.png')"}}></li>
-        <li style={{backgroundImage:"url('../../img/Premium.png')"}}></li> */}
-            </ul>
-    <div className="actions" ref={actions}>
-        <button className="prev">Prev</button>
-        <button className="next">Next</button>
+<div id="iqSlider">
+    <div className="controls">
+      <button id="prevButton"></button>           
     </div>
 
-  <div className="drag-proxy" ref={dragProxy}></div>
-</div>
-</>
+  <div className="slides-carousel" ref={slidesCarousel}>
+    <div className="slides-container">
+      <div className="slides-inner">
+        <div className="slide" id="slide1"><img src={Allround} /></div>
+        <div className="slide" id="slide2"><img src={Economy} /></div>
+        <div className="slide" id="slide3"><img src={Premium} /></div>
+        <div className="slide" id="slide4"><img src={Smooth} /></div>
+        <div className="slide" id="slide5"><img src={Ultra} /></div>    
+      </div>    
+    </div>
+  </div>
+    <div className="controls">
+      <button id="nextButton"></button>      
+    </div>  
+</div> 
+	</>
 }
 
 export default Slider;

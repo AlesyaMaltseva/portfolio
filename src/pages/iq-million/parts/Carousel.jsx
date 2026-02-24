@@ -14,7 +14,7 @@ import Smooth from "../img/Smooth.png";
 import Ultra from "../img/Ultra.png";
 import './gsapcarousel.css'
 
-function Slider() {
+function Carousel() {
 
 const gallery = useRef();
 const cards = useRef();
@@ -58,33 +58,33 @@ const spacing = 0.13, // spacing of the cards (stagger) // расстояние 
     ease: "power3",
     paused: true
   }),
-  trigger = ScrollTrigger.create({
-    start: 0,
-    onUpdate(self) {
-      let scroll = self.scroll();
-      if (scroll > self.end - 1) {
-        wrap(1, 2);
-      } else if (scroll < 1 && self.direction < 0) {
-        wrap(-1, self.end - 2);
-      } else {
-        scrub.vars.offset = (iteration + self.progress) * seamlessLoop.duration();
-        scrub.invalidate().restart(); // to improve performance, we just invalidate and restart the same tween. No need for overwrites or creating a new tween on each update. //чтобы повысить производительность, мы просто отключаем и перезапускаем ту же анимацию. Нет необходимости перезаписывать или создавать новую анимацию при каждом обновлении.
-      }
-    },
-    end: "+=3000",
-    pin: ".gallery"
-  }),
+  // trigger = ScrollTrigger.create({
+  //   start: 0,
+  //   onUpdate(self) {
+  //     let scroll = self.scroll();
+  //     if (scroll > self.end - 1) {
+  //       wrap(1, 2);
+  //     } else if (scroll < 1 && self.direction < 0) {
+  //       wrap(-1, self.end - 2);
+  //     } else {
+  //       scrub.vars.offset = (iteration + self.progress) * seamlessLoop.duration();
+  //       scrub.invalidate().restart(); // to improve performance, we just invalidate and restart the same tween. No need for overwrites or creating a new tween on each update. //чтобы повысить производительность, мы просто отключаем и перезапускаем ту же анимацию. Нет необходимости перезаписывать или создавать новую анимацию при каждом обновлении.
+  //     }
+  //   },
+  //   end: "+=3000",
+  //   pin: ".gallery"
+  // }),
   // converts a progress value (0-1, but could go outside those bounds when wrapping) into a "safe" scroll value that's at least 1 away from the start or end because we reserve those for sensing when the user scrolls ALL the way up or down, to wrap.
   // преобразует значение хода выполнения (0-1, но при переносе может выйти за эти границы) в "безопасное" значение прокрутки, которое находится на расстоянии не менее 1 от начала или конца, потому что мы сохраняем их для определения того, когда пользователь прокручивает до конца вверх или вниз для переноса.
   progressToScroll = progress => gsap.utils.clamp(1, trigger.end - 1, gsap.utils.wrap(0, 1, progress) * trigger.end),
   wrap = (iterationDelta, scrollTo) => {
     iteration += iterationDelta;
     trigger.scroll(scrollTo);
-    trigger.update(); // by default, when we trigger.scroll(), it waits 1 tick to update(). // по умолчанию, когда мы запускаем.scroll(), он ожидает 1 тик для обновления().
+    trigger.update(); // by default, when we trigger.scroll(), it waits 1 tick to update(). // по умолчанию, когда мы запускаем trigger.scroll(), он ожидает 1 тик для обновления().
   };
 
 // when the user stops scrolling, snap to the closest item. // когда пользователь перестанет прокручивать, перейдите к ближайшему элементу.
-ScrollTrigger.addEventListener("scrollEnd", () => scrollToOffset(scrub.vars.offset));
+//ScrollTrigger.addEventListener("scrollEnd", () => scrollToOffset(scrub.vars.offset));
 
 // feed in an offset (like a time on the seamlessLoop timeline, but it can exceed 0 and duration() in either direction; it'll wrap) and it'll set the scroll position accordingly. That'll call the onUpdate() on the trigger if there's a change.
 // введите смещение (например, время на временной шкале seamlessLoop, но оно может превышать 0 и duration() в любом направлении; это приведет к перетеканию) и соответствующим образом задаст положение прокрутки. Это вызовет onUpdate() в триггере, если произойдут изменения.
@@ -114,7 +114,7 @@ Draggable.create(".drag-proxy", {
     scrub.invalidate().restart(); // same thing as we do in the ScrollTrigger's onUpdate // то же самое, что мы делаем при обновлении ScrollTrigger
   },
   onDragEnd() {
-    scrollToOffset(scrub.vars.offset);
+    //scrollToOffset(scrub.vars.offset);
   }
 });
 
@@ -175,14 +175,15 @@ useLayoutEffect(() => {
  
 const loadingGallery = document.querySelector(".cards div");
 if(loadingGallery) {
-  carousel();
+  carousel();  
   } else {
+    console.log("Элемент не существует")
 }
 
 });
 
 return <>
-<div className="gallery" ref={gallery}>
+<div className="gallery" ref={gallery} scope={gallery}>
     
     <ul className="cards"  ref={cards}>
     
@@ -213,5 +214,5 @@ return <>
 </>
 }
 
-export default Slider;
+export default  Carousel;
 
