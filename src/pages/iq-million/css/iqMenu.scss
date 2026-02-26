@@ -34,10 +34,16 @@ $valueS: 500px;
   position:relative;
 	z-index: 100;
 	background-color: $blue;
+  @media #{$media} and ($feature:$valueL)  {
+    width:100%;
+    padding:5px 3% 0;
+  }
   .logoIq {
     width:250px;
-    @media #{$media} and ($feature:$valueM)  {
+    @media #{$media} and ($feature:$valueL)  {
       width:220px;}
+    @media #{$media} and ($feature:$valueM)  {
+      width:200px;}
     @media #{$media} and ($feature:$valueS)  {
       width:170px;
     }
@@ -48,6 +54,8 @@ $valueS: 500px;
     // display:none;
     display: inline-flex;  
     justify-content: flex-end;
+    @media #{$media} and ($feature:$valueM)  {
+      display:none;}
     div {
       margin-bottom:5px;
       font-family: 'Fira Sans', sans-serif;     
@@ -79,7 +87,12 @@ $valueS: 500px;
   display:none;
   opacity: 0;
   top:70px;
-  z-index: 300; 
+  z-index: 300;
+  @media #{$media} and ($feature:$valueM)  {
+      
+    display:block;
+      opacity: 1;
+      top:0px;} 
 }
 
   .burgerIq {    

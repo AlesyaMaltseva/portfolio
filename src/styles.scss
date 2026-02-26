@@ -65,7 +65,12 @@ $text:1.7em;
 }
 
 body {
-    width: 100%;        
+    width: 100%;
+    @include golos();        
+}
+
+::-webkit-scrollbar {
+    width:0;
 }
 
 h1 {

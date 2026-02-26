@@ -17,21 +17,47 @@ const iQheaderMenu = useRef();
 const burgerMenu = useRef();
 const logoIq = useRef();
 const { contextSafe } = useGSAP({scope: topBlockIqMenu}); 
+  
 
-const getLogoWidth = () => {
-  let width; 
-  if (window.innerWidth > 800) {
-    width = 250;
-  } else  {
-    width = 170;
+
+function getLogoWidth() {
+  let smallWidth;  
+ if(window.innerWidth >= 1024) {
+    smallWidth = 250*.56;
+  } else if(window.innerWidth<1024 && window.innerWidth>=800) {
+    smallWidth = 220*.6;
   }
-  return width;
-}
+    else if(window.innerWidth<800 && window.innerWidth>=500) {
+    smallWidth = 200*.6;  
+  } else {
+     smallWidth = 170*.6;
+  }
+    return smallWidth;
+  }
+
+function getLogoFullWidth() {
+   let fullWidth;
+if(window.innerWidth >= 1024) {
+    fullWidth = 250;    
+  } else if(window.innerWidth<1024 && window.innerWidth>=800) {
+    fullWidth = 220;
+  }
+    else if(window.innerWidth<800 && window.innerWidth>=500) {
+    fullWidth = 200;   
+  } else {
+    fullWidth = 170;    
+  }
+    return fullWidth;
+  }
+
+
+
 
 useGSAP(() => {
-  
-  gsap.to(".logoIq", {
-  width:getLogoWidth()*0.56,
+
+gsap.to(".logoIq", {
+  //width:{logoIq}.offsetWidth*0.6,
+  width:getLogoWidth(), 
   duration: 1,
   ease: "elastic",
   scrollTrigger: {
@@ -41,14 +67,14 @@ useGSAP(() => {
     toggleActions: "play none none reset",         
     onEnterBack: () => {      
       gsap.to(".logoIq", {
-      width: getLogoWidth(),     
+      width: getLogoFullWidth(),
+      duration: 1,     
       ease: "expo.out",
       scrollTrigger: {
         trigger: ".logoIq",
         isTouch: 2,
         toggleActions: "play none none reset",        
       }})} 
-
     }}) 
   
   gsap.to(".topBlockIqMenu", {
@@ -92,6 +118,9 @@ useGSAP(() => {
     {y:0, delay:0.3, duration:0.7,stagger:0.12, ease:'back', rotate:0, color:'#000'}
     )
 
+let mm = gsap.matchMedia();
+  
+  mm.add("(min-width: 801px)", () => {
   gsap.to('#burgerMenu', {
     display:'block',
     opacity:1,
@@ -111,9 +140,8 @@ useGSAP(() => {
           trigger: ".topBlockIqMenu",
           toggleActions: "play none none reset",
       }})
-  }}})
-
-
+  }}})  
+})
 
 
 })
@@ -124,9 +152,15 @@ useLayoutEffect(() => {
 
 const getmenuPos = () => {
   const rect = iQheaderMenu.current.getBoundingClientRect();
-  const menuPos = rect.x+rect.width;
-  burgerMenu.current.style.left = menuPos+'px'; 
-} 
+  const menuPos = rect.x+rect.width;  
+   if(window.innerWidth>1024) {    
+         burgerMenu.current.style.left = menuPos+'px';
+      }
+    else {
+      burgerMenu.current.style.left = (menuPos-(menuPos*0.04))+'px';
+    } 
+  } 
+
 getmenuPos();
 
   if (logoIq.current) {
@@ -135,10 +169,10 @@ getmenuPos();
   const handleResize = () => {            
             setlogoWidth(logoIq.current.getBoundingClientRect().width);
           };
-          window.addEventListener("resize", () => {handleResize(), getLogoWidth(), getmenuPos()}); 
+          window.addEventListener("resize", () => {handleResize(); getLogoWidth(); getmenuPos()}); 
                    
           return () => {
-          window.removeEventListener("resize", () => {handleResize(), getLogoWidth(), getmenuPos()});        
+          window.removeEventListener("resize", () => {handleResize(); getLogoWidth(); getmenuPos()});        
         }
 }, [])
 

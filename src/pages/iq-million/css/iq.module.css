@@ -468,7 +468,7 @@
 @media screen and (max-width:1024px) {
 
  .question .qT {
-    height: 12vw;
+    height: 13vw;
 }
 
   .iqTcontent {
@@ -481,6 +481,7 @@
 	flex-direction:column;
 	height:auto;
 	background: none;
+	margin-top: 0;
 }
 
 .iqTop {
@@ -497,6 +498,10 @@
 	width: 90%;
 }
 
+.faces, #iqSlider {
+	display:none;
+}
+
  .mobFaces {
 	display:block;
 	margin: 0 auto;
@@ -504,7 +509,7 @@
 
 .mobFaces img {
 	width: 100%;
-	margin-top: 110px;
+	margin-top: 80px;
 }
 
 .list > div > div {padding-left: 60px;padding-bottom: 40px;padding-right: 60px;}

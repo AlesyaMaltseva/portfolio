@@ -17,7 +17,7 @@ function IqMillion() {
 		<div className={iq.iqTop}>
 			<div className={iq.iqTcontent}>		
 				<div className={iq.blockFirst}>
-					<div id={iq.slider} className={[iq.slider]+' '+[iq.desk]}>					
+					<div id={iq.iqSlider} className={[iq.slider]+' '+[iq.desk]}>					
 						<Slider />						
 					</div>
 					<div className={iq.faces}>

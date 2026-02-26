@@ -13,6 +13,7 @@ gsap.registerPlugin(useGSAP,ScrollTrigger,MorphSVGPlugin);
 function BurgerIq() {
 
 const burgerIq = useRef();
+const burger = useRef();
 
 const { contextSafe } = useGSAP({scope: burgerIq}); 
 
@@ -22,7 +23,28 @@ useGSAP(() =>{
   });
 })
 
- 
+ useLayoutEffect(()=>{
+  const burgerCur = burger.current;
+
+  function resizeViewBox() {
+    if(window.innerWidth<620) {
+    burgerCur.setAttribute('viewBox', "-40 -20 120 120")
+  } else if(window.innerWidth>=630 && window.innerWidth<=800) {
+    burgerCur.setAttribute('viewBox', "-40 -27 110 110")
+  } else {
+    burgerCur.setAttribute('viewBox', "-40 -30 100 100")
+    }
+  }
+   resizeViewBox();
+
+    window.addEventListener('resize', () => {
+      resizeViewBox();
+    })
+    return window.removeEventListener('resize', () => {
+      resizeViewBox();
+    })
+
+ },[])
 
 const onClickShowMenu = contextSafe(() => {
 
@@ -54,7 +76,7 @@ const onClickShowMenu = contextSafe(() => {
   gsap.to('.menuItemsIqMenu div', {
   display:'block',
   opacity:1,
-  x:-120,
+  x:-140,
   stagger: 0.2,    
   ease: 'power2.out'
 })  
@@ -128,7 +150,7 @@ return <>
           
           }}>
 
-<svg id="burger" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 100 100" fill="#000">  
+<svg id="burger" ref={burger} xmlns="http://www.w3.org/2000/svg" viewBox="-40 -30 100 100" fill="#000">  
 		
     <path id="open" d="M-4.662,9H54.66C57.608,9,60,6.986,60,4.5C60,2.016,57.608,0,54.66,0H-4.662C-7.61,0-10,2.016-10,4.5 C-10,6.986-7.61,9-4.662,9z M54.66,41H-4.662C-7.61,41-10,43.016-10,45.501S-7.61,50-4.662,50H54.66c2.948,0,5.34-2.014,5.34-4.499S57.608,41,54.66,41
 		z M54.66,20.5H-4.662C-7.61,20.5-10,22.514-10,25c0,2.484,2.39,4.5,5.338,4.5H54.66c2.948,0,5.34-2.016,5.34-4.5
