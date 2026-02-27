@@ -328,9 +328,9 @@
   
   .complex {
     background-image: url('../img/pict6.png');
-    background-size: 74%;
+    background-size: 65%;
     background-repeat: no-repeat;
-    background-position: 100% 100%;
+    background-position: 100% 80%;
   }
   
   .complex > div {
@@ -744,17 +744,18 @@
 
 /* ----- FAQ ----- */
 
-  .b-content-title, .f_20.b_20.fw_400, .c_prod-item.a_border-bottom {
-    display:none;    
-}
-
-.faq .b-rollUp .b-rollUp__Li {
+.faq .FAQitem {
   margin: 4px auto;
   padding: 0 20px;
   background: #F6F7FB;
+  transition: .3s;
 }
 
-.faq .b-rollUp .b-rollUp__LiMore {
+.faq .FAQitem:hover  {
+  background-color: #ebebeb;
+}
+
+.faq .question {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -763,51 +764,38 @@
   color: #333333;
   transition: 0.3s;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;  
 }
 
-.b-rollUp__LiVisible {
-    padding-right: 20px;
-    -webkit-tap-highlight-color: transparent;
+.faq .sign {
+    position: absolute;
+    right: 0;
+    top: 35%;
 }
 
-.faq .b-rollUp .rollUp__mark--plus:after,
-.faq .b-rollUp .rollUp__mark--minus:after {
-  content: '';
-  position: absolute;
-  top: 20px;
-  right: 0;
-  width: 24px;
-  height: 24px;
+.faq .sign img {
+  width: auto;
 }
 
- .b-rollUp .rollUp__mark--plus:after,
- .faq .b-rollUp .rollUp__mark--minus:after {
-  right: -5px;
-}
-
-.faq .b-rollUp .rollUp__mark--plus:after {
-  background: url(../img/plus.png) no-repeat center center;
-  cursor: pointer;
-}
-
-.faq .b-rollUp .rollUp__mark--minus:after {
-  background: url(../img/minus.png) no-repeat center center;
-  cursor: pointer;
-}
-
-.b-rollUp__LiHidden {
-    padding-bottom:25px;
+.faq .answer {    
     padding-right: 40px;
 }
 
-.b-rollUp__LiHidden p {
+.faq .answer p {
     font-size: 14px;
-    color: #333333;
-    
+    color: #333333;    
 }
 
-.b-rollUp__LiHidden p:not(p:first-child) {
+.faq .answer p:not(p:first-child) {
     padding-top: 20px;
+}
+
+.faq .answer p:last-child, .faq .answer ul {
+    padding-bottom: 25px;
+}
+
+.faq .answer ul+p {
+    margin-top: -30px;
 }
 
 .faq ol {
@@ -852,8 +840,8 @@ a.mail.note + a{
 
 
 @media (max-width: 971px) {
-  .faq .b-rollUp .b-rollUp__LiMore {
-    font-size: 15px;
+  .faq .question {
+    font-size: 16px;
     line-height: 17px;
   }
 }
