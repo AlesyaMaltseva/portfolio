@@ -1,5 +1,5 @@
-import $ from 'jquery' //importing jquery
-window.jquery = window.$ = $ //loader js
+import $ from 'jquery'
+window.jquery = window.$ = $
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

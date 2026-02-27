@@ -1,10 +1,12 @@
-import tork from './css/tork.module.css';
-import { useEffect } from 'react';
-//import './css/tork.css';
+import tork from './css/Tork.module.css';
 import $ from 'jquery';
 window.jquery = window.$ = $;
+import {useState,  useEffect, useRef, useLayoutEffect } from 'react';
+//import './css/tork.css';
 import tLogo from "./img/tork-logo.png";
 import banner1 from "./img/banner1.jpg";
+import banner2 from "./img/banner2.jpg";
+import banner3 from "./img/banner3.jpg";
 import TorkIcons101 from "./img/Tork-icons1-01.png";
 import TorkIcons201 from "./img/Tork-icons2-01.png";
 import TorkIcons301 from "./img/Tork-icons3-01.png";
@@ -24,38 +26,103 @@ import torkSafer2 from "./img/Tork_Safer2.jpg";
 import torkSafer3 from "./img/Tork_Safer3.jpg";
 import torkPrintProdimages from "./img/TorkPRINT-prodimages.jpg";
 
-
 function Tork() {
 
-// useEffect(() => {
-//  if($){
-//     $('.lists.three.how > div').mouseover(function() {
-//     $(this).css({zIndex: 2});    
-// }
-// )
-//   }
-// },[$])
+const torkLand = useRef();
+const tab1 =  useRef();
+const tab2 =  useRef();
+const tab3 =  useRef();
 
+const contentTab1 = useRef();
+const contentTab2 = useRef();
+const contentTab3 = useRef();
+
+//   function handleScrollToTab1() {
+//     contentTab1.current.scrollIntoView({
+//       behavior: 'smooth',
+//       block: 'nearest',
+//       inline: 'center'
+//     });
+//   }
+
+//   function handleScrollToTab2() {
+//     contentTab2.current.scrollIntoView({
+//       behavior: 'smooth',
+//       block: 'nearest',
+//       inline: 'center'
+//     });
+//   }
+
+//   function handleScrollToTab3() {
+//     contentTab3.current.scrollIntoView({
+//       behavior: 'smooth',
+//       block: 'nearest',
+//       inline: 'center'
+//     });
+//   }
+ const tabs = [
+	{tab:'contentTab1', img:'banner1'},
+	{tab:'contentTab2', img:'banner2'},
+	{tab:'contentTab3', img:'banner3'}
+]
+
+const handleClickTab = ()=>{
+	
+	console.log(tabs[1].tab)
+	//contentTab1.current.style.display='none';
+  };
+
+
+
+  // немедленная функция 
+// (function() { 
+// console.log(contentTab3.current); 
+// })()
+
+
+useEffect(()=>{
+
+function showTab(tabId, imgSrc) {
+    // Скрываем все элементы
+    document.querySelectorAll('section').forEach(el => el.classList.remove([tork.active]));
+    document.querySelectorAll('img').forEach(el => el.classList.remove([tork.active]));
+    
+    // Показываем нужный блок и изображение
+    const tab = document.getElementById(tabId);
+    const image = document.getElementById(imgSrc);
+    if (tab && image) {
+        tab.classList.add([tork.active]);
+        image.classList.add([tork.active]);
+    }
+}
+
+tab1.current.addEventListener("click", () => showTab("contentTab1", "banner1"));
+tab2.current.addEventListener("click", () => showTab("contentTab2", "banner2"));
+tab3.current.addEventListener("click", () => showTab("contentTab3", "banner3"));
+
+}, [])
 
 return <>
-    <div className={tork.torkLand}>
 
-	<div className={[tork.torkBanner]+' '+[tork.anim]+' '+[tork.w985]}>
+<div className={tork.torkLand} id={tork.torkLand} ref={torkLand}>
+<div className={[tork.torkBanner]+' '+[tork.anim]+' '+[tork.w985]}>
 		<img className={tork.tLogo} src={tLogo} />
-       <img className={tork.tBanner} src={banner1} />
+       <img className={[tork.tBanner]+' '+[tork.active]+' '+[tork.anim]} id="banner1" src={banner1} />
+	   <img className={[tork.tBanner]+' '+[tork.anim]} id="banner2" src={banner2} />
+	   <img className={[tork.tBanner]+' '+[tork.anim]} id="banner3" src={banner3} />
 	</div>
 
+
 <div className={tork.tabs}>   
- <input id={tork.tab1} type="radio" name="tabs" checked />
- <label for={tork.tab1} className="tab1">Почему Tork?</label>
- <input id={tork.tab2} type="radio" name="tabs" />
- <label for={tork.tab2} className="tab2">Решение Tork</label>
+ <input id={tork.tab1} type="radio" name="tabs" defaultChecked />
+ <label htmlFor={tork.tab1} className={tork.tab1} ref={tab1} >Почему Tork?</label>
+ <input id={tork.tab2} type="radio" name="tabs"  />
+ <label htmlFor={tork.tab2} className={tork.tab2} ref={tab2}>Решение Tork</label>
  <input id={tork.tab3}  type="radio" name="tabs" />
- <label for={tork.tab3} className="tab3">Сделайте безопасный выбор</label> 
- 
+ <label htmlFor={tork.tab3} className={tork.tab3} ref={tab3}>Сделайте безопасный выбор</label> 
 
 
-<section id={tork.contentTab1}>
+<section id="contentTab1" className={tork.active} ref={contentTab1}>
 
 	<div className={[tork.texts]+' '+[tork.lf]+' '+[tork.w985]}>
 		<p>Торговая марка Tork предлагает полный ассортимент гигиенической продукции для общественных туалетных комнат, промышленных предприятий, медицинских учреждений и предприятий общественного питания.</p> 
@@ -134,13 +201,13 @@ return <>
 			</div>
 		</div>
 	</div>	
-	
+
 
 
 </section>
 
 
-<section id={tork.contentTab2} className={tork.w985}>
+<section id="contentTab2" className={tork.w985} ref={contentTab2}>
 	
 	<h2>Наши продукты</h2>
 			
@@ -182,26 +249,26 @@ return <>
 	<div className={[tork.lists]+' '+[tork.three]+' '+[tork.video]+' '+[tork.w985]}>
 		<div>
 			<video poster="" preload="metadata" controls="controls">
-                <source src="./video/SmartOne.mp4" /> 
+                {/* <source src="./video/SmartOne.mp4" />  */}
                 </video>
 			<p>Tork EasyCube®<br />Превосходите ожидания благодаря интеллектуальному подключению</p>
 		</div>
 		<div>
 			<video poster="" preload="metadata" controls="controls">
-                <source src="./video/X-fit.mp4" /> 
+                {/* <source src="./video/X-fit.mp4" />  */}
                 </video>
 			<p>Tork PeakServe®<br />Сделайте более безопасный выбор с полотенцем для рук Tork PeakServe® Continuous®</p>
 		</div>
 		<div>
 			<video poster="" preload="metadata" controls="controls">
-                <source src="./video/Xpressnap.mp4" /> 
+                {/* <source src="./video/Xpressnap.mp4" />  */}
                 </video>
 			<p>Tork SmartOne®<br />Экономичный и гигиеничный диспенсер для рулонов туалетной бумаги</p>			
 		</div>
 	</div>	
 </section>
 
-<section id={tork.contentTab3} className={tork.w985}>
+<section id="contentTab3" className={tork.w985} ref={contentTab3}>
 	<h2>Добро пожаловать в новую реальность</h2>
 	<div className={[tork.lists]+' '+[tork.two]+' '+[tork.w985]}>
 		<div><img src={image44} /></div>
@@ -253,10 +320,8 @@ return <>
 
 </div>
 </div>
-{/* <script src="./js/jquery-3.7.1.min.js"></script>
-<script src="./js/tork.js"></script>  */}
 
-    </>
+</>
 }
 
 export default Tork

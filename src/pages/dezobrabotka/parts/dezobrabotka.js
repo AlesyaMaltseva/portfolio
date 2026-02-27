@@ -1,9 +1,12 @@
+import $ from 'jquery';
+window.jquery = window.$ = $;
+    
+  
+  
+  function DezScript() {
 
-  //Раскрывающиеся пункты списка
-    $(document).ready(function() {
-
-
-      // Скроем блоки, которые не должны быть видимы
+    function func() {   
+    // Скроем блоки, которые не должны быть видимы
       $('.js-b-rollUp__LiHidden').hide();
 
       // Нажали на ссылку "подробнее"
@@ -32,5 +35,9 @@
           // Дадим класс открытого блока
           rollUp__Li.addClass('b-rollUp__Li--open');
         }
-      });
-    });
+      })};
+
+      return func()
+    }
+
+    export default DezScript;
