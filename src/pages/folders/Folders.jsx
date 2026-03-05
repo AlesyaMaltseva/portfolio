@@ -1,381 +1,103 @@
-// import "./css/folders.css";
-import fold from "./css/folders.module.css"
-import box390Buge from "./img/box390-beuge.png";
-import papka11 from "./img/11-papka.png";
-import papka13 from "./img/13-papka.png";
-import papka18 from "./img/18-papka.png";
-import papka15 from "./img/15-papka.png";
-import box480Open from "./img/box480-open.png";
-import papka08 from "./img/08-papka.png";
-import papka09 from "./img/09-papka.png";
-import papka10 from "./img/10-papka.png";
-import box520 from "./img/box520.png";
-import box506 from "./img/box506.png";
-import papka12 from "./img/12-papka.png";
-import papka07 from "./img/07-papka.png";
-import papka06 from "./img/06-papka.png";
-import papka17 from "./img/17-papka.png";
-import papka16 from "./img/16-papka.png";
-import box400 from "./img/box400.png";
-import papka01 from "./img/01-papka.png";
-import papka02 from "./img/02-papka.png";
-import papka03 from "./img/03-papka.png";
-import papka05 from "./img/05-papka.png";
-import box390 from "./img/box390.png";
-import papka04 from "./img/04-papka.png";
-import box480 from "./img/box480.png";
+import { useState, useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { useGSAP } from "@gsap/react";
+import CategoryButton from './js/CategoryButton';
+import ProductButton from './js/ProductButton';
+import ProductCard from './js/ProductCard';
+import "./css/folders.css";
+import productsData from './js/productsData.js';
+import fold from "./css/folders.module.css";
 
+gsap.registerPlugin(useGSAP);
 
 function Folders() {
 
-return <>
+  const [selectedCategory, setSelectedCategory] = useState('Папки-регистраторы');
+  const [selectedProduct, setSelectedProduct] = useState(1);
+
+  // Функция перехода на новую категорию
+  const selectCategory = category => {
+    setSelectedCategory(category);
+    setSelectedProduct(productsData.find(cat => cat.category === category)?.items[0].id);
+        
+  };
+
+  // Выбор нового товара
+  const selectProduct = productId => {
+    setSelectedProduct(productId);
+  };
+
+  //Отображение списка товаров для выбранной категории
+  const currentProducts = productsData.find(cat => cat.category === selectedCategory)?.items || [];
+ 
+
+  useEffect(() => {
+    const prevCardElement = document.querySelector('.active-product');
+    if (prevCardElement && !currentProducts.some(p => p.id === selectedProduct)) {
+      gsap.to(prevCardElement, {
+        duration: 0.8,
+        x: '0%', 
+        opacity: 0,
+        onComplete() {
+          prevCardElement.classList.remove('active-product');
+        }
+      });
+    }
+  }, [selectedProduct]);
+
+  return (
+    <>
 <div className={fold.bG}>
-<div className={fold.papki}>
-<div className={fold.headbox}>
-<div className={fold.what}>
-   <p>Что храним?</p> 
-   <div><a href="" className={fold.current}>Папки-регистраторы</a>
-   <a href="folders-arh.html">Папки архивные и скоросшиватели</a></div>
-</div>
-
-<div className={fold.what}>
-   <p>Размер коробки</p> 
-</div>   
-  
-<div className={fold.tabs}>      
-    <input id={fold.tab1} type="radio" name="tabs" checked />
-    <label for="tab1">390</label>
-    
-     <input id={fold.tab2} type="radio" name="tabs" />
-    <label for="tab2">480</label>
-    
-     <input id={fold.tab3} type="radio" name="tabs" />
-    <label for="tab3">506</label>
-    
-     <input id={fold.tab4} type="radio" name="tabs" />
-    <label for="tab4">520</label>
-
-<section id={fold.contentTab1}>
-<div className={[fold.boxgoods]+' '+[fold.b3902]}>
- 
-  <a href="" className={fold.mainlinkb}> <div className={fold.mmainpict}><img src={box390Buge} /></div>
-   	<div className={fold.mainwords}>
-    	<p>Коробка 390 мм</p>
-        <p>для хранения папок архивных и скоросшивателей вмещает:</p>
-    </div>
-    </a>
-    
-  <div className={fold.goods}> 
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x3</p>
-        <p>папки 125мм</p>
-        <div><img src={papka11} /></div>
-    </div></a>
-    
-  <a href="">  <div className={fold.goodscell}>
-    	<p>x4</p>
-        <p>папки 90мм</p>
-        <div><img src={papka13} /></div>
-    </div></a>
-    
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x5</p>
-        <p>папки 75мм</p>
-        <div><img src={papka18} /></div>
-    </div></a>
-    
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x7</p>
-        <p>папки 50мм</p>
-        <div><img src={papka15}  /></div>
-    </div></a>
-   </div>
-</div>
-</section>
-
-
-<section id={fold.contentTab2}>
-<div className={[fold.boxgoods]+' '+[fold.b4802]}>
- 
-  <a href="" className={fold.mainlinkb}> <div className={fold.mainpict}>
-    <img src={box480Open} /></div>
-   	<div className={fold.mainwords}>
-    	<p>Коробка 480 мм</p>
-        <p>для хранения папок архивных и скоросшивателей вмещает:</p>
-    </div>
-    </a>
-    
-  <div className={fold.goods}> 
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x5</p>
-        <p>папки 90мм</p>
-        <div><img src={papka08} /></div>
-    </div></a>
-    
-  <a href="">  <div className={fold.goodscell}>
-    	<p>x6</p>
-        <p>папки 80мм</p>
-        <div><img src={papka09} /></div>
-    </div></a>
-    
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x6</p>
-        <p>папки 75мм</p>
-        <div><img src={papka10} /></div>
-    </div></a>
-    
-       <a href=""> <div className={fold.goodscell}>
-    	<p>x9</p>
-        <p>папки 50мм</p>
-        <div><img src={papka13} /></div>
-    </div></a>
-    
-   </div>
-</div>
-</section>
-
-
-<section id={fold.contentTab3}>
-<div className={[fold.boxgoods]+' '+[fold.b506]}>
- 
-  <a href="" className={fold.mainlinkb}> <div className={fold.mainpict}><img src={box520} /></div>
-   	<div className={fold.mainwords}>
-    	<p>Коробка 506 мм</p>
-        <p>для хранения папок архивных и скоросшивателей вмещает:</p>
-    </div>
-    </a>
-    
-  <div className={fold.goods}> 
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x4</p>
-        <p>папки 125мм</p>
-        <div><img src={papka11} /></div>
-    </div></a>
-    
-  <a href="">  <div className={fold.goodscell}>
-    	<p>x6</p>
-        <p>папки 80мм</p>
-        <div><img src={papka09} /></div>
-    </div></a>
-    
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x7</p>
-        <p>папки 70мм</p>
-        <div><img src={papka07} /></div>
-    </div></a>
-    
-    <a href=""> <div className={fold.goodscell}>
-    	<p>x10</p>
-        <p>папки 50мм</p>
-        <div><img src={papka13} /></div>
-    </div></a>
-    
-   </div>
-</div>
-</section>
-
-<section id={fold.contentTab4}>
-<div className={[fold.boxgoods]+' '+[fold.b520]}>
- 
-  <a href="" className={fold.mainlinkb}> <div className={fold.mainpict}><img src={box506} /></div>
-   	<div className={fold.mainwords}>
-    	<p>Коробка 520 мм</p>
-        <p>для хранения папок архивных и скоросшивателей вмещает:</p>
-    </div>
-    </a>
-    
-  <div className={fold.goods}> 
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x4</p>
-        <p>папки 125мм</p>
-        <div><img src={papka11} /></div>
-    </div></a>
-    
-  <a href="">  <div className={fold.goodscell}>
-    	<p>x7</p>
-        <p>папки 70мм</p>
-        <div><img src={papka12} /></div>
-    </div></a>
-    
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x10</p>
-        <p>папки 50мм</p>
-        <div><img src={papka13} /></div>
-    </div></a>
-    
-    <a href=""> <div className={fold.goodscell}>
-    	<p>x6</p>
-        <p>папки 80мм</p>
-        <div><img src={papka09} /></div>
-    </div></a>
-    
-   </div>
-</div>
-</section>
-
-</div>
-
-<div className={fold.what}>
-   <p>Размер коробки</p> 
-</div>
-  
-  
-<div className={fold.tabs}>   
-
- <input id={fold.tab1} type="radio" name="tabs" checked />
-    <label for="tab1">390</label>
-    
- <input id={fold.tab2} type="radio" name="tabs" />
-    <label for="tab2">400</label>
- 
-    <input id={fold.tab3} type="radio" name="tabs" />
-    <label for="tab3">480</label>
-    
- 
-<section id={fold.contentTab1}>
-    <div className={[fold.boxgoods]+' '+[fold.b390]}>
- 
-        <a href="" className={fold.mainlinkb}> <div className={fold.mainpict}><img src={box390} /></div>
-            <div className={fold.mainwords}>
-            <p>Коробка 390 мм</p>
-            <p>для хранения папок архивных и скоросшивателей вмещает:</p>
-            </div>
-        </a>
-    
-  <div className={fold.goods}> 
-     <a href=""> <div className={fold.goodscell}>
-    	<p>x3</p>
-        <p>папки 120мм</p>
-        <div><img src={papka06} /></div> 
-   </div></a>
-    
-  <a href=""> <div className={fold.goodscell}>
-    	<p>x5</p>
-        <p>папки 75мм</p>
-        <div><img src={papka17} /></div>
-    </div></a>
-    
-  <a href=""> <div className={fold.goodscell}>
-    	<p>x5</p>
-        <p>папки 70мм</p>
-        <div><img src={papka16} /></div>
-   </div></a>
-    
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x7</p>
-        <p>папки 50мм</p>
-        <div><img src={papka05}  /></div>
-    </div></a>
-    
-  <a href=""> <div className={fold.goodscell}>
-    	<p>x11</p>
-        <p>папки 35мм</p>
-        <div><img  className={fold.p07} src={papka07} /></div>
-    </div></a>
-   
-    
-	</div>
+    <div className={fold.papki}>
+        <div className={fold.headbox}>
+            <div className={fold.what}>
+                <p>Что храним?</p>
+      {/* Верхний уровень — выбор категории */}
+      
+      
+      <div className={fold.tabs}>
+        {productsData.map(cat => (
+           <CategoryButton
+              key={cat.category} 
+              categoryName={cat.category} 
+              catClassName={`catButton ${cat.category === selectedCategory ? 'active' : ''}`} 
+              onClick={selectCategory} />
+         ))}
+      </div>
+      </div>
+      {/* Блок активных товаров */
+      currentProducts.length > 0 &&
+        <div className="products-container">
+          <ul className="product-list">
+            {currentProducts.map(item => (
+              <li key={item.id}>
+                <ProductButton
+                  productId={item.id}
+                  label={item.name}
+                  itemClassName={`itemButton ${item.id === selectedProduct ? 'active' : ''}`}
+                  onSelectProduct={selectProduct}
+                />
+              </li>
+            ))}
+          </ul>
+          
+          {/* Показываем активный продукт */
+          currentProducts.find(item => item.id === selectedProduct) && (
+            <ProductCard
+              title={currentProducts.find(item => item.id === selectedProduct).name}
+              description={currentProducts.find(item => item.id === selectedProduct).desc}
+              image={currentProducts.find(item => item.id === selectedProduct).img}
+              folders={currentProducts.find(item => item.id === selectedProduct).folders}              
+              isActive={true}
+            />
+          )}
+        </div>}
         </div>
-    </section>
+      </div>
+     </div>   
+    </>
+  );
+};
 
-
-    <section id={fold.contentTab2}>
-    <div className={[fold.boxgoods]+' '+[fold.b400]}>
- 
-  <a href="" className={fold.mainlinkb}> <div className={fold.mainpict}>
-    <img src={box400} /></div>
-   	<div className={fold.mainwords}>
-    	<p>Коробка 400 мм</p>
-        <p>для хранения папок архивных и скоросшивателей вмещает:</p>
-    </div>
-    </a>
-    
-  <div className={fold.goods}> 
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x3</p>
-        <p>папки 120мм</p>
-        <div><img src={papka01} /></div>
-    </div></a>
-    
-  <a href="">  <div className={fold.goodscell}>
-    	<p>x4</p>
-        <p>папки 100мм</p>
-        <div><img src={papka02} /></div>
-    </div></a>
-    
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x5</p>
-        <p>папки 80мм</p>
-        <div><img src={papka03} /></div>
-    </div></a>
-    
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x8</p>
-        <p>папки 50мм</p>
-        <div><img src={papka05}  /></div>
-    </div></a>
-    
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x13</p>
-        <p>папки 30мм</p>
-        <div><img  className={fold.p04}  src={papka04} /></div>
-    </div></a>
-  </div>
- </div>
-    </section>
-
-
-    <section id={fold.contentTab3}>
-    <div className={[fold.boxgoods]+' '+[fold.b480]}>
- 
-  <a href="" className={fold.mainlinkb}> <div className={fold.mainpict}>
-    <img src={box480} /></div>
-   	<div className={fold.mainwords}>
-    	<p>Коробка 480 мм</p>
-        <p>для хранения папок архивных и скоросшивателей вмещает:</p>
-    </div>
-    </a>
-    
-  <div className={fold.goods}> 
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x4</p>
-        <p>папки 120мм</p>
-        <div><img src={papka06} /></div>
-    </div></a>
-    
-  <a href="">  <div className={fold.goodscell}>
-    	<p>x6</p>
-        <p>папки 80мм</p>
-        <div><img src={papka03} /></div>
-    </div></a>
-    
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x8</p>
-        <p>папки 50мм</p>
-        <div><img src={papka05} /></div>
-    </div></a>
-    
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x13</p>
-        <p>папки 35мм</p>
-        <div><img  className={fold.p07} src={papka07}  /></div>
-    </div></a>
-    
-   <a href=""> <div className={fold.goodscell}>
-    	<p>x16</p>
-        <p>папки 30мм</p>
-        <div><img  className={fold.p04} src={papka04} /></div>
-    </div></a>
-  </div>
-    </div>
-    </section> 
-
-</div>
-
-</div>
-</div>
-</div>
-</>
-}
 
 export default Folders;

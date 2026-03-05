@@ -1,34 +1,15 @@
-.active{
-	background-color: #DA1F2A;
-	color:#fff;
-}
-
-.block {
-	border:1px solid #DA1F2A;
-	width:500px;
-	margin:0 auto;
-	background-color: aqua;
-}
-
-* {	
-	box-sizing: border-box;
-	-webkit-tap-highlight-color: transparent;
-	margin:0;
-	padding:0;
-}
-
-a {
-	text-decoration: none;
-}
-
-body {
-	/* width:100%; */
+.bG {
 	background-color:#D5E9FA;
+	width:100%;
 }
 
 .papki {
-	font-family:"Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	
+	font-family:"Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;	
+	position:relative;
+}
+
+.papki a {
+	text-decoration: none;;
 }
 
 @media  screen and (min-width:1000px) {
@@ -36,10 +17,6 @@ body {
 		width:900px;
 		margin:0 auto;
 	}
-}
-
-.papki {
-	position:relative;	
 }
 
  .boxgoods {
@@ -147,7 +124,7 @@ body {
 	text-decoration:none;
 }
 
-#tab1:checked~#content-tab1, #tab2:checked~#content-tab2, #tab3:checked~#content-tab3, #tab4:checked~#content-tab4, #tab5:checked~#content-tab5, #tab6:checked~#content-tab6, #tab7:checked~#content-tab7 {
+#tab1:checked~#contentTab1, #tab2:checked~#contentTab2, #tab3:checked~#contentTab3, #tab4:checked~#contentTab4, #tab5:checked~#contentTab5, #tab6:checked~#contentTab6, #tab7:checked~#contentTab7 {
 	display: block;
 }
 
