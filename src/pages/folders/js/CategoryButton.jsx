@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
-
+import { gsap } from 'gsap';
 
 const CategoryButton = ({ categoryName, catClassName, onClick }) => {
 

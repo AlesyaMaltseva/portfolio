@@ -28,7 +28,7 @@ const productsData = [
   {
     category: 'Папки-регистраторы',
     items: [
-      { id: 1, name: '390', img: box390Buge, desc: 'Для хранения папок архивных и скоросшивателей. Вмещает:',
+      { id: 1, name: '390', img: box390Buge, desc: 'Для хранения папок архивных и скоросшивателей.',
           folders: [
                     {cont: 3, size: 125, img: papka11},
                     {cont: 4, size: 90, img: papka13},
@@ -36,7 +36,7 @@ const productsData = [
                     {cont: 7, size: 50, img: papka15},
                   ]
       },
-      { id: 2, name: '480', img: box480Open, desc: 'Для хранения папок архивных и скоросшивателей. Вмещает:',
+      { id: 2, name: '480', img: box480Open, desc: 'Для хранения папок архивных и скоросшивателей.',
           folders: [
                     {cont: 5, size: 90, img: papka08},
                     {cont: 6, size: 80, img: papka09},
@@ -44,7 +44,7 @@ const productsData = [
                     {cont: 9, size: 50, img: papka13},
                   ]
       },          
-      { id: 3, name: '506', img: box506, desc: 'Для хранения папок архивных и скоросшивателей. Вмещает:',
+      { id: 3, name: '506', img: box506, desc: 'Для хранения папок архивных и скоросшивателей.',
           folders: [
                     {cont: 4, size: 125, img: papka11},
                     {cont: 6, size: 80, img: papka09},
@@ -52,7 +52,7 @@ const productsData = [
                     {cont: 10, size: 50, img: papka13},
                   ]
       },
-      { id: 4, name: '520', img: box520, desc: 'Для хранения папок архивных и скоросшивателей. Вмещает:',
+      { id: 4, name: '520', img: box520, desc: 'Для хранения папок архивных и скоросшивателей.',
           folders: [
                     {cont: 4, size: 125, img: papka11},
                     {cont: 7, size: 70, img: papka12},
@@ -63,18 +63,18 @@ const productsData = [
     ]
   },
   {
-    category: 'Архивные папки и скоросшиватели',
+    category: 'Папки архивные и скоросшиватели',
     items: [
-      { id: 5, name: '390', img: box390, desc: 'Для хранения папок архивных и скоросшивателей. Вмещает:',
+      { id: 5, name: '390', img: box390, desc: 'Для хранения папок архивных и скоросшивателей.',
           folders: [
-                    {cont: 3, size: 120, img: papka11},
+                    {cont: 3, size: 120, img: papka17},
                     {cont: 5, size: 75, img: papka09},
                     {cont: 5, size: 70, img: papka12},
                     {cont: 7, size: 50, img: papka13},
-                    {cont: 11, size: 35, img: papka13},
+                    {cont: 11, size: 35, img: papka16},
                   ]
       },
-      { id: 6, name: '400', img: box400, desc: 'Для хранения папок архивных и скоросшивателей. Вмещает:',
+      { id: 6, name: '400', img: box400, desc: 'Для хранения папок архивных и скоросшивателей.',
           folders: [
                     {cont: 3, size: 120, img: papka01},
                     {cont: 4, size: 100, img: papka02},
@@ -83,7 +83,7 @@ const productsData = [
                     {cont: 13, size: 30, img: papka04},
                   ]
       },
-      { id: 7, name: '480', img: box480, desc: 'Для хранения папок архивных и скоросшивателей. Вмещает:',
+      { id: 7, name: '480', img: box480, desc: 'Для хранения папок архивных и скоросшивателей.',
           folders: [
                     {cont: 4, size: 120, img: papka06},
                     {cont: 6, size: 80, img: papka03},
