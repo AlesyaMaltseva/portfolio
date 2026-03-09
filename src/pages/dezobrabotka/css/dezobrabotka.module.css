@@ -6,7 +6,7 @@
  
  
  body {
-    font-family: 'Fira Sans', sans-serif;
+    /* font-family: 'Fira Sans', sans-serif; */
     margin:0;
     padding:0;
     /* max-width: 100%; */
@@ -15,6 +15,7 @@
 .dezobrabotka {    
     position: relative;
     z-index: 1;
+    font-family: 'Fira Sans', sans-serif;
   }
 
   .dezobrabotka img {
@@ -94,6 +95,7 @@
     flex-direction: row;
     justify-content: center!important;
     margin: 18px 0 15px;
+     font-family: 'Fira Sans', sans-serif;
   }
   
 .top-line {

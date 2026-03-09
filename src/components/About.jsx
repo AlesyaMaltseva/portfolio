@@ -13,11 +13,11 @@ import avatar from '/src/assets/img/avatar.jpg';
 
 function About() {
 
-const importAll = (r) => {
-    let images = {} // Declare an empty images object
-    r.keys.map((item,index)=>{images[item.replace('./','')] = r(item).default;}) // Process all images to be placed in images obj with their file names!
-    return images // Return the images
-}
+// const importAll = (r) => {
+//     let images = {} // Declare an empty images object
+//     r.keys.map((item,index)=>{images[item.replace('./','')] = r(item).default;}) // Process all images to be placed in images obj with their file names!
+//     return images // Return the images
+// }
 
 useGSAP(() => { 
   

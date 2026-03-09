@@ -1,13 +1,8 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import $ from 'jquery';
-import uuid from 'react-uuid';
 import headers from '../parts/headers.jsx';
-import arrow from '/src/assets/img/arrow.svg';
+//import arrow from '/src/assets/img/arrow.svg';
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-//import './App.css'
-// import { useRef } from 'react'
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -72,11 +67,16 @@ import { useGSAP } from "@gsap/react";
 
 function Top() {
 
-const listItems = headers.map(item => <AnchorLink key={uuid()} href={item.url}>{item.name}</AnchorLink>);    
+const listItems = headers.map((item,i) => <AnchorLink key={i} href={item.url}>{item.name}</AnchorLink>);    
 
     return <>
       <div id="top-menu">
-        <AnchorLink href={headers[0].url} data-tooltip={headers[0].name} className="tooltip" id=""><img src={arrow} /></AnchorLink>
+        <AnchorLink href={headers[0].url} data-tooltip={headers[0].name} className="tooltip" id="">
+         <svg version="1.1" id="arrow" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" viewBox="0 0 50 30" enableBackground="new 0 0 50 25">
+          <path d="M48.962,21.065c0,0.59-0.26,1.173-0.757,1.568c-0.866,0.687-2.124,0.541-2.81-0.324L25,7.578L4.48,22.243 c-0.687,0.865-1.944,1.011-2.81,0.324s-1.01-1.944-0.324-2.811l22.087-16.64C23.813,2.639,24.39,2.36,25,2.36 s1.188,0.278,1.567,0.757l21.961,16.706C48.82,20.191,48.962,20.63,48.962,21.065z"/>
+        </svg>
+          {/* <img src={arrow} /> */}
+          </AnchorLink>
         {listItems}    
     </div>
     </>

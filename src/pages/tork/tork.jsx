@@ -1,3 +1,4 @@
+import ScrollToTop from '../../parts/ScrollToTop.js';
 import tork from './css/Tork.module.css';
 import $ from 'jquery';
 window.jquery = window.$ = $;
@@ -103,7 +104,7 @@ tab3.current.addEventListener("click", () => showTab("contentTab3", "banner3"));
 }, [])
 
 return <>
-
+<ScrollToTop />
 <div className={tork.torkLand} id={tork.torkLand} ref={torkLand}>
 <div className={[tork.torkBanner]+' '+[tork.anim]+' '+[tork.w985]}>
 		<img className={tork.tLogo} src={tLogo} />

@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import ScrollToTop from '../../parts/ScrollToTop.js';
 import iq from './css/iq.module.css';
 import Slider from './parts/Slider.jsx';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
@@ -11,7 +11,8 @@ import one from "./img/one.png"; import two from "./img/two.png"; import three f
 
 function IqMillion() {
 
-    return <> 
+return <> 
+<ScrollToTop />
 <IqMenu />
 <div className={iq.iqContent}>		
 		<div className={iq.iqTop}>
@@ -187,75 +188,6 @@ function IqMillion() {
 				<img src={logoCircle} />
 			</div>	
 		</div>	
-	
-		
-	
-	
-
-{/*
-	<script src="js/jquery-3.7.1.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	 <script>
- $(document).ready(function(){
- 
-	$(".owl-carousel").owlCarousel({
-	
-			items: 3,
-			loop: true,
-			
-			rewind: true,
-			margin:30,
-			
-			nav: true,
-			center: true,
-			dots:false
-
-  })}
- ) 
-
-
-$(init);
-
-function init() {
-  $('#slider').append($('#c-wrap'));
-  $('.scroll').append($('#region'));
- }
-
-function menuOnClick() {
-	document.getElementById("menu-bar").classList.toggle("change");
-	document.getElementById("nav").classList.toggle("change");
-	document.getElementById("menu-bg").classList.toggle("change-bg");
-	document.getElementById("menu-full-bg").classList.toggle("menu-full-change");
-	document.getElementById("a1").classList.toggle("a-rotate");
-	document.getElementById("a2").classList.toggle("a-rotate");
-	document.getElementsById("menu-full-bg").classList.toggle("menu-full-change");
-}
-
-
-function fMenu() {	
-	        $(window).scroll(function(){
-	            if($(this).scrollTop()>85) {
-	                $('.header-menu').addClass('f-menu');					
-	            }
-	            else if ($(this).scrollTop()<85){
-	                $('.header-menu').removeClass('f-menu');
-					$("#menu-full-bg").removeClass('menu-full-change');
-					$("#menu-bg").removeClass('change-bg');
-					$('#nav').removeClass('change');
-					$('#menu-bar').removeClass('change');
-					$('.nav a').removeClass('a-rotate');							
-	            }
-	        });
-	    };
-fMenu();
-
-
-	</script> */}
-	
-
-
-
-    
    </div>
 </>
 }

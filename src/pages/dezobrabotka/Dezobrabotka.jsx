@@ -1,3 +1,4 @@
+import ScrollToTop from '../../parts/ScrollToTop.js';
 import uuid from 'react-uuid';
 import "./css/dezobrabotka.css";
 import dez from "./css/dezobrabotka.module.css";
@@ -25,6 +26,7 @@ function Dezobrabotka() {
   const anchorLinks = links.map(item => <AnchorLink key={uuid()} href={item.link} offset='80'>{item.header}</AnchorLink>)
 
     return <>
+    <ScrollToTop />
 <div className="slider" id="up">
   <div className="blocks top-line">    
     {anchorLinks}    

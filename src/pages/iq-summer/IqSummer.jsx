@@ -1,3 +1,4 @@
+import ScrollToTop from '../../parts/ScrollToTop.js';
 import "./css/iq-summer.css"
 import IQEconomy from "./img/IQ-economy.png";
 import IQAllround from "./img/IQ-allround.png";
@@ -21,6 +22,7 @@ import heart from "./img/heart.png";
 function IqSummer() {
 
     return <>
+    <ScrollToTop />
     <div className="summer">
     <div className="top-block">
       

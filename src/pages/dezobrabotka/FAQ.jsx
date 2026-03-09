@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import accordionItems from './parts/accordionItems.jsx';
 import plus from './img/plus.png';
 import minus from './img/minus.png';
+import {v1 as uuidv1} from 'uuid';
 
 function FAQ() {
 
@@ -34,18 +35,19 @@ const [activeIndex, setActiveIndex] = useState(null);
 
   return (
     <>
+    
       {accordionItems.map((item, i) => (
-        <div key={i} className="FAQitem">
+         <div key={item[0]} className="FAQitem">
           {/* Заголовок пункта */}
           <div onClick={() => handleClick(i)} className="question">
-            {item[0]}
+            {item[1]}
             {' '}
             <span className="sign">{activeIndex === i ? <img src={minus} /> : <img src={plus} />}</span>
           </div>
           
           {/* Скрытый контент */}
-          <div id={`accordion-item-${i}`} className="answer" style={{ maxHeight: activeIndex === i ? `${document.querySelector(`#accordion-item-${i}`)?.scrollHeight ?? 0}px` : '0', overflow: 'hidden', transition: 'max-height 0.5s ease' }}>
-            {item[1]}
+          <div id={`accordion-item-${i}`}  className="answer" style={{ maxHeight: activeIndex === i ? `${document.querySelector(`#accordion-item-${i}`)?.scrollHeight ?? 0}px` : '0', overflow: 'hidden', transition: 'max-height 0.5s ease' }}>
+            {item[2].map((p, e) => <Fragment key={e}>{p}</Fragment>)}
           </div>
         </div>
       ))}

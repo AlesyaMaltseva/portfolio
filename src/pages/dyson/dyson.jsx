@@ -1,3 +1,4 @@
+import ScrollToTop from '../../parts/ScrollToTop.js';
 import DysonTop from './parts/DysonTop.jsx';
 import WashAndDry from './img/bottom/WashAndDry.png';
 import Main01s from './img/main/Main-01-s.jpg';
@@ -23,7 +24,7 @@ function Dyson() {
 
 
 return <>
-
+<ScrollToTop />
 <DysonTop />
 <div className={dyson.content}>
 

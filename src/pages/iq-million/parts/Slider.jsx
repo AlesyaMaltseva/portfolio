@@ -139,7 +139,7 @@ function resize() {
 
 
 // Карусель
-useLayoutEffect(() => {
+useEffect(() => {
   carousel(); 
 }, [])
 

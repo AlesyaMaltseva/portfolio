@@ -1,3 +1,4 @@
+import ScrollToTop from '../../parts/ScrollToTop.js';
 import { useState, useRef, useEffect, Fragment } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from "@gsap/react";
@@ -61,6 +62,7 @@ useEffect(() => {
 
   return (
     <>
+    <ScrollToTop />
 <div className='foldBg'>
     <div className="foldPapki">        
         <div className="foldWhat">

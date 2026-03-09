@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import uuid from 'react-uuid';
 import Top from './components/Top.jsx';
 import headers from './parts/headers.jsx';
-import './styles.scss';
+import './styles/styles.scss';
 import Url from './parts/url.jsx'
 // import 'bootstrap/dist/css/bootstrap.css'
 

@@ -20,10 +20,10 @@ $yellow: #fff957;
 $red: #C05555;
 
 //Размеры
-$borders:120px;
-$hight-top:1.6em;
-$biggest:10em;
-$text:1.7em;
+$borders:10rem;
+$height-top:1.6rem;
+$biggest:10rem;
+$text:1.7rem;
 
 @mixin dark-block {
     background-color: $black;
@@ -79,49 +79,53 @@ h1 {
 
 #top-menu {
     @include golos();
-     @include dark-block();   
+    @include dark-block();   
     font-size: 1.2em;
     display: flex; 
-    justify-content: flex-end;
-    padding: 1.2em 0 1em;
+    flex-direction: row;
+    justify-content: flex-end;    
     position: fixed;
     width:100%;
-    height: $hight-top;
     z-index:999;
-    opacity: .6;
+    opacity: 1;
            
     a {
         letter-spacing: .04em;
+        display: block;
+        text-align: right;
+        padding: 1.7rem 1.5rem 1.3rem;
         font-weight: 300;
         color:$white;
         will-change: transition, transform, scroll-position;
+        text-decoration: none;
         transition: .5s;
         &:not(:last-child) {
-            margin-right: 2.2em;;
+            //margin-right: 2.2em;;
         }
         &:last-child {
-            margin-right: $borders;
+            margin-right: $borders - 1.5rem;
         }
         &:hover {
             color:$yellow;
             transform: scale(1.2);
         }
         &:nth-child(2) {
-        display: none;
-        }       
+            display: none;
+        }   
     } 
 }
 
 .tooltip {
-  position: relative;
-  text-decoration: none; /* Убираем стандартное подчёркивание */
-        &::after {
+    position: relative;
+    text-decoration: none; /* Убираем стандартное подчёркивание */
+    &::after {
         content: attr(data-tooltip);
         position: absolute;
-        top: -1px; /* Можно подстроить это значение под себя */
-        left: -90px;
+        font-size: 1.1rem;
+        top: 1.65rem;
+        left: -3rem;
         z-index: 100; /* Подсказка будет отображаться поверх других элементов */
-        color: $white;
+        color: $yellow;
         // padding: 5px 10px;
         border-radius: 3px;
         // display: none; /* По умолчанию скрыта */
@@ -129,22 +133,41 @@ h1 {
         white-space: nowrap; /* Гарантирует, что текст не будет переноситься на следующую строку  */
         transition: 0.5s;
         }
-        &:hover::after {
-        display: block; /* При наведении показываем подсказку */
-        opacity: 1;
-        }
-}
+        &:hover {
+            &::after {
+                display: block; /* При наведении показываем подсказку */
+                opacity: 1;
+                }
+            #arrow {
+               fill:$yellow; 
+            }
+            }
+        #arrow {
+            position: relative;
+            fill:$white;
+            right:0;
+            top:0;
+            width:40px;
+            height:20px;            
+            
+            &:hover {
+                fill:$yellow;
+            }
+        }     
+}           
 
 .block{
-    height: 100vh;
-    padding:$hight-top*3 $borders 0;
+    height: var(--viewport-height);
+	min-height: 100vh;
+    padding:7rem $borders 3.5rem;
     @include flex-column();
-    position: relative;                
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    h1 {
+        padding-bottom: 2.5rem;
+    }
    }
-
-// .block:not(.block.block1) {
-//     padding-top:100px;
-// }
 
 .block1 {
     @include dark-block();
@@ -201,10 +224,10 @@ h1 {
     @include dark-block();   
 }
 
-#projects {
+.projects {
     display:grid;
     grid-template-columns:repeat(3, 1fr);
-    grid-gap: 4%;
+    grid-gap: 3rem;
     img {
         width:100%;
     }
