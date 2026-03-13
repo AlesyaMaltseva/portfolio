@@ -28,7 +28,7 @@ return <>
 <DysonTop />
 <div className={dyson.content}>
 
-	<div class={[dyson.dMain]+' '+ [dyson.black]}>		
+	<div className={[dyson.dMain]+' '+ [dyson.black]}>		
 		<div className={[dyson.topPicture]+' '+ [dyson.fw1025]}>
 			<div className={[dyson.b01]+' '+ [dyson.dyson]}>dyson <span className={dyson.modelGray}>airblade</span> <span className={dyson.modelYellow}>9kJ</span></div>
 			<div className={[dyson.b02]+' '+ [dyson.mont]}>Это самая быстрая и&nbsp;энергоэффективная сушилка для рук <nobr>с HEPA-фильтром<sup>1</sup></nobr></div>
