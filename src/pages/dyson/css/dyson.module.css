@@ -6,9 +6,8 @@
 
 
 @font-face {
-    font-family: 'Dyson Sans Modern';
-    src: url('Fonts/DysonSansModern-Regular.eot');
-    src: url('Fonts/DysonSansModern-Regular.eot?#iefix') format('embedded-opentype');
+    font-family: 'Dyson-Sans-Modern';
+    src: url('./fonts/DysonSansModern-Regular.ttf') format('truetype');    
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -30,7 +29,7 @@
 }
 
 .dyson, .bottom {
-	font-family:"Dyson Sans Modern", "Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family:"Dyson-Sans-Modern", "Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .modelGray {
