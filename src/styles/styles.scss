@@ -18,12 +18,49 @@ $black: #000;
 $white: #fff;
 $yellow: #fff957;
 $red: #C05555;
+// :root {--green:#3eae3e;}
 
 //Размеры
-$borders:10rem;
+$borders:8%;
 $height-top:1.6rem;
 $biggest:10rem;
-$text:1.7rem;
+$text:1.5rem;
+
+// Media
+$media: screen;
+$fMax: max-width;
+$fMin: min-width;
+$valueMax: 1681px;
+$valueXXL: 1680px;
+$valueXL: 1440px;
+$valueL: 1024px;
+$valueM: 800px;
+$valueS: 500px;
+
+@function fontSize($n,$fontSize) {
+	@return $n * $fontSize;
+}
+
+@mixin mediaFontSize($fontSize) {
+    @media #{$media} and ($fMin:$valueMax)  {      			
+				font-size:fontSize(2,$fontSize);
+			}
+    @media #{$media} and ($fMax:$valueXXL)  {      			
+				font-size:fontSize(1.75,$fontSize);
+			}
+    @media #{$media} and ($fMax:$valueXL)  {      			
+				font-size:fontSize(1.5,$fontSize);
+			}
+    @media #{$media} and ($fMax:$valueL)  {      			
+				font-size:fontSize(1.3,$fontSize);
+			}
+    @media #{$media} and ($fMax:$valueM)  {      			
+				font-size:fontSize(1.13,$fontSize);
+			}
+    @media #{$media} and ($fMax:$valueS)  {      			
+				font-size:$fontSize;
+			}    
+}
 
 @mixin dark-block {
     background-color: $black;
@@ -50,12 +87,22 @@ $text:1.7rem;
     flex-direction: row;
 }
 
+@mixin bigBlockWidth($width) {
+    max-width:$width;
+    margin: 0 auto;
+    width:100%; 
+    @media #{$media} and ($fMin:$valueXL)  {      			
+				max-width:80%;
+			}     
+}
+
 @mixin box($e) {
     width:$e;
     height:$e;
 }
 
 // Структура
+
 
 * {
 	box-sizing:border-box;
@@ -74,24 +121,40 @@ body {
 }
 
 h1 {
-    font-size: 2.35em;
+    font-size: 2.35rem;
 }
 
-#top-menu {
+.topLine {
+   color: #d0d0d0;
+   right:0;
+   position:absolute;
+   opacity:0;
+   margin-top: 70px;
+   width:0;
+   z-index: 10;
+   height: 1px;
+}
+
+#topMenu {
     @include golos();
-    @include dark-block();   
-    font-size: 1.2em;
-    display: flex; 
-    flex-direction: row;
-    justify-content: flex-end;    
+    @include dark-block();
     position: fixed;
+    display:flex;
+    align-items: flex-end;
+    font-size: 1.2em;    
     width:100%;
-    z-index:999;
-    opacity: 1;
-           
+    z-index:10;
+    padding-right:5rem;
+    opacity: 1;        
+    
+    .contentBlock {
+       @include flex-row();
+       width:100%;
+        justify-content: flex-end;    
+        }            
     a {
         letter-spacing: .04em;
-        display: block;
+        display: inline-flex;
         text-align: right;
         padding: 1.7rem 1.5rem 1.3rem;
         font-weight: 300;
@@ -99,15 +162,21 @@ h1 {
         will-change: transition, transform, scroll-position;
         text-decoration: none;
         transition: .5s;
-        &:not(:last-child) {
-            //margin-right: 2.2em;;
+        span {
+           opacity: 0;  
+           will-change: transition, transform, scroll-position;         
         }
-        &:last-child {
-            margin-right: $borders - 1.5rem;
-        }
+        // &:not(:last-child) {
+        //     margin-right: 2.2em;;
+        // }
+        // &:last-child {
+        //     margin-right: $borders - 1.5rem;
+        // }
         &:hover {
             color:$yellow;
-            transform: scale(1.2);
+            transform: scale(1.2)!important;
+            span { 
+            text-decoration: none!important; }                    
         }
         &:nth-child(2) {
             display: none;
@@ -159,15 +228,18 @@ h1 {
 .block{
     height: var(--viewport-height);
 	min-height: 100vh;
-    padding:7rem $borders 3.5rem;
+    padding:5.7rem 0 3.5rem;
     @include flex-column();
     position: relative;
     display:flex;
     flex-direction: column;
     h1 {
-        padding-bottom: 2.5rem;
+        padding-bottom: 2.5rem;        
+    }  
+    .contentBlock {
+        @include bigBlockWidth(68rem);   
     }
-   }
+}
 
 .block1 {
     @include dark-block();
@@ -178,34 +250,54 @@ h1 {
         .hi {
             font-size: $biggest;
             line-height: 1em;
+            @include mediaFontSize(7rem);        
             }
         .nameis {
             color:$yellow;
             font-size:$biggest - 4;
             line-height: 0.6em;
             align-self: center;
+            @include mediaFontSize(3.8rem);
             }
         .name {
             align-self: flex-end;
             @include flex-column();
             align-items: flex-end;
-            margin-top:-45px;
+            transform: translateY(-2rem);           
             div {
-                font-size:calc($biggest / 4);
+                font-size:2.6rem;
                 @include golos-extra-bold();
-                line-height: 1em;            
-                margin-top:-.25em;
+                font-weight: 900;
+                line-height: 1em;
+                @include mediaFontSize(1.7rem);			              
                 }
-                img {
-                    @include box(2.7em);                    
+            .namePhoto {
+                @include flex-row();
+                align-items: flex-end;
+                .firstname {
+                    margin-right:1.5rem;
                 }
+                .avatar {
+                    @include box(8rem);
+                    img {
+                        width:100%;
+                    }
+                    @media #{$media} and ($fMin:$valueXXL)  {      			
+				        @include box(12rem);
+			        }                    
+                }
+              }  
             }
         }
         .text {
             @include golos(); 
             font-size:$text;  
-            margin-top:-100px;
-            line-height: 1.2;      
+            margin-top:-3rem;
+            line-height: 1.2;
+            width:40rem; 
+            @include mediaFontSize(1rem);  
+                
+              
         }
         h1:first-child {
             display:none;
