@@ -7,7 +7,7 @@
 
 @font-face {
     font-family: 'Dyson-Sans-Modern';
-    src: url('./fonts/DysonSansModern-Regular.ttf') format('truetype');    
+    src: url('../fonts/DysonSansModern-Regular.ttf') format('truetype');    
     font-weight: normal;
     font-style: normal;
     font-display: swap;
