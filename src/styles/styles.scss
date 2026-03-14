@@ -37,6 +37,7 @@ $borders:8%;
 $height-top:1.6rem;
 $biggest:10rem;
 $text:1.5rem;
+$borderRadius: 0.4rem;
 
 // Media
 $media: screen;
@@ -49,6 +50,7 @@ $valueXLS: 1366px;
 $valueL: 1024px;
 $valueM: 800px;
 $valueS: 500px;
+$valueXS: 380px;
 
 @function fontSize($n,$fontSize) {
 	@return $n * $fontSize;
@@ -75,7 +77,10 @@ $valueS: 500px;
 			}
     @media #{$media} and ($fMax:$valueS)  {      			
 				font-size:$fontSize;
-			}    
+			}   
+    @media #{$media} and ($fMax:$valueXS)  {      			
+				font-size:$fontSize/1.2;
+			}   
 }
 
 @mixin dark-block {
@@ -106,15 +111,23 @@ $valueS: 500px;
 @mixin bigBlockWidth($width) {
     max-width:$width;
     margin: 0 auto;
-    width:100%; 
-    @media #{$media} and ($fMin:$valueXL)  {      			
-				max-width:80%;
-			}     
-}
+    width:$width; 
+} 
 
 @mixin box($e) {
     width:$e;
     height:$e;
+}
+
+@mixin square($e,$m) {
+    width:$e;
+    height:$m;
+}
+
+@mixin circle($e) {
+    width:$e;
+    height:$e;
+    border-radius: 50%;
 }
 
 // Структура
@@ -138,7 +151,7 @@ body {
 }
 
 h1 {
-    font-size: 2.35rem;
+    font-size: 2.1rem;
 }
 
 .topLine {
@@ -186,13 +199,7 @@ h1 {
         span {
            opacity: 0;  
            will-change: transition, transform, scroll-position;         
-        }
-        // &:not(:last-child) {
-        //     margin-right: 2.2em;;
-        // }
-        // &:last-child {
-        //     margin-right: $borders - 1.5rem;
-        // }
+        }    
         &:hover {
             color:$yellow;
             transform: scale(1.2)!important;
@@ -207,25 +214,24 @@ h1 {
 
 .tooltip {
     position: relative;
-    text-decoration: none; /* Убираем стандартное подчёркивание */
+    text-decoration: none; 
     &::after {
         content: attr(data-tooltip);
         position: absolute;
         font-size: 1.1rem;
         top: 1.65rem;
         left: -3rem;
-        z-index: 100; /* Подсказка будет отображаться поверх других элементов */
+        z-index: 100;
         color: $yellow;
-        // padding: 5px 10px;
         border-radius: 3px;
-        // display: none; /* По умолчанию скрыта */
+        display: none; 
         opacity: 0;
-        white-space: nowrap; /* Гарантирует, что текст не будет переноситься на следующую строку  */
+        white-space: nowrap; 
         transition: 0.5s;
         }
         &:hover {
             &::after {
-                display: block; /* При наведении показываем подсказку */
+                display: block; 
                 opacity: 1;
                 }
             #arrow {
@@ -258,7 +264,7 @@ h1 {
         padding-bottom: 2.5rem;        
     }  
     .contentBlock {
-        @include bigBlockWidth(68rem);   
+        @include bigBlockWidth(80%);   
     }
 }
 
@@ -271,6 +277,7 @@ h1 {
         .hi {
             font-size: $biggest;
             line-height: 1em;
+            opacity: 0;
             @include mediaFontSize(7rem);        
             }
         .nameis {
@@ -278,6 +285,7 @@ h1 {
             font-size:$biggest - 4;
             line-height: 0.6em;
             align-self: center;
+            opacity: 0;
             @include mediaFontSize(3.8rem);
             }
         .name {
@@ -297,9 +305,11 @@ h1 {
                 align-items: flex-end;
                 .firstname {
                     margin-right:1.5rem;
+                    opacity: 0;
                 }
                 .avatar {
                     @include box(8rem);
+                    opacity: 0;
                     img {
                         width:100%;
                     }
@@ -309,18 +319,20 @@ h1 {
                 }
               }  
             }
+            .surname {
+                opacity: 0;
+            }
         }
         .text {
             @include golos(); 
             font-size:$text;  
             margin-top:-3rem;
-            line-height: 1.2;
+            line-height: 1.5;
+            opacity: 0;
             width:55%; 
-            @include mediaFontSize(1rem);
-            // /display:none;  
-                
-              
+            @include mediaFontSize(1.1rem);           
         }
+
         h1:first-child {
             display:none;
         }
@@ -338,14 +350,102 @@ h1 {
     @include dark-block();   
 }
 
+
+.experience {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap:2rem;
+    .expList {
+        background-color: $white;
+        border-radius:$borderRadius;
+        padding:1.3rem;
+        .company {
+            font-size: 1.3rem;
+        }
+        .year {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        .position {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        .description {
+            font-size: 1rem;
+        }
+    }
+}
+
 .projects {
     display:grid;
     grid-template-columns:repeat(3, 1fr);
     grid-gap: 3rem;
-    img {
-        width:100%;
+    @media #{$media} and ($fMax:$valueM)  {      			
+				grid-template-columns:repeat(2, 1fr);
+			}
+    @media #{$media} and ($fMax:$valueS)  {      			
+				grid-template-columns:repeat(1, 1fr);
+			}
+    
+
+    .project {
+        position: relative;
+        overflow: hidden;
+        transition: 0.3s;
+        border-radius: $borderRadius;
+        img {
+            @include box(100%);
+            }
+        &::after {
+            content:'';
+            display:block;            
+            position:absolute;
+            background-color: $yellow;
+            @include circle(2px);
+            transition: 0.8s;
+            top:0;
+            left:0;
+            opacity: 0;
+            border: none;
+            z-index: 1;            
+            }  
+        .projectDesc {
+            position: absolute;
+            top:20%;
+            transform: translateX(-200%);
+            z-index: 2;   
+            opacity: 0;
+            width:77%;
+            font-size:1.2rem;
+            color:#C05555;
+            font-weight: 600;
+            transition: 1s;
+            &:hover {
+                text-decoration: underline;
+                transition: 1s;
+            }      
+            }           
+        &:hover {
+            box-shadow: 7px 7px 9px rgba(26, 26, 26, 0.25);
+            scale:1.12;
+            transition: 0.4s;
+         .projectDesc {
+             opacity: 1;
+             transform: translateX(8%); 
+             transition: 0.5s; 
+            }
+            &::after {
+                border: none;
+                transition: 0.3s;
+                scale:310;
+                background-color:$yellow;
+                opacity: 0.9;
+            }
+        }           
+       
     }
 }
+
 
 
 

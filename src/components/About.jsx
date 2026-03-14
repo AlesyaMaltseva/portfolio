@@ -20,25 +20,39 @@ function About() {
 // }
 
 useGSAP(() => { 
+
+document.fonts.ready.then(() => {
+
 const about = gsap.timeline();
+
+gsap.to(".hi", {
+  opacity:1,
+  duration: 1,
+  delay:0.3,
+}) 
 
 let splitHi = SplitText.create(".hi", { type: "words, chars" });  //НАЧАЛО
 gsap.from(splitHi.chars, {
    x: 250,
-    opacity: 0,
-    duration: 0.4, 
-    ease: "power4",
-    delay:0.7,
-    stagger: 0.05    
+    opacity: 1,
+    duration: 0.7, 
+    ease: "power4.out",
+    //delay:0.5,
+    stagger: 0.07    
 });
+
+gsap.to(".nameis", {
+  opacity:1,
+  duration: 0.6,
+  delay:0.8,
+}) 
 
 let splitNameIs = SplitText.create(".nameis", { type: "words, chars" });
 gsap.from(splitNameIs.chars, {
    x: 250,
-    opacity: 0,
-    duration: 0.4, 
+    duration: 0.6, 
     ease: "power4",
-    delay:1.3,
+    delay:0.6,
     stagger: 0.05    
 });
 
@@ -50,7 +64,7 @@ gsap.fromTo(".name .firstname", {
     ease: "back.out(1,0.3)", 
     y:0, 
     opacity:1,
-    delay:1.8, 
+    delay:1.4, 
   }
 );
 
@@ -62,7 +76,7 @@ gsap.fromTo(".name .firstname", {
     ease: "back.out(1,0.3)",
     y:0,
      opacity:1, 
-     delay:1.8,
+     delay:1.4,
   }
 );   
 
@@ -74,38 +88,39 @@ gsap.fromTo(".name .avatar", {
   duration:0.8,
   y:0,
   ease:"back.out",
-   delay:1.7,
+   delay:1.35,
 }
 )
 
+gsap.to('.text', {
+  opacity:1,
+  duration: 0.5, 
+  delay:1.3,
+})
 
-let splitText = SplitText.create(".text", { type: "words, chars, lines" });
+let splitText = SplitText.create(".text", { type: "words, lines" });
 gsap.from(splitText.words, {
    y: -100,
     opacity: 0,
-    rotation: "random(-100, 80)",
+    rotation: "random(-120, 80)",
     duration: 0.8, 
     ease: "back.out",
     stagger: 0.05,    
     transformOrigin: "50% 50% -180px",
     rotationX: -50,
-    delay:2,
+    delay:1.3,
 });
 
-gsap.fromTo(splitText.lines, {
-  y:-200,
-    
-}, {
-  y:-40,
-  transformOrigin: "100% 100% 0px",    
-    duration: 1, 
+gsap.to(splitText.lines, {
+  y:-30,
+  // /transformOrigin: "100% 100% 0px",    
+    duration: 1.5, 
     ease: "back.out",
-    stagger: 0.03,
-    delay:2.1,
-}
-
-);
-
+    stagger: 0.1,
+    delay:1.3,
+    
+});
+ });
 });	
 
   return  <>
@@ -119,7 +134,7 @@ gsap.fromTo(splitText.lines, {
               </div> 
               <div className="surname">Мальцева</div>
             </div>
-          <div className="text">Я HTML-верстальщик и контент-менеджер. Это мой сайт-портфолио, где есть информация об&nbsp; опыте работы, образованиях, а&nbsp;также некоторые выполненные проекты. Благодарю вас за&nbsp;посещение и&nbsp;проявленный интерес.</div>
+          <div className="text">Я HTML-верстальщик и контент-менеджер. Это мой сайт-портфолио, где есть информация об опыте работы, образованиях, а также некоторые выполненные проекты. Благодарю вас за посещение и проявленный интерес.</div>
         </div>        
     </>  
 }

@@ -1,22 +1,21 @@
 import { useState, useRef } from 'react';
-import experience from '../parts/experience.js';
+import experience from '../parts/experience.jsx';
 
 // import 'bootstrap/dist/css/bootstrap.css'
 
 function Experience() {
 
-const experienceList = experience.map((item,i)=>
-    <div key={i}>
-      <div>{item.company}</div>
-      <div>{item.year}</div>
-      <div>{item.position}</div>
-      <div>{item.text}</div>
-    </div>
-)   
 
   return  <>    
-    {experienceList}       
-    </>  
+    {experience.map((item,i)=>
+    <div key={i} className='expList'>
+      <div className='company'>{item.company}</div>
+      <div className='year'>{item.year}</div>
+      <div className='position'>{item.position}</div>
+      <div className='description'>{item.text}</div>
+    </div>
+)}       
+  </>  
 }
 
 export default Experience

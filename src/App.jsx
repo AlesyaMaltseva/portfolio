@@ -8,17 +8,17 @@ import './styles/styles.scss';
 
 function App() {
 
-const importAll = (r) => {
-    let images = {} // Declare an empty images object
-    r.keys.map((item,index)=>{images[item.replace('./','')] = r(item).default;}) // Process all images to be placed in images obj with their file names!
-    return images // Return the images
-}
+// const importAll = (r) => {
+//     let images = {} // Declare an empty images object
+//     r.keys.map((item,index)=>{images[item.replace('./','')] = r(item).default;}) // Process all images to be placed in images obj with their file names!
+//     return images // Return the images
+// }
 
-const structure = headers.map(item => 
-    <div key={uuid()} id={item.id} className={item.className} >
+const structure = headers.map((item,i) => 
+    <div key={i} id={item.id} className={item.className} >
       <div className="contentBlock">
         <h1>{item.name}</h1>
-        <div>{item.block}</div>
+        <div className={item.id}>{item.block}</div>
       </div>
     </div>    
 );
