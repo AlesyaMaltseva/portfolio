@@ -130,7 +130,7 @@ gsap.to(splitText.lines, {
             <div className="name">
               <div className='namePhoto'>
                   <div className="firstname">Алеся</div>
-                  <div className="avatar"><img src={avatar}  /></div>
+                  <div className="avatar"><img src={avatar} /></div>
               </div> 
               <div className="surname">Мальцева</div>
             </div>

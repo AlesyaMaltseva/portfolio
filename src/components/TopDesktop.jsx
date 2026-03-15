@@ -12,14 +12,22 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 
 function TopDesktop() {
-const topMenu = useRef(null);
-const { contextSafe } = useGSAP({scope: topMenu}); 
+//const topMenu = useRef(null);
+//const { contextSafe } = useGSAP({scope: topMenu}); 
 
 useGSAP(()=>{  
-const menuItems = document.querySelectorAll('#topMenu a span');
+
+const menuItems = document.querySelectorAll('.topMenuDesktop a span');
+const menuItemsLink = document.querySelectorAll('.topMenuDesktop .menuItems a');
 const topLine = document.querySelector('.topLine');
 const toolTip = document.querySelector('.tooltip');
 const lineMenu = gsap.timeline();
+
+document.fonts.ready.then(() => {
+
+  gsap.to(menuItemsLink, {
+    color:"#fff",
+  })
 
 gsap.fromTo(menuItems,   
     {x:-400,
@@ -62,13 +70,14 @@ gsap.to(toolTip,
       start: 0,
       toggleActions: "play none none reset",
 }})
-
 })
+})
+
 
 const listItems = headers.map((item,i) => <AnchorLink key={i} href={item.url}><span>{item.name}</span></AnchorLink>);    
 
     return <>    
-      <div id="topMenu" ref={topMenu}>
+      <div id="topMenu" className="topMenuDesktop">
         <div className="menuItems">
         <AnchorLink href={headers[0].url} data-tooltip={headers[0].name} className="tooltip" id="">
          <span><svg version="1.1" id="arrow" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" viewBox="0 0 50 30" enableBackground="new 0 0 50 25">

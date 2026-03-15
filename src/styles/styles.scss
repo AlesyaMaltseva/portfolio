@@ -167,91 +167,128 @@ h1 {
 
 #topMenu {
     @include golos();
-    @include dark-block();
+    
     position: fixed;
     display:flex;
-    align-items: flex-end;
     font-size: 1.2em;    
     width:100%;
-    z-index:10;
-    padding-right:5rem;
-    opacity: 1;     
-    @media #{$media} and ($fMax:$valueM)  {      			
-		        font-size: 1rem;	    
-                width:auto;	
-                right:0;
-                padding-right:0;                
-			}
+    z-index: 1000;      
+}
+
+.topMenuMobile {
+     @include flex-row();
+     background-color: none;
+     justify-content: space-between;
+     position: relative;
+     width:100%;
+     font-size: 1rem;
+     z-index: 100; 
+     svg {
+        margin-top:1rem;
+     }    
+    #arrow {
+        width:2rem;                
+     }
+    .burgerMobileMenu {
+      position: absolute;
+      right:0;
+      @include flex-column(); 
+      //background-color: #C05555; 
+      border-radius: $borderRadius;     
+      #burgerImg {
+        width:3.2rem; 
+        align-self: flex-end;
+        }
+      .menuMobileItems { 
+        display:none;                 
+        @include flex-column();                
+        padding-top:1rem;                           
+        a {       
+            padding: 0 1rem 1rem;
+            font-weight: 300;
+            color:$white;
+            will-change: transition, transform, scroll-position;
+            text-decoration: none;
+            transition: .5s; 
+            &:first-child {
+                display:none;
+            } 
+            span {             
+            letter-spacing: .04em;
+            white-space: nowrap;
+            will-change: transition, transform, scroll-position;
+            display:block;
+            padding:0 1.3rem 0.6rem;                    
+            }     
+        }
+    }   
+  }
+}
+
+.topMenuDesktop {
+     padding-right:5rem;
+     @include dark-block();
+     align-items: flex-end;
     .menuItems {
        @include flex-row();
        width:100%;
-        justify-content: flex-end;
-        @media #{$media} and ($fMax:$valueM)  {      			
-				@include flex-column(); 
-                padding-top:1rem;               
-			}    
-        }            
+        justify-content: flex-end;                        
     a {       
         display: inline-flex;
         padding: 1.7rem 1.5rem 1.3rem;
         font-weight: 300;
-        color:$white;
-        will-change: transition, transform, scroll-position;
+        color:$black;
+        will-change: transition, transform, scroll-position, color;
         text-decoration: none;
-        transition: .5s;
-        @media #{$media} and ($fMax:$valueM)  {      			
-			    padding: 0 1rem 1rem;                               
-			    } 
+        transition: .3s;
         span {
            opacity: 1;  
            letter-spacing: .04em;
            white-space: nowrap;
            will-change: transition, transform, scroll-position;         
-        }    
-        &:hover {
-            color:$yellow;
-            transform: scale(1.2)!important;
-            @media #{$media} and ($fMax:$valueM)  {      			
-			    color:inherit;
-                transform: none!important;
-                }
+            transition: 0.3s;
+            }
+        &:hover {                    
             span { 
-            text-decoration: none!important; 
+            text-decoration: none!important;
+            color:$yellow!important;
+            transform: scale(1.2)!important;
+            transition: 0.3s;
+            color:$yellow;              
             }                    
         }
         &:nth-child(2) {
             display: none;
         }   
-    } 
-}
-
-.tooltip {
-    position: relative;
-    text-decoration: none;
-    display: none;
-    opacity: 0;
-    position: absolute;
-    left:8.5%;
-    &::after {
-        content: attr(data-tooltip);
-        position: absolute;
-        font-size: 1rem;
-        top: 1.7rem;
-        left: 4.1rem;
-        z-index: 100;
-        color: $yellow;
+        } 
+    }
+    .tooltip {
+        position: relative;
+        text-decoration: none;
+        display: none;
         opacity: 0;
-        white-space: nowrap; 
-        transition: 0.5s;
-        }
-        &:hover {
-            &::after {
-                display: block; 
-                opacity: 1;
-                }
-            #arrow {
-               fill:$yellow; 
+        position: absolute;
+        left:8.5%;
+        &::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            font-size: 1rem;
+            top: 1.7rem;
+            left: 4.1rem;
+            z-index: 100;
+            color: $yellow;
+            opacity: 0;
+            white-space: nowrap; 
+            transition: 0.5s;
             }
+            &:hover {
+                &::after {
+                    display: block; 
+                    opacity: 1;
+                    }
+                #arrow {
+                fill:$yellow; 
+                }
             }
         #arrow {
             position: relative;
@@ -265,7 +302,8 @@ h1 {
                 fill:$yellow;
             }
         }     
-}           
+    } 
+}          
 
 .block{
     height: var(--viewport-height);
@@ -275,6 +313,9 @@ h1 {
     position: relative;
     display:flex;
     flex-direction: column;
+    @media #{$media} and ($fMax:$valueM)  {      			
+				padding:2.7rem 0 3.5rem;              
+			}
     h1 {
         padding-bottom: 2.5rem;        
     }  
@@ -285,13 +326,15 @@ h1 {
 
 .block1 {
     @include dark-block();
-
-    .first {
+    overflow: hidden;
+    .first {        
         @include caveat();
         @include flex-column();
+        
         .hi {
             line-height: 1em;
             opacity: 0;
+            will-change: opacity,position,display,scale,translate,transform;
             @include mediaFontSize(7rem);        
             }
         .nameis {
