@@ -6,10 +6,11 @@ import AnchorLink from 'react-anchor-link-smooth-scroll'
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { MotionPathHelper } from "gsap/MotionPathHelper";
 import gsapTop from '../parts/gsapTop.js';
-gsap.registerPlugin(useGSAP, ScrollTrigger);
-
-
+gsap.registerPlugin(useGSAP, ScrollTrigger,MorphSVGPlugin,MotionPathPlugin,MotionPathHelper);
 
 
 function TopMobile() {
@@ -19,31 +20,9 @@ const arrow = useRef(null);
 const burgerMobileMenu = useRef(null);
 const menuMobileItems = useRef(null);
 
-const { contextSafe } = useGSAP({scope: topMenu}); 
+//const { contextSafe } = useGSAP({scope: burgerMobileMenu}); 
 
 useGSAP(()=>{  
-const menuItems =  document.querySelectorAll('.topMenuMobile a span');
-
-const lineMenu = gsap.timeline();
-
-gsap.fromTo(menuItems,   
-    {x:-400,
-        opacity:0,
-        color:'#ccc',
-        rotate:30,
-    }, 
-    {x:0, 
-        //delay:2.5,
-        color:'inherit',
-        duration:0.8,
-        stagger:-0.2, 
-        ease: "back.out",
-        opacity:1,
-       rotate:0,
-      }
-    );
-
-
 
 gsap.to(arrow.current, 
   {display:'block',
@@ -54,11 +33,103 @@ gsap.to(arrow.current,
       start: 0,
       toggleActions: "play none none reset",
 }})
+const menu = gsap.timeline();
 
+menu.to("#one", {
+  duration:.4,
+  rotation:135,
+  transformOrigin: "50% 50%",
+   yPercent:230,
+   delay:0.2,   
 })
 
+.to("#two", {
+  duration:.2,
+  rotation:90,
+  transformOrigin: "50% 50%",
+  yPercent:-230,  
+}, '<')
+
+.to("#two", {
+  duration:.2,
+  rotation:45,
+},'<')
+
+.to("#three", {
+  duration:.1,
+  rotation:90,
+  opacity:0,
+  transformOrigin: "50% 50%",  
+},'<')
+.to(".burgerDiv", {
+  duration:.2,
+  scale:1.5,
+},)
+.to(".burgerDiv", {
+  duration:.4,
+  scale:1,
+  ease:'elastic.out',
+},)
+.to(".burgerDiv", {
+  duration:.4,
+  rotate:360,
+  ease:'elastic.out',
+},)
+menu.pause();
+
+const burgerMobileMenu =  document.querySelector('.burgerMobileMenu');
+const menuMobileItems =  document.querySelectorAll('.menuMobileItems span');
+
+const accordeon = gsap.timeline();
+accordeon.to(burgerMobileMenu, {
+    backgroundColor:'#b9b9b9',
+    duration:.2,
+})
+.fromTo(menuMobileItems, {
+    xPercent:200,
+    opacity:0,
+    display:'block',
+}, {
+    xPercent:0,
+    opacity:1,
+    stagger:0.05,
+    duration:.3,
+},'<')
+
+
+
+accordeon.pause()
+
+const menuButton = document.querySelector('.burgerContainer');
+const menuLinks = document.querySelector('.menuMobileItems');
+let play = true;
+
+function clickButton(target) {
+  target.addEventListener('click', ()=>{
+      if (play) { 
+      menu.play();
+      accordeon.play(); 
+      play = false;     
+    }
+    else  {
+      menu.reverse();
+      accordeon.reverse();
+      play = true;         
+    }
+});
+}
+
+
+clickButton(menuButton);
+clickButton(menuLinks);
+
+});
+
+
+
+
     return <>    
-      <div id="topMenu" className="topMenuMobile" ref={topMenuMobile}>              
+      <div id="topMenu" className="topMenuMobile">              
         <AnchorLink href={headers[0].url}  data-tooltip={headers[0].name} className="tooltip" id="">
          <span>
             <svg ref={arrow} version="1.1" id="arrow" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" viewBox="0 0 50 30" enableBackground="new 0 0 50 25"  fill="#ffffff">
@@ -66,19 +137,29 @@ gsap.to(arrow.current,
             </svg>
          </span>
         </AnchorLink>  
-          <div className="burgerMobileMenu" ref={burgerMobileMenu}>
-            <svg id="burgerImg" ref={burgerImg} xmlns="http://www.w3.org/2000/svg" viewBox="-10 0 100 60" fill="#ffffff">
-            <path id="open" d="M-4.662,9H54.66C57.608,9,60,6.986,60,4.5C60,2.016,57.608,0,54.66,0H-4.662C-7.61,0-10,2.016-10,4.5 C-10,6.986-7.61,9-4.662,9z M54.66,41H-4.662C-7.61,41-10,43.016-10,45.501S-7.61,50-4.662,50H54.66c2.948,0,5.34-2.014,5.34-4.499S57.608,41,54.66,41z M54.66,20.5H-4.662C-7.61,20.5-10,22.514-10,25c0,2.484,2.39,4.5,5.338,4.5H54.66c2.948,0,5.34-2.016,5.34-4.5 C60,22.514,57.608,20.5,54.66,20.5z"/> 
-            </svg> 
+
+        <div className="burgerMobileMenu">
+            <div className="burgerContainer">
+              <div className="burgerDiv">
+                  <svg id="burgerSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xmlSpace="preserve"> 
+                        <g id="burgerGroup">
+                    <path id="one" d="M-4.662,9H54.66C57.608,9,60,6.986,60,4.5C60,2.016,57.608,0,54.66,0H-4.662C-7.61,0-10,2.016-10,4.5 C-10,6.986-7.61,9-4.662,9z"/>
+                    <path id="two" d="M54.66,41H-4.662C-7.61,41-10,43.016-10,45.501S-7.61,50-4.662,50H54.66c2.948,0,5.34-2.014,5.34-4.499S57.608,41,54.66,41z"/>
+                    <path id="three" d="M54.66,20.5H-4.662C-7.61,20.5-10,22.514-10,25c0,2.484,2.39,4.5,5.338,4.5H54.66c2.948,0,5.34-2.016,5.34-4.5 C60,22.514,57.608,20.5,54.66,20.5z"/>
+                  </g> 
+                  </svg>
+              </div> 
+            </div>    
+                   
             <div className="menuMobileItems" ref={menuMobileItems}> 
               {headers.map((item,i) => 
               <AnchorLink key={i} href={item.url}>
                 <span>{item.name}</span>
               </AnchorLink>)}  
             </div>
-          </div>
+          
        </div>     
-    
+      </div>
     </> 
     
 }

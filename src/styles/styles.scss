@@ -182,30 +182,46 @@ h1 {
      position: relative;
      width:100%;
      font-size: 1rem;
-     z-index: 100; 
-     svg {
-        margin-top:1rem;
-     }    
+     z-index: 100;         
     #arrow {
         width:2rem;                
      }
     .burgerMobileMenu {
-      position: absolute;
-      right:0;
+      
       @include flex-column(); 
-      //background-color: #C05555; 
-      border-radius: $borderRadius;     
-      #burgerImg {
-        width:3.2rem; 
-        align-self: flex-end;
-        }
-      .menuMobileItems { 
-        display:none;                 
+      border-radius: 0 0 0 $borderRadius;
+           
+        .burgerContainer {             
+            width:40px;
+            height:40px;
+            //transform-origin: 50% 50%;            
+            display: flex;
+            flex-direction: column;
+            align-self: flex-end;             
+            background-color: black;
+            border-radius: 50%;
+            }
+            #burgerSVG {            
+            transform-origin: 50% 50%;
+            width: 100%;
+            height: 100%;
+            display:block;           
+            }
+            #burgerGroup {
+            transform: translate(25%, 25%);
+            display:block;          
+            }
+            #one, #two, #three {
+            will-change: transform, rotation, opacity;
+            fill:white;
+            }
+      .menuMobileItems {                          
         @include flex-column();                
         padding-top:1rem;                           
         a {       
             padding: 0 1rem 1rem;
             font-weight: 300;
+            display:block;
             color:$white;
             will-change: transition, transform, scroll-position;
             text-decoration: none;
@@ -213,7 +229,8 @@ h1 {
             &:first-child {
                 display:none;
             } 
-            span {             
+            span {       
+            display:none;      
             letter-spacing: .04em;
             white-space: nowrap;
             will-change: transition, transform, scroll-position;
