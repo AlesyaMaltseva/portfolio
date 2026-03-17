@@ -107,7 +107,7 @@ accordeon.to(menuMobileItems.current, {
 const menuLinks = document.querySelectorAll('.menuMobileItems a');
 let playMenu = true;
 
-function clickButton() {
+function clickButton() {  
    if (playMenu) { 
       menu.play();
       accordeon.play();       
@@ -116,7 +116,8 @@ function clickButton() {
           opacity:0.4,
           duration:.6,
       });               
-      playMenu = false;     
+      playMenu = false; 
+      //console.log(playMenu)    
     }
     else  {
       menu.reverse();
@@ -126,25 +127,36 @@ function clickButton() {
           duration:.6,
           display:'none',
       });     
-      playMenu = true;         
-    }
+      playMenu = true; 
+      //console.log(playMenu)           
+    }  
 }
 
-const events = ['click', 'touchstart'];
+let event;
 
-events.forEach((eventType) => {
-    burgerContainer.current.addEventListener(eventType, clickButton);
-    divGray.current.addEventListener(eventType, clickButton);
-    for (let menuLink of menuLinks) {
-      menuLink.addEventListener(eventType, clickButton);    
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+if (isMobileDevice()) {
+    event = 'touchstart';
+    console.log("Это мобильное устройство");
+} else {
+    event = 'click';
+    console.log("Это не мобильное устройство");
+}
+
+
+burgerContainer.current.addEventListener(event, clickButton);
+divGray.current.addEventListener(event, clickButton);
+for (let menuLink of menuLinks) {
+  menuLink.addEventListener(event, clickButton);  
  }
-});
 
-// clickButton(,'click','touchstart');
-// clickButton(divGray.current,'click','touchstart');
+// clickButton(burgerContainer.current, event);
+// clickButton(divGray.current, event);
 // for (let menuLink of menuLinks) {
-//  clickButton(menuLink,'click','touchstart');
-// }
+//   clickButton(menuLink, event);
+//  }
 
 });
 
@@ -162,11 +174,11 @@ events.forEach((eventType) => {
             <div className="burgerContainer" ref={burgerContainer}>
               <div className="burgerDiv">
                   <svg id="burgerSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xmlSpace="preserve"> 
-                        <g id="burgerGroup">
-                    <path id="one" d="M-4.662,9H54.66C57.608,9,60,6.986,60,4.5C60,2.016,57.608,0,54.66,0H-4.662C-7.61,0-10,2.016-10,4.5 C-10,6.986-7.61,9-4.662,9z"/>
-                    <path id="two" d="M54.66,41H-4.662C-7.61,41-10,43.016-10,45.501S-7.61,50-4.662,50H54.66c2.948,0,5.34-2.014,5.34-4.499S57.608,41,54.66,41z"/>
-                    <path id="three" d="M54.66,20.5H-4.662C-7.61,20.5-10,22.514-10,25c0,2.484,2.39,4.5,5.338,4.5H54.66c2.948,0,5.34-2.016,5.34-4.5 C60,22.514,57.608,20.5,54.66,20.5z"/>
-                  </g> 
+                    <g id="burgerGroup">
+                      <path id="one" d="M-4.662,9H54.66C57.608,9,60,6.986,60,4.5C60,2.016,57.608,0,54.66,0H-4.662C-7.61,0-10,2.016-10,4.5 C-10,6.986-7.61,9-4.662,9z"/>
+                      <path id="two" d="M54.66,41H-4.662C-7.61,41-10,43.016-10,45.501S-7.61,50-4.662,50H54.66c2.948,0,5.34-2.014,5.34-4.499S57.608,41,54.66,41z"/>
+                      <path id="three" d="M54.66,20.5H-4.662C-7.61,20.5-10,22.514-10,25c0,2.484,2.39,4.5,5.338,4.5H54.66c2.948,0,5.34-2.016,5.34-4.5 C60,22.514,57.608,20.5,54.66,20.5z"/>
+                    </g> 
                   </svg>
               </div> 
             </div>    
