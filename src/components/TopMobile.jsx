@@ -33,7 +33,7 @@ gsap.to(arrow.current,
       start: 0,
       toggleActions: "play none none reset",
 }})
-const menu = gsap.timeline();
+const menu = gsap.timeline().pause();
 
 menu.to("#one", {
   duration:.4,
@@ -75,20 +75,26 @@ menu.to("#one", {
   rotate:360,
   ease:'elastic.out',
 },)
-menu.pause();
+
 
 const burgerMobileMenu =  document.querySelector('.burgerMobileMenu');
-const menuMobileItems =  document.querySelectorAll('.menuMobileItems span');
+const menuMobileItemsSpan =  document.querySelectorAll('.menuMobileItems span');
 
-const accordeon = gsap.timeline();
-accordeon.to(burgerMobileMenu, {
+const accordeon = gsap.timeline().pause();
+
+accordeon.to(menuMobileItems.current, {
+  duration:0.1,  
+  visibility:'visible',
+})
+.to(burgerMobileMenu, {    
     backgroundColor:'#b9b9b9',
     duration:.2,
-})
-.fromTo(menuMobileItems, {
+},'<')
+
+.fromTo(menuMobileItemsSpan, {
     xPercent:200,
     opacity:0,
-    display:'block',
+    
 }, {
     xPercent:0,
     opacity:1,
@@ -96,32 +102,33 @@ accordeon.to(burgerMobileMenu, {
     duration:.3,
 },'<')
 
-
-
-accordeon.pause()
+//accordeon.pause();
 
 const menuButton = document.querySelector('.burgerContainer');
-const menuLinks = document.querySelector('.menuMobileItems');
-let play = true;
+const menuLinks = document.querySelectorAll('.menuMobileItems a');
+let playMenu = true;
 
 function clickButton(target) {
   target.addEventListener('click', ()=>{
-      if (play) { 
+      if (playMenu) { 
       menu.play();
       accordeon.play(); 
-      play = false;     
+      playMenu = false;     
     }
     else  {
       menu.reverse();
       accordeon.reverse();
-      play = true;         
+      playMenu = true;         
     }
 });
 }
 
 
 clickButton(menuButton);
-clickButton(menuLinks);
+for (let menuLink of menuLinks) {
+ clickButton(menuLink);
+}
+
 
 });
 

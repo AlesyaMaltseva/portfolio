@@ -216,8 +216,9 @@ h1 {
             fill:white;
             }
       .menuMobileItems {                          
-        @include flex-column();                
-        padding-top:1rem;                           
+                     
+        padding-top:1rem;
+        visibility:hidden;                           
         a {       
             padding: 0 1rem 1rem;
             font-weight: 300;
