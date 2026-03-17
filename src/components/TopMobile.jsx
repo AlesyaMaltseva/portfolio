@@ -23,6 +23,7 @@ const divGray = useRef(null);
 const burgerContainer = useRef(null);
 const burgerMobileMenu = useRef(null);
 const menuMobileItems = useRef(null);
+const arrowContainer = useRef(null);
 
 //const { contextSafe } = useGSAP({scope: burgerMobileMenu}); 
 
@@ -85,41 +86,44 @@ menuPlay.to("#one", {
 //const menuMobileItemsLinks = menuMobileItems.current.children;
 const menuMobileItemsLinks = document.querySelectorAll('.menuMobileItems a span');
 
+function openMenu() {
+      menuPlay.play();            
+        gsap.to(divGray.current, {
+            display:'block',
+            opacity:0.6,
+            duration:.6,
+        }); 
+        gsap.to(menuMobileItemsLinks, {
+              display:'block',
+              x:0,
+              stagger:0.09,
+              duration:0.6,
+              ease:'back.out',
+            });              
+        playMenu = false;        
+      }
+
+function closeMenu() {
+        menuPlay.reverse();       
+        gsap.to(divGray.current, {          
+            opacity:0,
+            duration:.6,
+            display:'none',
+        }); 
+        gsap.to(menuMobileItemsLinks, {
+              x:250,
+              stagger:-0.07,
+              duration:0.6,
+              ease:'expo', 
+              display:'none', 
+            });   
+        playMenu = true;                 
+      }  
+ 
 let playMenu = true;
 
 function clickButton() {  
-   if (playMenu) { 
-      menuPlay.play();            
-      gsap.to(divGray.current, {
-          display:'block',
-          opacity:0.6,
-          duration:.6,
-      }); 
-      gsap.to(menuMobileItemsLinks, {
-            display:'block',
-            x:0,
-            stagger:0.09,
-            duration:0.6,
-            ease:'back.out',
-          });              
-      playMenu = false;        
-    }
-    else  {
-      menuPlay.reverse();       
-      gsap.to(divGray.current, {          
-          opacity:0,
-          duration:.6,
-          display:'none',
-      }); 
-       gsap.to(menuMobileItemsLinks, {
-            x:250,
-            stagger:-0.07,
-            duration:0.6,
-            ease:'expo', 
-            display:'none', 
-          });   
-      playMenu = true;                 
-    }  
+   playMenu ? openMenu() : closeMenu();
 }
 
 let event;
@@ -134,6 +138,7 @@ if (isMobileDevice()) {
 
 const targets = [burgerContainer.current, divGray.current, menuMobileItemsLinks];
 
+
 targets.forEach((target) => {
   if(target.length!==undefined) {
     for (let link of target) {
@@ -144,12 +149,14 @@ targets.forEach((target) => {
   }
 })
 
+arrowContainer.current.addEventListener(event, closeMenu);
+
 });
 
     return <>    
       <div id="topMenu" className="topMenuMobile" ref={topMenuMobile}>              
-        <AnchorLink href={headers[0].url}  data-tooltip={headers[0].name} className="tooltip" id="">
-         <div className="arrowContainer">
+        <AnchorLink href={headers[0].url}>
+         <div className="arrowContainer" ref={arrowContainer}>
             <svg ref={arrow} version="1.1" id="arrow" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" viewBox="0 0 50 30" enableBackground="new 0 0 50 25"  fill="#ffffff">
               <path d="M48.962,21.065c0,0.59-0.26,1.173-0.757,1.568c-0.866,0.687-2.124,0.541-2.81-0.324L25,7.578L4.48,22.243 c-0.687,0.865-1.944,1.011-2.81,0.324s-1.01-1.944-0.324-2.811l22.087-16.64C23.813,2.639,24.39,2.36,25,2.36 s1.188,0.278,1.567,0.757l21.961,16.706C48.82,20.191,48.962,20.63,48.962,21.065z"/>
             </svg>
