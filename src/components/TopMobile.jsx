@@ -1,4 +1,6 @@
-import { useState, useRef, useEffect, useLayoutEffect } from 'react'
+import { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import * as ReactDOM from 'react-dom';
+import { createElement } from 'react';
 import $ from 'jquery';
 import headers from '../parts/headers.jsx';
 //import arrow from '/src/assets/img/arrow.svg';
@@ -17,6 +19,8 @@ function TopMobile() {
 const topMenuMobile = useRef(null);
 const burgerImg = useRef(null);
 const arrow = useRef(null);
+const divGray = useRef(null);
+const burgerContainer = useRef(null);
 const burgerMobileMenu = useRef(null);
 const menuMobileItems = useRef(null);
 
@@ -33,6 +37,7 @@ gsap.to(arrow.current,
       start: 0,
       toggleActions: "play none none reset",
 }})
+
 const menu = gsap.timeline().pause();
 
 menu.to("#one", {
@@ -76,8 +81,6 @@ menu.to("#one", {
   ease:'elastic.out',
 },)
 
-
-const burgerMobileMenu =  document.querySelector('.burgerMobileMenu');
 const menuMobileItemsSpan =  document.querySelectorAll('.menuMobileItems span');
 
 const accordeon = gsap.timeline().pause();
@@ -85,58 +88,61 @@ const accordeon = gsap.timeline().pause();
 accordeon.to(menuMobileItems.current, {
   duration:0.1,  
   visibility:'visible',
-})
-.to(burgerMobileMenu, {    
+},'<')
+.to(burgerMobileMenu.current, {    
     backgroundColor:'#b9b9b9',
     duration:.2,
 },'<')
 
 .fromTo(menuMobileItemsSpan, {
     xPercent:200,
-    opacity:0,
-    
+    opacity:0,    
 }, {
     xPercent:0,
     opacity:1,
     stagger:0.05,
     duration:.3,
-},'<')
+},'<');
 
-//accordeon.pause();
-
-const menuButton = document.querySelector('.burgerContainer');
 const menuLinks = document.querySelectorAll('.menuMobileItems a');
+
 let playMenu = true;
 
 function clickButton(target) {
   target.addEventListener('click', ()=>{
       if (playMenu) { 
       menu.play();
-      accordeon.play(); 
+      accordeon.play();       
+      gsap.to(divGray.current, {
+          display:'block',
+          opacity:0.4,
+          duration:.6,
+      });               
       playMenu = false;     
     }
     else  {
       menu.reverse();
-      accordeon.reverse();
+      accordeon.reverse(); 
+      gsap.to(divGray.current, {          
+          opacity:0,
+          duration:.6,
+          display:'none',
+      });     
       playMenu = true;         
     }
 });
 }
 
-
-clickButton(menuButton);
+clickButton(burgerContainer.current);
+clickButton(divGray.current);
 for (let menuLink of menuLinks) {
  clickButton(menuLink);
 }
 
-
 });
 
-
-
-
     return <>    
-      <div id="topMenu" className="topMenuMobile">              
+      <div id="topMenu" className="topMenuMobile" ref={topMenuMobile}>              
         <AnchorLink href={headers[0].url}  data-tooltip={headers[0].name} className="tooltip" id="">
          <span>
             <svg ref={arrow} version="1.1" id="arrow" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" viewBox="0 0 50 30" enableBackground="new 0 0 50 25"  fill="#ffffff">
@@ -145,8 +151,8 @@ for (let menuLink of menuLinks) {
          </span>
         </AnchorLink>  
 
-        <div className="burgerMobileMenu">
-            <div className="burgerContainer">
+        <div className="burgerMobileMenu" ref={burgerMobileMenu}>
+            <div className="burgerContainer" ref={burgerContainer}>
               <div className="burgerDiv">
                   <svg id="burgerSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xmlSpace="preserve"> 
                         <g id="burgerGroup">
@@ -163,9 +169,10 @@ for (let menuLink of menuLinks) {
               <AnchorLink key={i} href={item.url}>
                 <span>{item.name}</span>
               </AnchorLink>)}  
-            </div>
-          
+            </div> 
+            <div className="divGray" ref={divGray}></div>         
        </div>     
+
       </div>
     </> 
     
