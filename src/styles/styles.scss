@@ -128,6 +128,7 @@ $valueXS: 380px;
     width:$e;
     height:$e;
     border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 // Структура
@@ -166,8 +167,7 @@ h1 {
 }
 
 #topMenu {
-    @include golos();
-    
+    @include golos();    
     position: fixed;
     display:flex;
     font-size: 1.2em;    
@@ -194,24 +194,30 @@ h1 {
      position: relative;
      width:100%;
      font-size: 1rem;
-     z-index: 100;         
-    #arrow {
-        width:2rem;                
-     }
-    .burgerMobileMenu {
-      
+     z-index: 100;
+     .arrowContainer { 
+        @include circle(3.2rem);
+        @include flex-column();        
+        justify-content: center;
+        will-change: opacity, display, scroll-position;
+        #arrow {
+            width:75%;
+            margin-top:-5px;
+            align-self: center;
+            display:none;
+            opacity:0;
+            will-change: opacity, display, scroll-position;                
+         }
+    }
+    .burgerMobileMenu {      
       @include flex-column(); 
-      border-radius: 0 0 0 $borderRadius;
-           
+      border-radius: 0 0 0 $borderRadius;           
         .burgerContainer {             
-            width:40px;
-            height:40px;
+            @include circle(3.2rem);
             //transform-origin: 50% 50%;            
             display: flex;
             flex-direction: column;
-            align-self: flex-end;             
-            background-color: black;
-            border-radius: 50%;
+            align-self: flex-end;
             }
             #burgerSVG {            
             transform-origin: 50% 50%;
@@ -225,30 +231,32 @@ h1 {
             }
             #one, #two, #three {
             will-change: transform, rotation, opacity;
-            fill:white;
+            fill:$white;
             }
-      .menuMobileItems {                          
-                     
+
+      .menuMobileItems {
         padding-top:1rem;
-        visibility:hidden;                           
+        //visibility:hidden;                           
         a {       
-            padding: 0 1rem 1rem;
-            font-weight: 300;
-            display:block;
+            padding: 0 0.7rem 0.7rem;
+            font-weight: 300;            
+            @include flex-column();
             color:$white;
-            will-change: transition, transform, scroll-position;
+            will-change: transition, transform, visibility, scroll-position;
             text-decoration: none;
-            transition: .5s; 
             &:first-child {
                 display:none;
             } 
-            span {       
-            display:none;      
+            span {                         
+            transform: translate(250%);
+            color:$white;
+            background-color: $red;
+            border-radius: $borderRadius;               
             letter-spacing: .04em;
             white-space: nowrap;
             will-change: transition, transform, scroll-position;
-            display:block;
-            padding:0 1.3rem 0.6rem;                    
+            display:none;
+            padding:0.55rem 1.3rem 0.6rem;                    
             }     
         }
     }   
