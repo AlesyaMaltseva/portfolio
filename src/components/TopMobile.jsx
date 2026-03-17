@@ -105,12 +105,10 @@ accordeon.to(menuMobileItems.current, {
 },'<');
 
 const menuLinks = document.querySelectorAll('.menuMobileItems a');
-
 let playMenu = true;
 
-function clickButton(target) {
-  target.addEventListener('click', ()=>{
-      if (playMenu) { 
+function clickButton() {
+   if (playMenu) { 
       menu.play();
       accordeon.play();       
       gsap.to(divGray.current, {
@@ -130,14 +128,23 @@ function clickButton(target) {
       });     
       playMenu = true;         
     }
-});
 }
 
-clickButton(burgerContainer.current);
-clickButton(divGray.current);
-for (let menuLink of menuLinks) {
- clickButton(menuLink);
-}
+const events = ['click', 'touchstart'];
+
+events.forEach((eventType) => {
+    burgerContainer.current.addEventListener(eventType, clickButton);
+    divGray.current.addEventListener(eventType, clickButton);
+    for (let menuLink of menuLinks) {
+      menuLink.addEventListener(eventType, clickButton);    
+ }
+});
+
+// clickButton(,'click','touchstart');
+// clickButton(divGray.current,'click','touchstart');
+// for (let menuLink of menuLinks) {
+//  clickButton(menuLink,'click','touchstart');
+// }
 
 });
 
