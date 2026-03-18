@@ -27,15 +27,19 @@ const arrowContainer = useRef(null);
 
 //const { contextSafe } = useGSAP({scope: burgerMobileMenu}); 
 
+
+
 useGSAP(()=>{  
 
-gsap.to(arrow.current, 
-  {display:'block',
+const block2 = document.querySelector(".block2");
+
+gsap.to(arrowContainer.current, 
+  {visibility:'visible',
     opacity: 1,
-    duration: 0.5,    
+    duration: 0.3,    
     scrollTrigger: {
-      trigger: topMenuMobile.current,
-      start: 300,
+      trigger: block2,
+      start: '0 50px',
       toggleActions: "play none none reverse",
 }})
 
@@ -82,8 +86,6 @@ menuPlay.to("#one", {
   ease:'elastic.out',
 },)
 
-
-//const menuMobileItemsLinks = menuMobileItems.current.children;
 const menuMobileItemsLinks = document.querySelectorAll('.menuMobileItems a span');
 
 function openMenu() {
@@ -93,6 +95,10 @@ function openMenu() {
             opacity:0.6,
             duration:.6,
         }); 
+        gsap.to(menuMobileItems.current, {
+            display:'block',
+            duration:0,
+        });
         gsap.to(menuMobileItemsLinks, {
               display:'block',
               x:0,
@@ -116,7 +122,12 @@ function closeMenu() {
               duration:0.6,
               ease:'expo', 
               display:'none', 
-            });   
+            }); 
+            gsap.to(menuMobileItems.current, {
+            duration:0,
+            display:'none',
+            delay:1,
+        });  
         playMenu = true;                 
       }  
  
@@ -137,7 +148,6 @@ if (isMobileDevice()) {
 }
 
 const targets = [burgerContainer.current, divGray.current, menuMobileItemsLinks];
-
 
 targets.forEach((target) => {
   if(target.length!==undefined) {

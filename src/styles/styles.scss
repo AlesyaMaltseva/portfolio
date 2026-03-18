@@ -151,10 +151,6 @@ body {
     width:0;
 }
 
-h1 {
-    font-size: 2.1rem;
-}
-
 .topLine {
    color: #d0d0d0;
    right:0;
@@ -200,13 +196,13 @@ h1 {
         @include circle(3.2rem);
         @include flex-column();        
         justify-content: center;
-        will-change: opacity, display, scroll-position;
+        will-change: opacity, display, scroll-position, visibility;
+        visibility:'hidden';
+        opacity:0;
         #arrow {
             width:75%;
-            margin-top:-5px;
-            align-self: center;
-            display:none;
-            opacity:0;
+            margin-top:-4px;
+            align-self: center;            
             will-change: opacity, display, scroll-position;                
          }
     }
@@ -237,6 +233,7 @@ h1 {
 
       .menuMobileItems {
         padding-top:1rem;
+        display:none;
         //visibility:hidden;                           
         a {       
             padding: 0 0.7rem 0.7rem;
@@ -353,10 +350,15 @@ h1 {
     display:flex;
     flex-direction: column;
     @media #{$media} and ($fMax:$valueM)  {      			
-				padding:3rem 0 3.5rem;              
+				padding:3.9rem 0 3.5rem;              
 			}
     h1 {
-        padding-bottom: 2.5rem;        
+        padding-bottom: 2.5rem;
+        font-size: 2.1rem; 
+        @media #{$media} and ($fMax:$valueM)  {      			
+				padding-bottom: 1.7rem;             
+			} 
+
     }  
     .contentBlock {
         @include bigBlockWidth(80%);   
