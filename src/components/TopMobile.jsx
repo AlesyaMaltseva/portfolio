@@ -126,7 +126,7 @@ function closeMenu() {
             gsap.to(menuMobileItems.current, {
             duration:0,
             display:'none',
-            delay:1,
+            delay:0.5,
         });  
         playMenu = true;                 
       }  
