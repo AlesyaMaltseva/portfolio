@@ -5,8 +5,10 @@ import {useState, Suspense, lazy} from 'react';
 import ReactDOM from 'react-dom/client';
 import {createBrowserRouter,  createHashRouter, HashRouter, RouterProvider, Router, BrowserRouter, StaticRouter} from 'react-router-dom';
 import App from './App.jsx';
+import Loader from './parts/Loader.jsx';
 import ErrorPage404 from './error-page-404.jsx';
 
+//const App = lazy(() => import ('./App.jsx'));
 const Dyson = lazy(() => import ('./pages/dyson/Dyson.jsx'));
 const DysonWashAndDry = lazy(() => import ('./pages/dyson/parts/DysonWashAndDry.jsx'));
 const Dyson9kJ = lazy(() => import ('./pages/dyson/parts/Dyson9kJ.jsx'));
@@ -33,7 +35,7 @@ const IqSummer = lazy(() => import ('./pages/iq-summer/IqSummer.jsx'));
 
 function SuspenseWrap(component) {	
 	return <>
-	<Suspense fallback={<div>Загрузка...</div>}>{component}</Suspense>
+	<Suspense fallback={<Loader />}>{component}</Suspense>
 	</>
 }
 
@@ -41,7 +43,7 @@ const router = createHashRouter([
 	
 	{
 		path: "/",
-		element: SuspenseWrap(<App />),
+		element: <App />,
 		errorElement: <ErrorPage404 />,
 		},
 		{
