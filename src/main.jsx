@@ -31,58 +31,63 @@ const IqSummer = lazy(() => import ('./pages/iq-summer/IqSummer.jsx'));
 // import IqSummer from './pages/iq-summer/IqSummer.jsx';
 
 
+function SuspenseWrap(component) {	
+	return <>
+	<Suspense fallback={<div>Загрузка...</div>}>{component}</Suspense>
+	</>
+}
+
 const router = createHashRouter([
 	
 	{
 		path: "/",
-		element: <App />,
+		element: SuspenseWrap(<App />),
 		errorElement: <ErrorPage404 />,
 		},
 		{
 		path: "dyson/",
-		element: <Dyson />,
+		element: SuspenseWrap(<Dyson />),
 		},
 		{
 		path: "dyson/wash-and-dry/",
-		element: <DysonWashAndDry />,
+		element: SuspenseWrap(<DysonWashAndDry />),
 		},
 		{
 		path: "dyson/9kJ/",
-		element: <Dyson9kJ />,
+		element: SuspenseWrap(<Dyson9kJ />),
 		},
 		{
 		path: "dyson/V/",
-		element: <DysonV />,
+		element: SuspenseWrap(<DysonV />),
 		},
 		{
 		path: "dyson/dB",
-		element: <DysondB />,
+		element: SuspenseWrap(<DysondB />),
 		},
 		{
 		path: "iq-million/",
-		element: <IqMillion />,
+		element: SuspenseWrap(<IqMillion />),
 		},
 		{
 		path: "tork/",
-		element: <Tork />,
+		element: SuspenseWrap(<Tork />),
 		},
 		{
 		path: "dezobrabotka/",
-		element: <Dezobrabotka />,
+		element: SuspenseWrap(<Dezobrabotka/>),
 		},
 		{
 		path: "folders/",
-		element: <Folders />,
+		element: SuspenseWrap(<Folders />),
 		},
 		{
 		path: "iq-summer/",
-		element: <IqSummer />,
+		element: SuspenseWrap(<IqSummer />),
 		},	
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
-		{/* <HashRouter><CurrentURLComponent /></HashRouter>		 */}
 		<RouterProvider router={router} />			
 	</React.StrictMode>
 );

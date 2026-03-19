@@ -1,7 +1,9 @@
-import { useState, useRef } from 'react';
-import uuid from 'react-uuid';
+import { useState, useRef,useEffect,useLayoutEffect } from 'react';
+import debounce from 'lodash.debounce';
 import Top from './components/Top.jsx';
 import headers from './parts/headers.jsx';
+import useMobileWidthDetect from './parts/useMobileWidthDetect.js';
+import useDeviceMobileDetect from './parts/useDeviceMobileDetect.js';
 import './styles/styles.scss';
 
 // import 'bootstrap/dist/css/bootstrap.css'
@@ -14,19 +16,20 @@ function App() {
 //     return images // Return the images
 // }
 
-const structure = headers.map((item,i) => 
-    <div key={i} id={item.id} className={item.className} >
-      <div className="contentBlock">
-        <h1>{item.name}</h1>
-        <div className={item.id}>{item.block}</div>
-      </div>
-    </div>    
-);
 
-  return  <>
+const { isMobileWidth } = useMobileWidthDetect();
+
+return  <>
     <Top /> 
       <div id="content">        
-          {structure}
+          {headers.map((item,i) => 
+            <div key={i} id={item.id} className={item.className}>             
+              <div className="contentBlock">
+                <h1>{item.name}</h1>
+                <div className={`${item.id} ${isMobileWidth ? 'mobile' : ''}`}>{item.block}</div>
+              </div>
+          </div>    
+          )}
       </div>
     </>  
 }

@@ -1,7 +1,8 @@
+import {useState, Suspense, lazy} from 'react';
 import ScrollToTop from '../../parts/ScrollToTop.js';
 import iq from './css/iq.module.css';
-import Slider from './parts/Slider.jsx';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
+//import Slider from './parts/Slider.jsx';
+const Slider = lazy(() => import ('./parts/Slider.jsx'));
 import IqMenu from './parts/IqMenu.jsx';
 // Images
 import one from "./img/one.png"; import two from "./img/two.png"; import three from "./img/three.png"; import IqPremiumStanding from "./img/IQ-Premium-standing-A4-1.png"; import IqUltraStanding from "./img/IQ-Ultra-standing-A4-1.png"; import IqSmoothStanding from "./img/IQ-Smooth-standing-A4-1.png"; import IqAllroundStanding from "./img/IQ-Allround-standing-A4-1.png"; import IqEconomyStanding from "./img/IQ-Economy-standing-A4-1.png"; import faces3 from "./img/faces3.png"; import labelM from "./img/label-m.png"; import arround from "./img/arround.svg"; import arrowBottom from "./img/arrow-bottom.svg"; import i250000 from "./img/250000.png"; import million from "./img/million.png"; import shirts from "./img/shirts.png"; import faces2 from "./img/faces-2.png"; import millionWwithoutCircle from "./img/million-without-circle.png"; import logoCircle from "./img/logo-circle.png";
@@ -18,8 +19,8 @@ return <>
 		<div className={iq.iqTop}>
 			<div className={iq.iqTcontent}>		
 				<div className={iq.blockFirst}>
-					<div id={iq.iqSlider} className={[iq.slider]+' '+[iq.desk]}>					
-						<Slider />						
+					<div id={iq.iqSlider} className={[iq.slider]+' '+[iq.desk]}>			
+						<Slider />      										
 					</div>
 					<div className={iq.faces}>
 						<img src={faces3} />

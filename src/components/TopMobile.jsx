@@ -4,7 +4,8 @@ import { createElement } from 'react';
 import $ from 'jquery';
 import headers from '../parts/headers.jsx';
 //import arrow from '/src/assets/img/arrow.svg';
-import AnchorLink from 'react-anchor-link-smooth-scroll'
+import AnchorLink from 'react-anchor-link-smooth-scroll';
+import useDeviceMobileDetect from '../parts/useDeviceMobileDetect.js';
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -25,9 +26,7 @@ const burgerMobileMenu = useRef(null);
 const menuMobileItems = useRef(null);
 const arrowContainer = useRef(null);
 
-//const { contextSafe } = useGSAP({scope: burgerMobileMenu}); 
-
-
+const { isMobileDevice } = useDeviceMobileDetect();
 
 useGSAP(()=>{  
 
@@ -138,13 +137,11 @@ function clickButton() {
 }
 
 let event;
-function isMobileDevice() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-if (isMobileDevice()) {
+
+if (isMobileDevice) {
     event = 'touchstart';    
 } else {
-    event = 'click';    
+    event = 'click';      
 }
 
 const targets = [burgerContainer.current, divGray.current, menuMobileItemsLinks];
