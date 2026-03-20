@@ -6,8 +6,6 @@ import { NavLink } from 'react-router-dom'
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-//import useMobileWidthDetect from '../parts/useMobileWidthDetect.js';
-import useDeviceMobileDetect from '../parts/useDeviceMobileDetect.js';
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function Projects() {
@@ -49,12 +47,9 @@ useGSAP(()=>{
 })
 })
 
-//const { isMobileWidth } = useMobileWidthDetect();
-const { isMobileDevice } = useDeviceMobileDetect();
-
   return  <>          
       {projects.map((item, i)=>
-        <div className={`project ${isMobileDevice ? 'mobile' : ''}`} key={i}>
+        <div className='project' key={i}>
           <NavLink to={item[1]}>
             <img  className="projectImg" src={item[0]} />
             <div className="projectDesc">{item[2]}</div>

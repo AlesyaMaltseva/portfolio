@@ -496,12 +496,9 @@ body {
     display:grid;
     grid-template-columns:repeat(3, 1fr);
     grid-gap: 3rem;
-    @media #{$media} and ($fMax:$valueM)  {      			
-				grid-template-columns:repeat(2, 1fr);
-			}
-    @media #{$media} and ($fMax:$valueS)  {      			
-				grid-template-columns:repeat(1, 1fr);
-			}
+    @media #{$media} and ($fMax:$valueL)  {      			
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
     .project {
         position: relative;
         overflow: hidden;
@@ -561,8 +558,8 @@ body {
 }
 
 .projects.mobile {
-    grid-gap: 0.8rem 3rem;
-    .project.mobile {
+    grid-gap: 0.8rem 3rem;    
+    .project {
         border-radius: 0;           
         img {
             width:100%;

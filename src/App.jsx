@@ -18,6 +18,8 @@ function App() {
 
 
 const { isMobileWidth } = useMobileWidthDetect();
+const { isMobileDevice } = useDeviceMobileDetect();
+
 
 return  <>
     <Top /> 
@@ -26,7 +28,7 @@ return  <>
             <div key={i} id={item.id} className={item.className}>             
               <div className="contentBlock">
                 <h1>{item.name}</h1>
-                <div className={`${item.id} ${isMobileWidth ? 'mobile' : ''}`}>{item.block}</div>
+                <div className={`${item.id} ${isMobileDevice||isMobileWidth ? 'mobile' : ''}`}>{item.block}</div>
               </div>
           </div>    
           )}
