@@ -22,8 +22,7 @@ function Slider() {
 const slidesCarousel = useRef();
 const {contextSafe} = useGSAP({scope:slidesCarousel})
 
-const carousel = contextSafe(() => {
-
+useGSAP(()=>{
 let slideDelay = 1.5;
 let slideDuration = 0.5;
 let snapY;
@@ -133,15 +132,7 @@ function resize() {
   animateSlides(0);
   slideAnimation.progress(1);
 }
-
 });
-// Конец слайдера
-
-
-// Карусель
-useEffect(() => {
-  carousel(); 
-}, [])
 
 return <>
 <div id="iqSlider">
