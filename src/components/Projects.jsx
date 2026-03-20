@@ -54,7 +54,7 @@ const { isMobileDevice } = useMobileWidthDetect();
 
   return  <>          
       {projects.map((item, i)=>
-        <div className={`project ${isMobileWidth&&isMobileDevice ? 'mobile' : ''}`} key={i}>
+        <div className={`project ${isMobileDevice ? 'mobile' : ''}`} key={i}>
           <NavLink to={item[1]}>
             <img  className="projectImg" src={item[0]} />
             <div className="projectDesc">{item[2]}</div>
