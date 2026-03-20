@@ -49,8 +49,8 @@ useGSAP(()=>{
 })
 })
 
-const { isMobileWidth } = useMobileWidthDetect();
-const { isMobileDevice } = useMobileWidthDetect();
+//const { isMobileWidth } = useMobileWidthDetect();
+const { isMobileDevice } = useMobileDeviceDetect();
 
   return  <>          
       {projects.map((item, i)=>
