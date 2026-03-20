@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import useMobileWidthDetect from '../parts/useMobileWidthDetect.js';
+//import useMobileWidthDetect from '../parts/useMobileWidthDetect.js';
 import useDeviceMobileDetect from '../parts/useDeviceMobileDetect.js';
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -50,7 +50,7 @@ useGSAP(()=>{
 })
 
 //const { isMobileWidth } = useMobileWidthDetect();
-const { isMobileDevice } = useMobileDeviceDetect();
+const { isMobileDevice } = useDeviceMobileDetect();
 
   return  <>          
       {projects.map((item, i)=>
