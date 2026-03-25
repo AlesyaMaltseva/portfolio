@@ -20,7 +20,6 @@ function App() {
 const { isMobileWidth } = useMobileWidthDetect();
 const { isMobileDevice } = useDeviceMobileDetect();
 
-
 return  <>
     <Top /> 
       <div id="content">        
