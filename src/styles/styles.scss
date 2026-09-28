@@ -144,7 +144,7 @@ $valueXS: 380px;
 body {
     width: 100%;
     @include golos();
-    overflow-x: hidden;        
+    overflow-x: hidden;            
 }
 
 ::-webkit-scrollbar {
@@ -341,14 +341,21 @@ body {
     } 
 }          
 
-.block{
+#content {
+    background-color: $black;
+     @include flex-column();
+     overflow: auto;
+}
+
+.block {
+    width:100%;
+    //position: relative;
+    //overflow: hidden;
+    height: auto;    
     height: var(--viewport-height);
 	min-height: 100vh;
     padding:5.7rem 0 3.5rem;
-    @include flex-column();
-    position: relative;
-    display:flex;
-    flex-direction: column;
+    @include flex-column();    
     @media #{$media} and ($fMax:$valueM)  {      			
 				padding:3.9rem 0 2.8rem;              
 			}

@@ -4,7 +4,6 @@ import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-
 gsap.registerPlugin(useGSAP,SplitText,ScrollTrigger);
 
 import avatar from '/src/assets/img/avatar.jpg'; 

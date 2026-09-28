@@ -1,31 +1,16 @@
-import { useState, useRef,useEffect,useLayoutEffect } from 'react';
-import debounce from 'lodash.debounce';
-import Top from './components/Top.jsx';
-import headers from './parts/headers.jsx';
-import useMobileWidthDetect from './parts/useMobileWidthDetect.js';
-import useDeviceMobileDetect from './parts/useDeviceMobileDetect.js';
-import './styles/styles.scss';
-import mainBlocksScrollGSAP from './parts/mainBlocksScrollGSAP.jsx';
 import { gsap } from "gsap/dist/gsap";
+import { useState, useRef,useEffect,useLayoutEffect } from 'react';
 import { useGSAP } from "@gsap/react/dist";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import useMobileWidthDetect from './useMobileWidthDetect.js';
 
-
-function App() {
-
-const mainBlocks = useRef(null);
-
-
+function mainBlocksScrollGSAP() {
 const { isMobileWidth } = useMobileWidthDetect();
-const { isMobileDevice } = useDeviceMobileDetect();
-
-
 useEffect(()=>{
-  //console.log(isMobileWidth)
   
 if (isMobileWidth) {
       // Если мобильный — убиваем все ScrollTrigger, связанные с этим элементом
-      // ScrollTrigger.getAll().forEach(t => t.kill());
+      //ScrollTrigger.getAll().forEach(t => t.kill());
       return;
     }
  const blocksConfig = [
@@ -33,7 +18,7 @@ if (isMobileWidth) {
     { id: '#experience', xFrom: window.innerWidth+50, yFrom: -window.innerHeight, yTo:-window.innerHeight },
     { id: '#projects', xFrom: -window.innerWidth-50,  yFrom: -window.innerHeight*2, yTo:-window.innerHeight*2 },
     { id: '#contacts', xFrom: window.innerWidth+50,  yFrom: -window.innerHeight*2.8, yTo:-window.innerHeight*2.8 },
-    
+    // Добавь сюда другие блоки, если они есть
   ];
 
   blocksConfig.forEach(config => {
@@ -54,34 +39,54 @@ if (isMobileWidth) {
       snap: {
       snapTo: 1, // привязка к 50% прокрутки
       duration: 1, // скорость snap (чем меньше, тем быстрее)
-      delay: 0,
+      delay: 0
     },
       pin: true, // Фиксируем блок на экране
       anticipatePin: 0.5, // Сглаживание перехода в фиксированное положение
       pinSpacing: true, // Убираем лишние отступы (важно для лендингов)
-      //markers: true // Убери в продакшене
+      markers: true // Убери в продакшене
     });
   });
+
+//   gsap.defaults({ease:'none', duration:0.3})  
+//    const mainBlocks = gsap.timeline();
+//    mainBlocks.fromTo('#experience',
+//     {x:window.innerWidth,},
+//     {x:'0px',}
+// )
+//     .fromTo('#projects',
+//     {x:"-"+window.innerWidth,},
+//     {x:'0px',}
+// )
+// .fromTo('#contacts',
+//     {y:window.innerHeight,},
+//     {y:'0px',}
+// );
+
+//   ScrollTrigger.create({
+//       animation: mainBlocks,
+//       trigger: blocks.current,
+//       start: 'top top',
+//       end: '+=6000px',
+//       //ease:'none',
+//       scrub: 0.1,
+//     pin: true,
+//      snap: 1/3,
+//       anticipatePin: true,
+//       markers: true,
+//      });
+
+
+
+ //ScrollTrigger.addEventListener("refresh", () => gsap.updateScroll());
+//ScrollTrigger.refresh();
+
       return () => {
       ScrollTrigger.getAll().forEach(t => t.kill());
-     };
+    };
 
 }, [isMobileWidth]);
-
-
-return  <>
-    <Top /> 
-      <div id="content" ref={mainBlocks}>        
-          {headers.map((item,i) => 
-            <div key={i} id={item.id} className={item.className}>             
-              <div className="contentBlock">
-                <h1>{item.name}</h1>
-                <div className={`${item.id} ${isMobileDevice||isMobileWidth ? 'mobile' : ''}`}>{item.block}</div>
-              </div>              
-            </div>    
-          )}
-      </div>
-    </>  
+ 
 }
 
-export default App
+export default mainBlocksScrollGSAP;
