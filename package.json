@@ -23,18 +23,20 @@
     "react-device-detect": "^2.2.3",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.13.0",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "^0.0.0",
     "react-uuid": "^2.0.0",
     "uuid": "^11.1.0",
-    "uuidv4": "^6.2.13"
+    "uuidv4": "^1.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
     "@types/jquery": "^3.5.33",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
+    "@typescript-eslint/eslint-plugin": "^8.70.1",
+    "@typescript-eslint/parser": "^8.70.1",
     "@vitejs/plugin-react": "^5.0.0",
-    "eslint": "^9.33.0",
+    "eslint": "^9.39.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "file-loader": "^6.2.0",
