@@ -7,5 +7,9 @@ export default defineConfig({
   base: '/portfolio',
   build: {
     chunkSizeWarningLimit: 1600,
+    rollupOptions: {
+      external: ['lodash.debounce'] // Добавляем эту строку
+    }
   }
+  
 })
