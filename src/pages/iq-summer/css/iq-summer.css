@@ -265,7 +265,7 @@ color: #333333;
 
 .pizza {
     justify-content: space-between;
-    background-image: url(/medias/sys_master/root/ha6/h97/10789961433118/background-lightgray.png);
+    background-image: url(../img/background-lightgray.png);
     background-repeat: no-repeat;
     background-position: 29% 100%;
 }
@@ -308,7 +308,7 @@ color: #333333;
 
 .iphone {
     justify-content: space-between;
-    background-image: url(/medias/sys_master/root/ha6/h97/10789961433118/background-lightgray.png);
+    background-image: url(../img/background-lightgray.png);
     background-repeat: no-repeat;
     background-position: 45% 100%;
     padding-bottom: 45px;
@@ -337,7 +337,7 @@ color: #333333;
 
 .bottom-block {
     width:100%;
-    background-image: url(/medias/sys_master/root/ha6/h97/10789961433118/background-lightgray.png);
+    background-image: url(../img/background-lightgray.png);
     background-repeat: no-repeat;
     background-position: 45% 100%;
     padding-bottom: 120px;
@@ -837,7 +837,7 @@ color: #333333;
 }
 
 .heart {
-background-image: url(/medias/sys_master/root/ha6/h97/10789961433118/background-lightgray.png);
+background-image: url(../img/background-lightgray.png);
     background-repeat: no-repeat;
     background-position: 0 0;
     padding-bottom: 0;
